@@ -1,5 +1,6 @@
 // Service worker: keeps the app usable offline and saves every map tile you look at.
-var SHELL = 'shell-v1';
+var SHELL = 'shell-v2';
+var API = 'api-v1';
 var TILES = 'tiles-v1';
 var MAX_TILES = 6000;
 var SHELL_FILES = [
@@ -48,6 +49,17 @@ self.addEventListener('fetch', function (e) {
           return res;
         }).catch(function () { return new Response('', { status: 504 }); });
       });
+    }));
+    return;
+  }
+
+  if (url.hostname === 'hiking.waymarkedtrails.org' && url.pathname.indexOf('/api/') === 0) {
+    // Trail info: fresh when online, last saved copy when offline.
+    e.respondWith(fetch(req).then(function (res) {
+      if (res.ok) { var copy = res.clone(); caches.open(API).then(function (c) { c.put(req.url, copy); }); }
+      return res;
+    }).catch(function () {
+      return caches.open(API).then(function (c) { return c.match(req.url); }).then(function (hit) { return hit || new Response('{"error":"offline"}', { status: 504, headers: { 'Content-Type': 'application/json' } }); });
     }));
     return;
   }

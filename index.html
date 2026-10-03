@@ -19,9 +19,14 @@
 <div id="map" aria-label="Mappa dei sentieri"></div>
 
 <div class="topbar">
-  <div class="brand">Sentieri <span>Casentino</span></div>
+  <form id="searchForm" class="search" role="search">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <input id="searchInput" type="search" enterkeyhint="search" autocomplete="off" placeholder="Cerca sentiero (es. 227) o luogo" aria-label="Cerca sentiero o luogo">
+    <button id="searchClear" type="button" class="sclear" aria-label="Cancella ricerca" hidden>×</button>
+  </form>
   <div id="netstate" class="pill" title="Stato connessione">online</div>
 </div>
+<div id="results" class="results" hidden></div>
 
 <div class="fabs">
   <button id="btnGps" class="fab" aria-label="Mostra la mia posizione" title="La mia posizione">
@@ -42,6 +47,10 @@
   <div class="sheet-head">
     <h2 id="sheetTitle">Giri</h2>
     <button id="sheetClose" class="close" aria-label="Chiudi">×</button>
+  </div>
+
+  <div class="panel" data-panel="info" hidden>
+    <div id="infoBody"></div>
   </div>
 
   <div class="panel" data-panel="giri">
@@ -71,7 +80,7 @@
         <tr><td>Bivio → Fangacci</td><td><b class="cai">00</b></td><td>1,5</td><td>25'</td></tr>
       </tbody>
     </table>
-    <p class="note">Distanze e tempi sono stime. I numeri dei sentieri li vedi sulla mappa, nei riquadri rossi.</p>
+    <p class="note">Distanze e tempi sono stime. Tocca un sentiero sulla mappa per vederne le info, o cercalo per numero in alto.</p>
   </div>
 
   <div class="panel" data-panel="tracce">
