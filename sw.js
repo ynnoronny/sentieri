@@ -1,10 +1,10 @@
 // Service worker: keeps the app usable offline and saves every map tile you look at.
-var SHELL = 'shell-v2';
+var SHELL = 'shell-v3';
 var API = 'api-v1';
 var TILES = 'tiles-v1';
 var MAX_TILES = 6000;
 var SHELL_FILES = [
-  './', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest',
+  './', 'index.html', 'style.css?v=3', 'app.js?v=3', 'manifest.webmanifest',
   'icon-192.png', 'icon-512.png',
   'vendor/leaflet.js', 'vendor/leaflet.css',
   'vendor/images/layers.png', 'vendor/images/layers-2x.png',
@@ -66,7 +66,7 @@ self.addEventListener('fetch', function (e) {
 
   if (url.origin === self.location.origin) {
     // App files: network first so updates arrive, saved copy when offline.
-    e.respondWith(fetch(req).then(function (res) {
+    e.respondWith(fetch(req, { cache: 'no-cache' }).then(function (res) {
       if (res.ok) { var copy = res.clone(); caches.open(SHELL).then(function (c) { c.put(req, copy); }); }
       return res;
     }).catch(function () {

@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="icon" href="icon-192.png">
 <link rel="stylesheet" href="vendor/leaflet.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 <div id="map" aria-label="Mappa dei sentieri"></div>
@@ -97,11 +97,12 @@
     <p id="zoomHint" class="note"></p>
     <button id="btnClear" class="btn">Svuota mappe salvate</button>
     <p id="clearConfirm" class="confirm" hidden>Sicuro? <button id="btnClearYes" class="btn danger">Sì, svuota</button> <button id="btnClearNo" class="btn">No</button></p>
+    <p class="note">Versione 3 · <span id="swState"></span></p>
     <p class="note">Il GPS funziona anche senza rete. Per usarla come app: in Safari, Condividi → <i>Aggiungi alla schermata Home</i>.</p>
   </div>
 </section>
 
 <script src="vendor/leaflet.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

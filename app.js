@@ -237,7 +237,7 @@
   var lastRoute = null;
 
   function getJSON(url) {
-    return fetch(url).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); });
+    return fetch(url).then(function (r) { if (!r.ok) throw new Error('errore ' + r.status); return r.json(); });
   }
   function mPerPx() { return 40075016.686 / (256 * Math.pow(2, map.getZoom())); }
   function bbox3857(b) {
@@ -386,7 +386,7 @@
       var list = res.results || [];
       if (!list.length) { if (current === 'info') closeSheet(); return; }
       if (list.length === 1) showRoute(list[0].id); else showPicklist(list, 'Sentieri qui');
-    }).catch(function () { toast(navigator.onLine ? 'Info sentieri non disponibili ora.' : 'Sei offline: le info dei sentieri richiedono connessione.'); });
+    }).catch(function (err) { toast(navigator.onLine ? 'Info sentieri non disponibili (' + (err && err.message || 'rete') + ').' : 'Sei offline: le info dei sentieri richiedono connessione.'); });
   });
 
   // ---------- Search ----------
@@ -484,7 +484,9 @@
     if ('caches' in window) caches.delete('tiles-v1').then(function () { refreshTileCount(); toast('Mappe salvate eliminate.'); });
   };
 
+  var swEl = document.getElementById('swState');
+  if (swEl) swEl.textContent = ('serviceWorker' in navigator) ? (navigator.serviceWorker.controller ? 'offline attivo' : 'offline in preparazione') : 'offline non supportato';
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(function () {}); });
   }
 })();
