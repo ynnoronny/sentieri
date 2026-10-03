@@ -1,0 +1,40 @@
+# Messages for Bashkir (башҡортса)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: AiseluRB
+# Author: Dimitar
+# Author: Sagan
+---
+attribution:
+  data: Карта мәғлүмәте © [OpenStreetMap](https://www.openstreetmap.org) under [ODbL](https://www.openstreetmap.org/copyright)
+details:
+  mapped_len: Картала күрһәтергә
+  note: Иҫкәртмә
+  official_len: Маршрут оҙонлоғо
+  operator: Оператор
+  subroutes_title: Бүлектәр
+  superroutes_title: Өлөш
+  website: Веб-сайт
+elevation:
+  diagram:
+    distance: Алыҫлыҡ (ара)
+error:
+  panel_title: Хата
+osmc_symbol:
+  background_heading: Фон
+  foreground_heading: Төп төҫ
+routelist:
+  title: Маршруттар
+search:
+  routes: Маршруттар
+  title: Табырға
+settings:
+  base_map: Төп карта
+  hillshading_layer: Рельефты күрһәтергә
+  route_layer: Маршрут ҡатламы
+site_title:
+  cycling: Велосипед
+  hiking: Йәйәү ял итергә сығыу
+  mtb: Тау велосипеды
+  skating: Тәгәрмәсле коньки
+...

@@ -1,0 +1,171 @@
+# Messages for Slovenian (slovenščina)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dbc334
+# Author: Eleassar
+# Author: Irena Plahuta
+# Author: JanezPavelZebovec
+# Author: Lesko987
+# Author: P̲̳l̳eo
+# Author: Shirayuki
+---
+attribution:
+  data: Podatki zemljevida © [OpenStreetMap](https://www.openstreetmap.org) pod [ODbL](https://www.openstreetmap.org/copyright).
+  elevation_title: višinski podatki [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Več podatkov
+  no_data: Za ta kažipot niso na voljo nobene informacije o cilju.
+  title: Cilji
+details:
+  altitude: Nadmorska višina
+  educational:
+    other: To je učna pot.
+  image: Slika
+  mapped_len: Kartografska dolžina
+  note: Opomba
+  oneway: Tej poti je mogoče slediti le v smeri naprej.
+  official_len: Uradna dolžina
+  operator: Upravljavec
+  pilgrimage:
+    christian: To je krščanska romarska pot.
+    other: To je romarska pot.
+  roundtrip: Ta pot je krožna.
+  route_symbol: Simbol poti
+  signed_direction: Ta pot je označena samo v smeri naprej.
+  subroutes_title: Odseki
+  superroutes_title: Del
+  symbol: Simbol
+  linear:
+    "yes": Zveza za to pot je urejena in v enem kosu.
+    sorted: Zveza za to pot je v enem kosu, vendar člani niso razvrščeni.
+    "no": Ta zveza ima luknje in druge težave.
+  tags:
+    key: ključ
+    title: Oznake OpenStreetMap
+    value: vrednost
+  type:
+    guidepost: Kažipot
+    node: Vozlišče
+    relation: Zveza
+    way: Pot
+    wayset: Nabor poti
+  website: Spletišče
+  wikipedia: Wikipedija
+  zoom_to: Prikaži na zemljevidu
+  analyze:
+    title: Analiziraj zvezo
+    summary: Ta zveza ima {num} odsekov.
+    disclaimer: To prikazuje odseke poti, kot jih je izračunal Waymarked Trails iz
+      zveze, kar lahko ni vedno pravilno. Za več informacij o tem, kako waymarkedtrails
+      razvršča poti, obiščite strani za pomoč.
+    open_end: Odprt konec v poti.
+    multi_end: Na tej točki se srečata več kot dva odseka poti.
+    two_end: |-
+      Točka, kjer je pot prekinjena, ker zveza ni razvrščena.
+      Rdeče črtkane črte kažejo, kje se pot nadaljuje.
+  download:
+    title: Prenesi pot
+    need_format: Izberi format
+    need_direction: Izberi poti za vključitev
+    start: Dobi datoteko
+    format:
+      title: Format
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJson
+    direction:
+      title: Vključi poti v smeri
+      forward: naprej
+      backward: nazaj
+      both: oboje
+    other_ways: Dodatni deli poti
+elevation:
+  ascent: Skupni vzpon
+  descent: Skupni spust
+  diagram:
+    altitude: Nadmorska višina (m)
+    distance: Razdalja (km)
+  title: Višinski profil
+  total: Skupni vzpon/spust
+  unavailable: Ni najdenih podatkov o nadmorski višini.
+  warn_unsorted: Pot je morda neurejena ali nepopolna. Informacije o nadmorski višini
+    so morda netočne.
+error:
+  load_error: Napaka pri povezovanju s strežnikom.
+  missing_id: Manjka parameter »id«.
+  missing_query: Manjka parameter »query«.
+  panel_title: Napaka
+  object_not_found: Objekt ni bil najden.
+  api_unavailable: API ni na voljo.
+headline:
+  last_update: Zadnja posodobitev
+help: O zemljevidu
+locate_me: Poišči me
+network:
+  continental: Celinske poti
+  downhill: Spust
+  national: Državne poti
+  node: Povezave mreže vozlišč
+  nordic: Nordijsko smučanje
+  other: Druge poti
+  regional: Regionalne poti
+  skitour: Smučarske ture
+  sled: Steza za bob
+  sleigh: Sankaška steza
+  winter_hike: Zimsko pohodništvo
+osmc_symbol:
+  back: Nazaj
+  background: Ozadje deluje na podoben način. Sestavljeno je tudi iz barve in oblike.
+    Ozadje je lahko tudi samo ime barve, kar ima za posledico platno izbrane barve.
+    To je prikazano v prvi vrstici.
+  background_heading: Ozadje
+  examples: Zgledi
+  foreground: Simbol v ospredju je sestavljen iz barve in oblike, ki sta povezani
+    s podčrtajem. Spodnja tabela prikazuje vse kombinacije, ki jih prepozna to spletno
+    mesto. Prepozna tudi ospredja, ki so sestavljena samo iz imena oblike. Simboli
+    zanje so prikazani v zadnjem stolpcu.
+  foreground_heading: Ospredje
+  intro_header: Pregled
+  preview: |-
+    V spodnje vnosno polje vnesite vrednost osmc:symbol,
+         da vidite, kako bo upodobljeno na zemljevidu.
+  preview_heading: Predogled
+  symbol_reference_heading: Celoten seznam podprtih simbolov
+routelist:
+  loading: Nalaganje ...
+  close: Zapri
+  more: Povečajte za ogled več poti.
+  rollup: Zavihaj
+  title: Poti
+search:
+  places: Kraji
+  routes: Poti
+  title: Iskanje
+  help: Za iskanje uporabite ključne besede. Iščete lahko po imenih poti (npr. Apalaška
+    pot, E2) ali krajev (npr. Berlin).
+settings:
+  base_map: Zemljevid podlage
+  browser_language: Uporabi nastavitve brskalnika
+  hillshading_layer: Senčenje vzpetin
+  language: Jezik
+  route_layer: Sloj poti
+  title: Nastavitve zemljevida
+  transparency: Prosojnost zemljevida
+site_description:
+  cycling: Lokalne in dolge kolesarske poti z zemljevidi in informacijami iz OpenStreetMap.
+  hiking: Lokalne in dolge pohodniške in sprehajalne poti z zemljevidi in informacijami
+    iz OpenStreetMap.
+  mtb: Gorskokolesarske poti (MTB) z zemljevidi in informacijami iz OpenStreetMap.
+  riding: Jahalne poti z zemljevidi in informacijami iz OpenStreetMap.
+  skating: Poti za rolanje z zemljevidi in informacijami iz OpenStreetMap.
+  slopes: Zimske športne proge, spustno smučanje, tek na smučeh, zimska hoja, z zemljevidi
+    in informacijami iz OpenStreetMap.
+site_title:
+  cycling: Kolesarjenje
+  hiking: Planinarjenje
+  mtb: Gorsko kolesarjenje
+  osmc_symbol: Oznaka osmc:symbol
+  riding: Jahanje konjev
+  skating: Rolanje
+  slopes: Zimske športne proge
+...

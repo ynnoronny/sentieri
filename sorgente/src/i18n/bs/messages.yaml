@@ -1,0 +1,35 @@
+# Messages for Bosnian (bosanski)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Palapa
+# Author: Srdjan m
+# Author: Srđan
+---
+details:
+  official_len: Službena dužina
+  operator: Operator
+  subroutes_title: Potezi
+  superroutes_title: Dio
+  tags:
+    title: Oznake OpenStreetMapa
+  website: Veb-sajt
+elevation:
+  diagram:
+    altitude: Visina (m)
+error:
+  panel_title: Greška
+help: O karti
+locate_me: Nađi me
+osmc_symbol:
+  back: Nazad
+routelist:
+  close: Zatvori
+search:
+  title: Pretraži
+settings:
+  language: Jezik
+  title: Postavke karte
+  transparency: Providnost karte
+site_title:
+  mtb: Planinski biciklizam
+...

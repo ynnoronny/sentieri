@@ -1,0 +1,41 @@
+# Messages for Serbian (Latin script) (srpski (latinica))
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: Rancher
+---
+attribution:
+  data: Kartografski podaci © [Openstritmap](https://www.openstreetmap.org) pod licencom
+    [ODbL](https://www.openstreetmap.org/copyright)
+details:
+  mapped_len: Prikazano na mapi
+  note: Beleška
+  official_len: Zvanična dužina
+  operator: Operator
+  subroutes_title: Potezi
+  superroutes_title: 'Deo:'
+  tags:
+    title: Oznake Openstritmapa
+  website: Sajt
+error:
+  panel_title: Greška
+headline:
+  last_update: Poslednje ažuriranje
+osmc_symbol:
+  background_heading: Pozadina
+  foreground_heading: Prednji plan
+routelist:
+  title: Putevi
+search:
+  routes: Putevi
+  title: Pretraži
+settings:
+  base_map: Osnovna mapa
+  hillshading_layer: Reljefno senčenje
+  route_layer: Sloj puta
+site_title:
+  cycling: Biciklizam
+  hiking: Pešačenje
+  mtb: Planinski biciklizam
+  skating: Roleri
+...

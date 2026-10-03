@@ -1,0 +1,52 @@
+# Messages for Malay (Bahasa Melayu)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Anakmalaysia
+# Author: Dimitar
+---
+attribution:
+  data: Data peta © [OpenStreetMap](https://www.openstreetmap.org) di bawah [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: data ketinggian oleh [SRTM/ASTER](help/acknowledgements)
+details:
+  mapped_len: Kepanjangan terpeta
+  note: Catatan
+  official_len: Kepanjangan rasmi
+  operator: Pengendali
+  subroutes_title: Bahagian
+  superroutes_title: Sebahagian daripada
+  tags:
+    title: Tag OpenStreetMap
+  website: Tapak sesawang
+elevation:
+  ascent: Kenaikan terkumpul
+  descent: Keturunan terkumpul
+  diagram:
+    altitude: Altitud (m)
+    distance: Jarak (km)
+  title: Profil ketinggian
+error:
+  panel_title: Ralat
+headline:
+  last_update: Kemas kini terkini
+osmc_symbol:
+  background_heading: Latar belakang
+  foreground_heading: Latar hadapan
+routelist:
+  title: Jalan
+search:
+  routes: Jalan
+  title: Cari
+settings:
+  base_map: Peta asas
+  hillshading_layer: Bayangan bukit
+  language: Bahasa
+  route_layer: Lapisan jalan
+  transparency: Kelutsinaran peta
+site_title:
+  cycling: Basikal
+  hiking: Kembara
+  mtb: MTB
+  riding: Tunggang Kuda
+  skating: Kasut Roda
+  slopes: Cerun Sukan Musim Sejuk
+...

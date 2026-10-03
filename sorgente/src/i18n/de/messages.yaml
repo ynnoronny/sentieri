@@ -1,0 +1,180 @@
+# Messages for German (Deutsch)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: DraconicDark
+# Author: ElBe
+# Author: Geitost
+# Author: JOE
+# Author: Justman10000
+# Author: Kghbln
+# Author: Lonvia
+# Author: Magiczocker
+# Author: Mcliquid
+# Author: Metalhead64
+# Author: Purodha
+# Author: Tobi 406
+# Author: TomatoCake
+---
+attribution:
+  data: Kartendaten © [OpenStreetMap](https://www.openstreetmap.org) unter [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: Höhendaten von [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Weitere Einzelheiten
+  no_data: Für diesen Wegweiser sind keine Zielinformationen verfügbar.
+  title: Ziele
+details:
+  altitude: Höhe
+  educational:
+    other: Das ist ein Lehrpfad.
+  image: Bild
+  mapped_len: Erfasste Länge
+  note: Hinweis
+  oneway: Diese Route kann nur in Vorwärtsrichtung befahren werden.
+  official_len: Offizielle Länge
+  operator: Betreiber
+  pilgrimage:
+    christian: Das ist ein christlicher Pilgerweg.
+    other: Das ist ein Pilgerweg.
+  roundtrip: Diese Route ist eine Rundtour.
+  route_symbol: Wegzeichen
+  signed_direction: Diese Strecke ist nur in Fahrtrichtung ausgeschildert.
+  subroutes_title: Abschnitte
+  superroutes_title: Teil von
+  symbol: Symbol
+  linear:
+    "yes": Die Relation für diese Route ist sortiert und in einem Stück.
+    sorted: Die Relation für diese Route besteht aus einem Stück, aber die Mitglieder
+      sind nicht sortiert.
+    "no": Die Relation weist Lücken auf oder hat andere Probleme.
+  tags:
+    key: Schlüssel
+    title: OpenStreetMap-Tags
+    value: Wert
+  type:
+    guidepost: Wegweiser
+    node: Knoten
+    relation: Relation
+    way: Weg
+    wayset: Wegesatz
+  website: Website
+  wikipedia: Wikipedia
+  zoom_to: Auf Karte anzeigen
+  analyze:
+    title: Relation analysieren
+    summary: Diese Relation hat {num} Segmente.
+    disclaimer: |-
+      Hier werden die Routensegmente angezeigt, wie sie von waymarkedtrails
+      aus der Relation berechnet wurden. Dabei kann es zu Fehlern kommen. Mehr Informationen darüber, wie waymarkedtrails Routen sortiert, befinden sich auf den Hilfeseiten.
+    open_end: Offenes Ende der Route.
+    multi_end: An diesem Punkt treffen mehr als zwei Streckenabschnitte zusammen.
+    two_end: |-
+      Punkt, an dem die Route unterbrochen wird, weil die Relation nicht sortiert ist.
+      Die rot gestrichelten Linien zeigen, wo die Route weitergeht.
+  download:
+    title: Route herunterladen
+    need_format: Wähle ein Format
+    need_direction: Auswahl der einzubeziehenden Wege
+    start: Datei abrufen
+    format:
+      title: Format
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJSON
+    direction:
+      title: Richtung der einzubeziehenden Wege
+      forward: Vorwärts
+      backward: Rückwärts
+      both: Beides
+    other_ways: Weitere Streckenabschnitte
+elevation:
+  ascent: Kumulierter Anstieg
+  descent: Kumulierter Abstieg
+  diagram:
+    altitude: Höhe (m)
+    distance: Entfernung (km)
+  title: Höhenprofil
+  total: Gesamtaufstieg/-abstieg
+  unavailable: Es wurden keine Höhendaten gefunden.
+  warn_unsorted: Der Weg ist möglicherweise nicht sortiert oder unvollständig. Die
+    Höheninformationen können ungenau sein.
+error:
+  load_error: Fehler beim Verbinden zum Server.
+  missing_id: Fehlender Parameter 'id'.
+  missing_query: Fehlender Parameter 'query'.
+  panel_title: Fehler
+  object_not_found: Objekt nicht gefunden.
+  api_unavailable: API nicht verfügbar.
+headline:
+  last_update: Letzte Aktualisierung
+help: Über die Karte
+locate_me: Lokalisiere mich
+network:
+  continental: Kontinentale Routen
+  downhill: Abfahrt
+  national: Nationale Routen
+  node: Knotennetzwerk-Verbindungen
+  nordic: Langlauf
+  other: Andere Routen
+  regional: Regionale Routen
+  skitour: Tourenski
+  sled: Rodelpiste
+  sleigh: Schlittenweg
+  winter_hike: Winterwandern
+osmc_symbol:
+  back: Zurück
+  background: Der Hintergrund funktioniert auf ähnliche Weise. Er besteht auch aus
+    einer Farbe und einer Form. Der Hintergrund kann auch nur ein Farbname sein, der
+    in einer Leinwand mit der angegebenen Farbe endet. Dies wird in der ersten Zeile
+    angezeigt.
+  background_heading: Hintergrund
+  examples: Beispiele
+  foreground: Das Vordergrundsymbol besteht aus einer Farbe und einer Form, verbunden
+    mit einem Unterstrich. Die Tabelle unten zeigt alle Kombinationen, die von dieser
+    Website erkannt werden. Sie erkennt auch Vordergründe, die nur aus dem Namen der
+    Form bestehen. Die Symbole für diese werden in der letzten Spalte angezeigt.
+  foreground_heading: Vordergrund
+  intro_header: Übersicht
+  preview: |-
+    Gib einen osmc:symbol-Wert in das unten stehende Eingabefeld ein,
+    um zu sehen, wie er auf der Karte dargestellt wird.
+  preview_heading: Vorschau
+  symbol_reference_heading: Vollständige Liste der unterstützten Symbole
+routelist:
+  loading: Laden...
+  close: Schließen
+  more: Vergrößere die Karte, um mehr Routen zu sehen.
+  rollup: Aufrollen
+  title: Routen
+search:
+  places: Orte
+  routes: Routen
+  title: Suche
+  help: Bitte verwende Schlüsselwörter für die Suche. Du kannst nach Namen von Wanderwegen
+    (z.B. Appalachian Trail, E2) oder Orten (z.B. Berlin) suchen.
+settings:
+  base_map: Basiskarte
+  browser_language: Browsereinstellungen verwenden
+  hillshading_layer: Höhenrelief
+  language: Sprache
+  route_layer: Routen
+  title: Karteneinstellungen
+  transparency: Kartentransparenz
+site_description:
+  cycling: Lokale Radrouten und Fernradwege mit Karten und Zusatzinformationen von
+    OpenStreetMap.
+  hiking: Lokale Wanderwege und Weitwanderwege mit Karten und Zusatzinformationen
+    von OpenStreetMap.
+  mtb: Routen für Mountainbikes (MTB) mit Karten und Zusatzinformationen von OpenStreetMap.
+  riding: Pferdewanderwege mit Karten und Zusatzinformationen von OpenStreetMap.
+  skating: Routen für Inlineskating mit Karten und Zusatzinformationen von OpenStreetMap.
+  slopes: Pisten für Wintersport, Abfahrsski, Skilanglauf und Routen für Winterwanderwege
+    mit Karten und Zusatzinformationen von OpenStreetMap.
+site_title:
+  cycling: Radwege
+  hiking: Wanderwege
+  mtb: Mountainbike-Routen
+  osmc_symbol: Das Tag „osmc:symbol“
+  riding: Reiten
+  skating: Inline-Skating
+  slopes: Wintersportpisten
+...

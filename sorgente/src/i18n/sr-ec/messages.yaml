@@ -1,0 +1,81 @@
+# Messages for Serbian (Cyrillic script) (српски (ћирилица))
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Acamicamacaraca
+# Author: Aktron
+# Author: BadDog
+# Author: Kizule
+# Author: Milicevic01
+# Author: Nikola Smolenski
+# Author: Rancher
+# Author: Srdjan m
+# Author: Srđan
+# Author: Zoranzoki21
+---
+attribution:
+  data: Подаци мапе © [OpenStreetMap (https://www.openstreetmap.org) под лиценцом
+    [ODbL](https://www.openstreetmap.org/copyright)
+destination_sign:
+  more: Више детаља
+  title: Дестинације
+details:
+  altitude: Надморска висина
+  mapped_len: Приказано на мапи
+  note: Белешка
+  official_len: Званична дужина
+  operator: Оператор
+  subroutes_title: Одељци
+  superroutes_title: Део
+  tags:
+    title: Ознаке OpenStreetMap-а
+  website: Веб-сајт
+  zoom_to: Прикажи на мапи
+  download:
+    format:
+      GPX: GPX
+      KML: KML
+elevation:
+  ascent: Акумулирани успон
+  descent: Акумулирани спуст
+  diagram:
+    altitude: Висина (м)
+    distance: Удаљеност (км)
+  title: Висински профил
+  unavailable: Нису пронађени подаци о висини.
+  warn_unsorted: Пут је потенцијално неуређен или непотпун. Информације о висини могу
+    бити нетачне.
+error:
+  load_error: Грешка при повезивању на сервер.
+  panel_title: Грешка
+headline:
+  last_update: Последње ажурирање
+help: О мапи
+locate_me: Нађи ме
+osmc_symbol:
+  back: Назад
+  background_heading: Позадина
+  examples: Примери
+  foreground_heading: Предњи план
+  preview_heading: Преглед
+routelist:
+  close: Затвори
+  rollup: Окретање
+  title: Руте
+search:
+  routes: Руте
+  title: Претражи
+settings:
+  base_map: Основна мапа
+  browser_language: Користи подешавања прегледача
+  hillshading_layer: Рељефно сенчење
+  language: Језик
+  route_layer: Слој руте
+  title: Подешавања мапе
+  transparency: Прозирност мапе
+site_title:
+  cycling: Бициклизам
+  hiking: Пешачење
+  mtb: Планински бициклизам
+  riding: Јахање коња
+  skating: Ролери
+...

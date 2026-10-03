@@ -1,0 +1,60 @@
+# Messages for Armenian (հայերեն)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: Kareyac
+---
+attribution:
+  data: Քարտեզի տվյալները © [OpenStreetMap](https://www.openstreetmap.org) [ODbL](https://www.openstreetmap.org/copyright)
+    լիցենզիայի տակ
+destination_sign:
+  title: Ուղղություններ
+details:
+  altitude: Բարձրություն
+  image: Պատկեր
+  note: Նշում
+  official_len: Երթուղու պաշտոնական երկարությունը
+  operator: Օպերատոր
+  subroutes_title: Բաժիններ
+  superroutes_title: Մասն է
+  symbol: Նշան
+  website: Կայք
+  download:
+    format:
+      GPX: GPX
+elevation:
+  diagram:
+    altitude: Բարձրությունը (մ)
+    distance: Հեռավորությունը (կմ)
+error:
+  panel_title: Սխալ
+headline:
+  last_update: Վերջին թարմացումը
+help: Քարտեզի մասին
+locate_me: Տեղադրեք ինձ
+osmc_symbol:
+  back: Հետ
+  examples: Օրինակներ
+  foreground_heading: Հիմնական գույնը
+  preview_heading: Նախադիտում
+routelist:
+  loading: Բեռնվում է…
+  close: Փակել
+  rollup: Գլորում
+  title: Երթուղիներ
+search:
+  routes: Երթուղիներ
+  title: Որոնել
+settings:
+  base_map: Բազային քարտեզը
+  language: Լեզու
+  route_layer: Երթուղիների շերտը
+  title: Քարտեզի կարգավորումներ
+  transparency: Քարտեզի թափանցիկությունը
+site_title:
+  cycling: Հեծանվավազք
+  hiking: Ոտքով զբոսնելն
+  mtb: Լեռնային հեծանվավազք
+  riding: Ձիասպորտ
+  slopes: Լանջերը ձմեռային սպորտաձևերի համար
+...

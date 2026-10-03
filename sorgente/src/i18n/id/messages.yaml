@@ -1,0 +1,46 @@
+# Messages for Indonesian (Bahasa Indonesia)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: Farras
+# Author: Penyuwangi
+# Author: Veracious
+---
+attribution:
+  data: Data peta © [OpenStreetMap](https://www.openstreetmap.org) di bawah [ODbL](https://www.openstreetmap.org/copyright)
+destination_sign:
+  title: Destinasi-destinasi
+details:
+  mapped_len: Ditampilkan di peta
+  note: Catatan
+  official_len: Panjang resmi
+  operator: Operator
+  subroutes_title: Bagian
+  superroutes_title: Bagian dari
+  tags:
+    title: Tanda OpenStreetMap
+  type:
+    relation: Relasi
+  website: Situs web
+error:
+  panel_title: Galat
+headline:
+  last_update: Pemutakhiran terakhir
+osmc_symbol:
+  background_heading: Latar belakang
+  foreground_heading: Latar depan
+routelist:
+  title: Rute
+search:
+  routes: Rute
+  title: Cari
+settings:
+  base_map: Peta dasar
+  hillshading_layer: Bayangan bukit
+  route_layer: Lapisan rute
+site_title:
+  cycling: Bersepeda
+  hiking: Mendaki
+  mtb: MTB
+  skating: Sepatu Roda
+...

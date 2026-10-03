@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
+    <meta name="keywords" lang="en" content="waymarkedtrails, ski routes, sleigh, openstreetmap" />
+    <meta name="description" id="meta-description" />
+    <title>Waymarked Trails - Winter Sports</title>
+
+    <link rel="shortcut icon" href="img/map_slopes.ico" />
+    <link rel='stylesheet' href='slopes.css'>
+    <link rel='stylesheet' href='build/bundle.min.css'>
+
+    <script id="WMTConfig" type="application/json">
+        {
+            "TITLE": "slopes",
+
+            "ROUTE_GROUPS" : [
+                { "id": 1, "label": "network.downhill"},
+                { "id": 2, "label": "network.nordic"},
+                { "id": 3, "label": "network.skitour"},
+                { "id": 4, "label": "network.sled"},
+                { "id": 5, "label": "network.winter_hike" },
+                { "id": 6, "label": "network.sleigh" },
+                { "id": 0, "label": "network.other" },
+                { "id": "", "label": "network.other" }
+            ],
+            "HELP" : [
+                { "l": 0, "section": "about", "paragraphs": ["slopemap", "osm"]},
+                { "l": 0, "section": "rendering", "paragraphs": ["sloperoutes", "slopeclassification", "slopemaplabels"]},
+                { "l": 1, "section": "elevationprofiles", "paragraphs": ["general"]},
+                { "l": 0, "section": "technical", "paragraphs": ["general", "translation"]},
+                { "l": 0, "section": "legal", "paragraphs": ["copyright", "usage", "disclaimer"]},
+                { "l": 0, "section": "acknowledgements", "paragraphs": ["text"]},
+                { "l": 0, "section": "contact", "paragraphs": ["text"]}
+            ]
+        }
+    </script>
+    <script>
+        import('./build/main.js');
+    </script>
+</head>
+
+<body>
+</body>
+</html>

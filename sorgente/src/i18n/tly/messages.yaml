@@ -1,0 +1,77 @@
+# Messages for Talysh (tolışi)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Patriot Kor
+# Author: Patriot Kur
+# Author: Гусейн
+---
+attribution:
+  data: Xəritə məlimot © [OpenStreetMap](https://www.openstreetmap.org) de lisenzijə
+    [ODbL](https://www.openstreetmap.org/copyright)
+destination_sign:
+  more: Чәмин
+  title: Шә вырон
+details:
+  altitude: Barzəti
+  image: Šikil
+  mapped_len: Хәритәдә нишо дој
+  note: Ğeyd
+  official_len: Rəsmiyə dıruzəti
+  operator: Operator
+  subroutes_title: Baxşəon
+  superroutes_title: Поә
+  symbol: Rəmz
+  tags:
+    key: kilid
+    title: OpenStreetMap nışonon
+    value: məno
+  type:
+    relation: Əloǧə
+    way: Ro
+  website: Vebsoyt
+  zoom_to: Xəritədə nišon doj
+  download:
+    format:
+      GPX: GPX
+      KML: KML
+elevation:
+  ascent: Умуми пеше
+  descent: Умуми етат
+  diagram:
+    altitude: Barzəti (m)
+    distance: Məsofə (km)
+  title: Релјефи профил
+error:
+  load_error: Бә сервери дәшејәдә хәто беше.
+  panel_title: Səhv
+headline:
+  last_update: Охонә тожә кардә чиј
+help: Xəritə barədə məlumot
+locate_me: Мыни пәјдокән
+osmc_symbol:
+  back: Oqarde
+  background_heading: Zəmin
+  examples: Misolon
+  foreground_heading: Əsosi ranq
+  preview_heading: Syftənə nišon doj
+routelist:
+  loading: Əlovə kardejdə…
+  close: Жәј
+  title: Marşruton
+search:
+  routes: Marşruton
+  title: Nəve
+settings:
+  base_map: Əsosə xəritə
+  hillshading_layer: Relyefi nişo doy
+  language: Zyvon
+  route_layer: Marşruton ğat
+  title: Хәритә сәбәро
+  transparency: Хәритә виндејәти
+site_title:
+  cycling: Velovərzış
+  hiking: Lınqəseyr
+  mtb: Bandə velovərzış
+  riding: Аспи роме
+  skating: Лулә лискә мәшо
+...

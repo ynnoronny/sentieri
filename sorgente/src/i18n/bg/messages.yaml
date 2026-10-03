@@ -1,0 +1,58 @@
+# Messages for Bulgarian (български)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: DCLXVI
+# Author: K2
+# Author: StanProg
+# Author: Ted Masters
+# Author: Vodnokon4e
+---
+attribution:
+  data: Картографски данни © [OpenStreetMap](https://www.openstreetmap.org) под [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: височинни данни от [SRTM/ASTER](help/acknowledgements)
+details:
+  mapped_len: Картирана дължина
+  note: Бележка
+  official_len: Официална дължина
+  operator: Оператор
+  subroutes_title: Секции
+  superroutes_title: Част от
+  tags:
+    title: OpenStreetMap тагове
+  website: Уебсайт
+  wikipedia: Уикипедия
+elevation:
+  ascent: Натрупано изкачване
+  descent: Натрупано слизане
+  diagram:
+    altitude: Височина (м)
+    distance: Разстояние (км)
+  title: Височинен профил
+error:
+  panel_title: Грешка
+headline:
+  last_update: Последно обновяване
+osmc_symbol:
+  back: Връщане
+  background_heading: Фон
+  foreground_heading: Основен цвят
+routelist:
+  close: Затваряне
+  title: Маршрути
+search:
+  routes: Маршрути
+  title: Търсене
+settings:
+  base_map: Базова карта
+  hillshading_layer: Светлосенки на релефа
+  language: Език
+  route_layer: Слой маршрути
+  transparency: Прозрачност картата
+site_title:
+  cycling: Колоездене
+  hiking: Туризъм
+  mtb: МТБ
+  riding: Конна езда
+  skating: Ролери
+  slopes: Ски писти
+...

@@ -1,0 +1,30 @@
+# Messages for Sindhi (سنڌي)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Indus Asia
+# Author: Mehtab ahmed
+---
+details:
+  subroutes_title: حصا
+  superroutes_title: جو حصو
+  website: ويب سائيٽ
+  wikipedia: وڪيپيڊيا
+elevation:
+  diagram:
+    distance: مفاصلو (ڪلوميٽر)
+error:
+  panel_title: خرابي
+osmc_symbol:
+  background_heading: بيڪ گرائوند
+  examples: مثال
+routelist:
+  title: رستا
+search:
+  routes: رستا
+  title: ڳوليو
+settings:
+  language: ٻولي
+site_title:
+  cycling: سائيڪل هلائڻ
+  riding: گھوڙي سواري
+...

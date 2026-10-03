@@ -1,0 +1,130 @@
+# Messages for Belarusian (Taraškievica orthography) (беларуская (тарашкевіца))
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Jim-by
+# Author: Nerogaf
+# Author: Nieszczarda2
+# Author: Red Winged Duck
+# Author: Renessaince
+# Author: Ucukor
+---
+attribution:
+  data: Зьвесткі мапы © [OpenStreetMap](https://www.openstreetmap.org) паводле ліцэнзіі
+    [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: зьвесткі вышыняў паводле [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Падрабязьней
+  no_data: Для гэтага паказальніка недаступная інфармацыя пра пункт прызначэньня.
+  title: Месцы прызначэньня
+details:
+  altitude: Вышыня
+  image: Выява
+  mapped_len: Даўжыня на мапе
+  note: Заўвага
+  official_len: Афіцыйная даўжыня
+  operator: Апэратар
+  route_symbol: Сымбаль маршруту
+  subroutes_title: Разьдзелы
+  superroutes_title: Частка
+  symbol: Сымбаль
+  linear:
+    "yes": Зьвязак для гэтага маршруту адсартаваны й цэлы.
+    sorted: Зьвязак для гэтага маршруту ёсьць цэлым, але аб'екты не адсартаваныя.
+    "no": Зьвязак мае пропусты або іншыя праблемы.
+  tags:
+    key: ключ
+    title: Тэґі OpenStreetMap
+    value: значэньне
+  type:
+    guidepost: Паказальнік
+    node: Вузел
+    relation: Зьвязак
+    way: Шлях
+    wayset: Набор шляхоў
+  website: Вэб-сайт
+  wikipedia: Вікіпэдыя
+  zoom_to: Паказаць на мапе
+  analyze:
+    title: Аналіз зьвязку
+    summary: Гэты зьвязак мае {num} сэґмэнтаў.
+    disclaimer: Тут паказаныя сэґмэнты маршрутаў, разьлічаныя сьцежкамі пазначаных
+      шляхоў зь зьвязку, якія не заўсёды могуць быць слушнымі. Падрабязьней пра сартаваньне
+      сьцежак пазначаных шляхоў чытайце на старонках дапамогі.
+    open_end: Адкрыты канец маршруту.
+    multi_end: У гэтым пункце сустракаюцца больш за два адцінкі маршруту.
+  download:
+    title: Сьцягнуць шлях
+    need_format: Абраць фармат
+    start: Атрымаць файл
+    format:
+      title: Фармат
+      GPX: GPX
+      KML: KML
+elevation:
+  ascent: Сумарны пад’ём
+  descent: Сумарны спуск
+  diagram:
+    altitude: Вышыня (м)
+    distance: Адлегласьць (км)
+  title: Профіль рэльефу
+  unavailable: Ня знойдзеныя зьвесткі вышыні.
+  warn_unsorted: Маршрут зьяўляецца патэнцыйна неўпарадкаваным ці няпоўным. Зьвесткі
+    пра вышыню могуць быць недакладныя.
+error:
+  load_error: Памылка злучэньня з сэрвэрам.
+  missing_id: Бракуе парамэтру 'id'.
+  missing_query: Бракуе парамэтру 'query'.
+  panel_title: Памылка
+headline:
+  last_update: Апошняе абнаўленьне
+help: Пра мапу
+locate_me: Знайсьці мяне
+network:
+  continental: Кантынэнтальныя маршруты
+  downhill: хуткасны спуск
+  national: Нацыянальныя шляхі
+  node: сеткавыя злучэньні вузлоў
+  other: Іншыя шляхі
+  regional: Рэґіянальныя шляхі
+osmc_symbol:
+  back: Назад
+  background: Фон працуе падобным чынам. Ён таксама ўтрымлівае колер і форму. Фон
+    таксама можа быць толькі назвай колеру, што дасьць палатно абранага колеру. Гэта
+    паказана ў першым радку.
+  background_heading: Фон
+  examples: Прыклады
+  foreground: Сымбаль на пярэднім пляне ўтрымлівае колер і форму з спасылкай-падкрэсьленьнем.
+    Табліца ніжэй паказвае ўсе камбінацыі, якія распазнае гэты сайт. Ён таксама распазнае
+    пярэднія пляны, якія ўтрымліваюць толькі назву формы. Сымбалі для гэтага паказаныя
+    ў апошнім слупку.
+  foreground_heading: Пярэдні плян
+  intro_header: Агляд
+  preview: Увядзіце значэньне osmc:symbol у поле ніжэй, каб пабачыць, як яно будзе
+    выглядаць на мапе.
+  preview_heading: Папярэдні прагляд
+routelist:
+  loading: Ладаваньне…
+  close: Закрыць
+  rollup: Згарнуць
+  title: Маршруты
+search:
+  places: Месцы
+  routes: Маршруты
+  title: Пошук
+settings:
+  base_map: Базавая мапа
+  browser_language: Выкарыстоўваць налады браўзэра
+  hillshading_layer: Зацяненьне рэльефу
+  language: Мова
+  route_layer: Слой маршрутаў
+  title: Налады мапы
+  transparency: Празрыстасьць мапы
+site_title:
+  cycling: Ровар
+  hiking: Шпацыры
+  mtb: Маўнтынбайк
+  osmc_symbol: Тэг osmc:symbol
+  riding: Верхавая язда
+  skating: Ролікавыя канькі
+  slopes: Маршруты зімовых відаў спорту
+...

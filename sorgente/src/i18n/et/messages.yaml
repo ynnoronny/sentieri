@@ -1,0 +1,52 @@
+# Messages for Estonian (eesti)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: AivoK
+# Author: Dimitar
+---
+attribution:
+  data: Kaardi andmed © [OpenStreetMap](https://www.openstreetmap.org) [ODbL litsentsiga](https://www.openstreetmap.org/copyright)
+  elevation_title: reljeefi info [SRTM/ASTER](help/acknowledgements)
+details:
+  mapped_len: Kaardistatud pikkus
+  note: Märkus
+  official_len: Ametlik pikkus
+  operator: Operaator
+  subroutes_title: Jaotised
+  superroutes_title: Osa rajast
+  tags:
+    title: OpenStreetMapi sildid
+  website: Veebileht
+elevation:
+  ascent: Akumuleerunud tõus
+  descent: Akumuleerunud laskumine
+  diagram:
+    altitude: Kõrgus (m)
+    distance: Kaugus (km)
+  title: Reljeefi profiil
+error:
+  panel_title: Tõrge
+headline:
+  last_update: Viimati uuendatud
+osmc_symbol:
+  background_heading: Taust
+  foreground_heading: Esiplaan
+routelist:
+  title: Rajad
+search:
+  routes: Rajad
+  title: Otsi
+settings:
+  base_map: Aluskaart
+  hillshading_layer: Reljeefi varjustus
+  language: Keel
+  route_layer: Radade kiht
+  transparency: Kaardi läbipaistvus
+site_title:
+  cycling: Rattasõit
+  hiking: Matkamine
+  mtb: Mägirattasport
+  riding: kelgutamine
+  skating: Rulluisutamine
+  slopes: Talispordi nõlvad
+...

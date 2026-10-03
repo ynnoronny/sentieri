@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sentieri Casentino</title>
+<meta name="theme-color" content="#2f4a2b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sentieri">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<div id="map" aria-label="Mappa dei sentieri"></div>
+
+<div class="topbar">
+  <form id="searchForm" class="search" role="search">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15 15l6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <input id="searchInput" type="search" enterkeyhint="search" autocomplete="off" placeholder="Cerca sentiero (es. 227) o luogo" aria-label="Cerca sentiero o luogo">
+    <button id="searchClear" type="button" class="sclear" aria-label="Cancella ricerca" hidden>×</button>
+  </form>
+  <div id="netstate" class="pill" title="Stato connessione">online</div>
+</div>
+<div id="results" class="results" hidden></div>
+
+<div class="fabs">
+  <button id="btnGps" class="fab" aria-label="Mostra la mia posizione" title="La mia posizione">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="currentColor" stroke-width="2"/></svg>
+  </button>
+  <button id="btnHome" class="fab" aria-label="Torna alla zona Fangacci" title="Zona Fangacci">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 20l6-11 4 6 3-4 5 9z" fill="currentColor"/></svg>
+  </button>
+</div>
+
+<nav class="tabbar">
+  <button data-panel="giri" class="tab">Giri</button>
+  <button data-panel="tracce" class="tab">Tracce</button>
+  <button data-panel="offline" class="tab">Offline</button>
+</nav>
+
+<section id="sheet" class="sheet" hidden>
+  <div class="sheet-head">
+    <h2 id="sheetTitle">Giri</h2>
+    <button id="sheetClose" class="close" aria-label="Chiudi">×</button>
+  </div>
+
+  <div class="panel" data-panel="info" hidden>
+    <div id="infoBody"></div>
+  </div>
+
+  <div class="panel" data-panel="giri">
+    <h3>Sabato · anello La Lama</h3>
+    <p class="sum">≈14 km · +650 m · 5–6 h</p>
+    <table>
+      <thead><tr><th>Tratto</th><th>Sent.</th><th>km</th><th>Tempo</th></tr></thead>
+      <tbody>
+        <tr><td>Fangacci → Prato alla Penna</td><td><b class="cai">00</b></td><td>2</td><td>35'</td></tr>
+        <tr><td>Prato alla Penna → Gioghetto</td><td><b class="cai">00</b></td><td>1</td><td>20'</td></tr>
+        <tr><td>Gioghetto → bivio 227 → La Lama</td><td><b class="cai">229</b></td><td>7</td><td>2 h</td></tr>
+        <tr><td>La Lama → bivio 227</td><td><b class="cai">229</b></td><td>1</td><td>20'</td></tr>
+        <tr class="up"><td>Bivio → Scalandrini → Fangacci</td><td><b class="cai">227</b></td><td>3</td><td>1 h 45' ▲</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Domenica · Eremo e Poggio Tre Confini</h3>
+    <p class="sum">≈9 km · +450 m · 3,5–4 h</p>
+    <table>
+      <thead><tr><th>Tratto</th><th>Sent.</th><th>km</th><th>Tempo</th></tr></thead>
+      <tbody>
+        <tr><td>Fangacci → Prato alla Penna</td><td><b class="cai">00</b></td><td>2</td><td>35'</td></tr>
+        <tr><td>Prato alla Penna → Eremo</td><td><b class="cai">74</b></td><td>1,5</td><td>30'</td></tr>
+        <tr class="up"><td>Eremo → Gioghetto</td><td><b class="cai">70</b></td><td>1</td><td>30' ▲</td></tr>
+        <tr><td>Gioghetto → bivio del 98</td><td><b class="cai">00</b></td><td>2</td><td>40'</td></tr>
+        <tr class="up"><td>Poggio Tre Confini e ritorno</td><td><b class="cai">98</b></td><td>1</td><td>30' ▲</td></tr>
+        <tr><td>Bivio → Fangacci</td><td><b class="cai">00</b></td><td>1,5</td><td>25'</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Distanze e tempi sono stime. Tocca un sentiero sulla mappa per vederne le info, o cercalo per numero in alto.</p>
+  </div>
+
+  <div class="panel" data-panel="tracce">
+    <p>Carica i file GPX (da Waymarked Trails: tocca un sentiero → <i>GPX</i>). Restano salvati nel telefono e si vedono anche offline.</p>
+    <label class="btn primary" for="gpxInput">Carica GPX</label>
+    <input id="gpxInput" type="file" accept=".gpx,application/gpx+xml,application/xml,text/xml" multiple hidden>
+    <ul id="trackList" class="list"></ul>
+    <p id="trackEmpty" class="note">Nessuna traccia caricata.</p>
+  </div>
+
+  <div class="panel" data-panel="offline">
+    <p>Ogni pezzo di mappa che guardi con la connessione viene salvato nel telefono. Prima di partire, col Wi-Fi, scorri tutta la zona del giro a 2–3 livelli di zoom: poi la ritrovi anche senza segnale.</p>
+    <div class="stat"><span id="tileCount">–</span><small>riquadri di mappa salvati</small></div>
+    <p id="zoomHint" class="note"></p>
+    <button id="btnClear" class="btn">Svuota mappe salvate</button>
+    <p id="clearConfirm" class="confirm" hidden>Sicuro? <button id="btnClearYes" class="btn danger">Sì, svuota</button> <button id="btnClearNo" class="btn">No</button></p>
+    <p class="note">Versione 3 · <span id="swState"></span></p>
+    <p class="note">Il GPS funziona anche senza rete. Per usarla come app: in Safari, Condividi → <i>Aggiungi alla schermata Home</i>.</p>
+  </div>
+</section>
+
+<script src="vendor/leaflet.js"></script>
+<script src="app.js?v=3"></script>
+</body>
+</html>

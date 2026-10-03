@@ -1,0 +1,45 @@
+# Messages for Manipuri (ꯃꯤꯇꯩ ꯂꯣꯟ)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: ꯴꯰꯴
+---
+destination_sign:
+  title: ꯂꯝꯊꯨꯡꯐꯝ
+details:
+  altitude: ꯑꯋꯥꯡꯕ
+  image: ꯃꯤꯔꯦꯜ
+  note: ꯏꯁꯤꯟꯒꯗꯕ
+  official_len: ꯂꯣꯏꯁꯪꯒꯤ ꯑꯁꯥꯡꯕ
+  subroutes_title: ꯁꯔꯨꯛꯁꯤꯡ
+  superroutes_title: ꯁꯔꯨꯛꯅꯤ
+  website: ꯋꯦꯕꯁꯥꯏꯠ
+  zoom_to: ꯃꯦꯞꯇ ꯑꯣꯏꯅ ꯎꯠꯂꯣ
+elevation:
+  diagram:
+    altitude: ꯑꯋꯥꯡꯕ (m)
+    distance: ꯑꯔꯥꯞꯄ (Km)
+error:
+  panel_title: ꯑꯔꯥꯟꯕ
+headline:
+  last_update: ꯑꯔꯣꯏꯕ ꯅꯧꯊꯣꯛꯍꯟꯕ
+help: ꯃꯦꯞꯀꯤ ꯃꯇꯥꯡꯗ
+network:
+  downhill: ꯆꯤꯡꯈꯣꯡ
+osmc_symbol:
+  back: ꯍꯟꯂꯨ
+  preview_heading: ꯃꯃꯥꯡꯒꯤꯗꯨ ꯎꯠꯄ
+routelist:
+  close: ꯈꯨꯝꯖꯤꯟꯂꯦ
+  rollup: ꯄꯨꯂꯞ ꯆꯤꯡꯈꯠꯂꯛꯄ
+  title: ꯆꯠꯐꯝꯁꯤꯡ
+search:
+  routes: ꯆꯠꯐꯝꯁꯤꯡ
+  title: ꯊꯤꯕꯥ
+settings:
+  browser_language: ꯕꯔꯥꯎꯁꯔꯒꯤ ꯁꯦꯝꯐꯝꯗꯨ ꯁꯤꯖꯤꯟꯅꯧ
+  language: ꯂꯣꯟ
+  route_layer: ꯆꯠꯐꯝꯒꯤ ꯃꯔꯣꯜ ꯃꯔꯣꯜ
+site_title:
+  cycling: ꯁꯥꯏꯀꯜ ꯊꯧꯔꯤ
+  riding: ꯁꯒꯣꯜ ꯊꯧꯔꯤ
+...

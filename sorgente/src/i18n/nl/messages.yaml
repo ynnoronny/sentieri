@@ -1,0 +1,177 @@
+# Messages for Dutch (Nederlands)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: A67-A67
+# Author: ABPMAB
+# Author: Baggeraar
+# Author: Danieldegroot2
+# Author: Dimitar
+# Author: Elderson
+# Author: Elroy
+# Author: Jeleniccz
+# Author: Kars
+# Author: M!dgard
+# Author: McDutchie
+# Author: Romaine
+# Author: SPQRobin
+# Author: Siebrand
+---
+attribution:
+  data: Kaartgegevens © [OpenStreetMap](https://www.openstreetmap.org) onder [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: hoogtegegevens via [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Meer gegevens
+  no_data: Er is geen bestemmingsinformatie voor deze wegwijzer.
+  title: Bestemmingen
+details:
+  altitude: Hoogte
+  educational:
+    other: Dit is een educatief parcours.
+  image: Afbeelding
+  mapped_len: Lengte op kaart
+  note: Opmerking
+  oneway: Deze route kan alleen in voorwaartse richting worden gevolgd.
+  official_len: Officiële lengte
+  operator: Beheerder
+  pilgrimage:
+    christian: Dit is een christelijke pelgrimsroute.
+    other: Dit is een pelgrimsroute.
+  roundtrip: Deze route is een rondtocht.
+  route_symbol: Route-symbool
+  signed_direction: Deze route is alleen in voorwaartse richting bewegwijzerd.
+  subroutes_title: Secties
+  superroutes_title: Onderdeel van
+  symbol: Symbool
+  linear:
+    "yes": De relatie voor deze route is gesorteerd en is één geheel.
+    sorted: De relatie voor deze route is één geheel, maar de leden zijn niet gesorteerd.
+    "no": Er zitten onderbrekingen of andere problemen in de relatie.
+  tags:
+    key: sleutel
+    title: OpenStreetMaplabels
+    value: waarde
+  type:
+    guidepost: Wegwijzer
+    node: Knooppunt
+    relation: Relatie
+    way: Weg
+    wayset: Wegenset
+  website: Website
+  wikipedia: Wikipedia
+  zoom_to: Op kaart weergeven
+  analyze:
+    title: Relatie analyseren
+    summary: Deze relatie heeft {num} segment(en).
+    disclaimer: Hier worden de routesegmenten weergegeven zoals ze door WaymarkedTrails
+      zijn berekend, wat niet altijd correct is. Voor meer informatie over hoe WaymarkedTrails
+      routes sorteert, kunt u de hulppagina’s raadplegen.
+    open_end: Open einde in de route.
+    multi_end: Op dit punt komen meer dan twee routesegmenten samen.
+    two_end: |-
+      Punt waar de route onderbroken is, omdat de relatie niet gesorteerd is.
+      De rode stippellijnen geven aan waar de route verdergaat.
+  download:
+    title: Route downloaden
+    need_format: Kies een indeling
+    need_direction: Kies de op te nemen wegen
+    start: Bestand ophalen
+    format:
+      title: Indeling
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJson
+    direction:
+      title: 'Wegen opnemen in richting:'
+      forward: vooruit
+      backward: achteruit
+      both: beide
+    other_ways: Extra routeonderdelen
+elevation:
+  ascent: Totaal gestegen
+  descent: Totaal gedaald
+  diagram:
+    altitude: Hoogte (m)
+    distance: Afstand (km)
+  title: Hoogteprofiel
+  total: Totale stijging of daling
+  unavailable: Geen hoogtegegevens gevonden.
+  warn_unsorted: De route is mogelijk ongesorteerd of onvolledig. Hoogte-informatie
+    is mogelijk onnauwkeurig.
+error:
+  load_error: Fout bij verbinden met server.
+  missing_id: Parameter 'id' ontbreekt.
+  missing_query: Parameter 'query' ontbreekt.
+  panel_title: Fout
+  object_not_found: Object niet gevonden.
+  api_unavailable: API niet beschikbaar.
+headline:
+  last_update: Laatst bijgewerkt
+help: Over de kaart
+locate_me: Vind mij
+network:
+  continental: Continentale routes
+  downhill: Bergafwaarts
+  national: Nationale routes
+  node: Knooppuntenroutes
+  nordic: Langlaufen
+  other: Andere routes
+  regional: Regionale routes
+  skitour: Ski-rondes
+  sled: Sleehelling
+  sleigh: Sleehelling
+  winter_hike: Winterwandelen
+osmc_symbol:
+  back: Terug
+  background: Het achtergrondsymbool werkt vergelijkbaar. Dit bestaat ook uit een
+    kleur en een vorm. De achtergrond kan ook alleen een kleurnaam zijn, met een effen
+    kleurvlak als resultaat. Dit wordt in de eerste regel van onderstaande tabel weergegeven.
+  background_heading: Achtergrond
+  examples: Voorbeelden
+  foreground: Het voorgrondsymbool bestaat uit een kleur en een vorm, met een underscore
+    ertussen. De onderstaande tabel geeft alle combinaties weer die deze site herkent.
+    Ook voorgrondsymbolen die alleen een vormnaam hebben worden herkend. De symbolen
+    daarvoor staan in de laatste kolom.
+  foreground_heading: Voorgrond
+  intro_header: Overzicht
+  preview: Tik een waarde voor osmc:symbol in het veld hieronder om te zien hoe het
+    op de kaart weergegeven zal worden.
+  preview_heading: Voorvertoning
+  symbol_reference_heading: Volledige lijst met ondersteunde symbolen
+routelist:
+  loading: Bezig met laden…
+  close: Sluiten
+  more: Zoom in om meer routes te zien.
+  rollup: Roll-up
+  title: Routes
+search:
+  places: Plaatsen
+  routes: Routes
+  title: Zoeken
+  help: Gebruik trefwoorden om op te zoeken. U kunt zoeken op namen van routes (bijv.
+    Appalachian Trail, E2) of plaatsen (bijv. Berlijn).
+settings:
+  base_map: Basiskaart
+  browser_language: Gebruik de instellingen van de browser
+  hillshading_layer: Reliëfschaduw
+  language: Taal
+  route_layer: Routelaag
+  title: Kaartinstellingen
+  transparency: Kaarttransparantie
+site_description:
+  cycling: Plaatselijke fietsroutes en langeafstandsroutes, met kaarten en informatie
+    uit OpenStreetMap.
+  hiking: Plaatselijke wandelroutes en langeafstandsroutes, met kaarten en informatie
+    uit OpenStreetMap.
+  mtb: Mountainbikeroutes, met kaarten en informatie uit OpenStreetMap.
+  riding: Ruiterroutes, met kaarten en informatie uit OpenStreetMap.
+  skating: Inlineskateroutes, met kaarten en informatie uit OpenStreetMap.
+  slopes: Pistes en routes voor wintersporten, met kaarten en informatie uit OpenStreetMap.
+site_title:
+  cycling: Fietsen
+  hiking: Wandelen
+  mtb: Mountainbiken
+  osmc_symbol: De tag osmc:symbol
+  riding: Paardrijden
+  skating: Inline skaten
+  slopes: Wintersportpistes
+...

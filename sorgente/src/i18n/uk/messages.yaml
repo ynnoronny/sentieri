@@ -1,0 +1,178 @@
+# Messages for Ukrainian (українська)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: A1
+# Author: Alex Khimich
+# Author: Andrew J.Kurbiko
+# Author: Andriykopanytsia
+# Author: Andygol
+# Author: DDPAT
+# Author: Green Zero
+# Author: Ice bulldog
+# Author: Ignatgg
+# Author: Mike140
+# Author: Movses
+# Author: Olvin
+# Author: Piramidion
+# Author: Salieri328
+# Author: Steve.rusyn
+# Author: SteveR
+---
+attribution:
+  data: Дані мапи © [OpenStreetMap](https://www.openstreetmap.org) згідно з [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: дані про рельєф від [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Докладніше
+  no_data: Немає інформації про пункт призначення для цього путівника.
+  title: Місця призначення
+details:
+  altitude: Висота
+  educational:
+    other: Це навчальна стежка.
+  image: Зображення
+  mapped_len: Відстань за мапою
+  note: Примітка
+  oneway: Цим маршрутом можна рухатися лише в прямому напрямку.
+  official_len: Офіційна відстань
+  operator: Оператор
+  pilgrimage:
+    christian: Це маршрут християнських паломників.
+    other: Це маршрут пілігримів.
+  roundtrip: Цей маршрут туди й назад.
+  route_symbol: Символ маршруту
+  signed_direction: Цей маршрут позначено лише в прямому напрямку.
+  subroutes_title: Розділи
+  superroutes_title: Частина
+  symbol: Символ
+  linear:
+    "yes": Зв'язок для цього маршруту відсортований і цілий.
+    sorted: Зв'язок для цього маршруту є цілим, але члени зв'язку не відсортовані.
+    "no": У зв'язку є прогалини або інші проблеми.
+  tags:
+    key: ключ
+    title: Теґи OpenStreetMap
+    value: значення
+  type:
+    guidepost: Путівник
+    node: Точка
+    relation: Відношення
+    way: Шлях
+    wayset: Набір шляхів
+  website: Веб-сайт
+  wikipedia: Вікіпедія
+  zoom_to: Показати на мапі
+  analyze:
+    title: Аналіз зв'язку
+    summary: Цей зв'язок має {num} сегментів.
+    disclaimer: |-
+      Тут показано сегменти маршруту, як вони були обчислені за допомогою waymarkedtrails
+      зі зв'язку, який може бути не завжди правильним. Щоб отримати додаткову інформацію про те, як waymarkedtrails сортує маршрути, відвідайте сторінки довідки.
+    open_end: Відкритий кінець маршруту.
+    multi_end: У цій точці зустрічаються більше двох сегментів маршруту.
+    two_end: |-
+      Точка, де маршрут переривається, оскільки зв'язок не відсортований.
+      Червоні пунктирні лінії показують, де маршрут продовжується.
+  download:
+    title: Завантажити маршрут
+    need_format: Виберіть формат
+    need_direction: Виберіть шляхи до включення
+    start: Отримати файл
+    format:
+      title: Формат
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJson
+    direction:
+      title: Включити шляхи до напрямку
+      forward: вперед
+      backward: назад
+      both: обидві сторони
+    other_ways: Додаткові частини маршруту
+elevation:
+  ascent: Сукупний підйом
+  descent: Сукупний спуск
+  diagram:
+    altitude: Висота (м)
+    distance: Відстань (км)
+  title: Профіль рельєфу
+  total: Загальний підйом/спуск
+  unavailable: Не знайдені дані о висотах рельєфу.
+  warn_unsorted: Шлях є потенційно невпорядкованим чи неповним. Інформація щодо висоти
+    може бути неточною.
+error:
+  load_error: Помилка підключення до сервера.
+  missing_id: Відсутній параметр «id».
+  missing_query: Відсутній параметр «query».
+  panel_title: Помилка
+  object_not_found: Об'єкт не знайдено.
+  api_unavailable: API недоступний.
+headline:
+  last_update: Останнє оновлення
+help: Про мапу
+locate_me: Моє розташування
+network:
+  continental: Континентальні маршрути
+  downhill: Гірськолижний спуск
+  national: Національні маршрути
+  node: Мережеві з'єднання вузла
+  nordic: Скандинавські лижі
+  other: Інші маршрути
+  regional: Регіональні маршрути
+  skitour: Гірськолижні тури
+  sled: Траса для катання на санках
+  sleigh: Санна траса
+  winter_hike: Зимові походи
+osmc_symbol:
+  back: Назад
+  background: Тло працює в схожий спосіб. Воно теж складається з кольору та форми.
+    Тло може також бути лише назвою кольору, результатом чого стане полотно обраного
+    кольору. Це показано в першому рядку.
+  background_heading: Задній план
+  examples: Приклади
+  foreground: Символ переднього плану складається з кольору та форми, пов'язаних підкресленням.
+    Таблиця внизу показує всі комбінації, які розпізнаються цим сайтом. Він також
+    розпізнає тло, яке складається лише з назви форми. Відповідні символи показано
+    в останньому стовпці.
+  foreground_heading: Передній план
+  intro_header: Огляд
+  preview: Заповніть поле нижче значенням для "osmc:symbol" щоб побачити як буде відображатися
+    на мапі.
+  preview_heading: Попередній перегляд
+  symbol_reference_heading: Повний список підтримуваних символів
+routelist:
+  loading: Завантаження…
+  close: Закрити
+  more: Збільшити масштаб, щоб побачити більше маршрутів.
+  rollup: Згорнути
+  title: Маршрути
+search:
+  places: Місця
+  routes: Маршрути
+  title: Пошук
+  help: Будь ласка, використовуйте ключові слова для пошуку. Ви можете шукати за назвами
+    маршрутів (наприклад, Аппалачська стежка, E2) або місць (наприклад, Берлін).
+settings:
+  base_map: Базова мапа
+  browser_language: Використовувати налаштування браузера
+  hillshading_layer: Відображення рельєфу
+  language: Мова
+  route_layer: Шар маршрутів
+  title: Налаштування мапи
+  transparency: Прозорість мапи
+site_description:
+  cycling: Місцеві та міжміські велосипедні маршрути з мапами та інформацією з OpenStreetMap.
+  hiking: Місцеві та міжміські пішохідні маршрути з мапами та інформацією з OpenStreetMap.
+  mtb: Маршрути для гірських велосипедів (MTB), з мапами та інформацією з OpenStreetMap.
+  riding: Маршрути верхової їзди з мапами та інформацією з OpenStreetMap.
+  skating: Маршрути для катання на роликових ковзанах з мапами та інформацією з OpenStreetMap.
+  slopes: Схили для зимових видів спорту, гірські лижі, бігові ковзани, зимові прогулянки,
+    з мапами та інформацією з OpenStreetMap.
+site_title:
+  cycling: Велосипед
+  hiking: Пішохідний туризм
+  mtb: Гірський велоспорт
+  osmc_symbol: The osmc:symbol tag
+  riding: Верхова їзда
+  skating: Катання на роликах
+  slopes: Маршрути для зимових видів спорту
+...

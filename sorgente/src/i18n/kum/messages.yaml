@@ -1,0 +1,28 @@
+# Messages for Kumyk (къумукъ)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: ArslanX
+---
+details:
+  subroutes_title: Бёлюклер
+  website: Веб-сайфа
+  download:
+    format:
+      GPX: GPX
+error:
+  panel_title: Хата
+headline:
+  last_update: Ахырынчы янгыртыв
+help: Хаританы гьакъында
+locate_me: Тап мени
+osmc_symbol:
+  back: Артгъа
+routelist:
+  close: Япмакъ
+search:
+  title: Излемек
+settings:
+  language: Тил
+site_title:
+  hiking: Яяв юрюв
+...

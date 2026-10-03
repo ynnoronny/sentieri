@@ -1,0 +1,45 @@
+# Messages for Azerbaijani (azərbaycanca)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: AZISS
+# Author: Dimitar
+# Author: Toghrul Rahimli
+# Author: Şeyx Şamil
+---
+attribution:
+  data: Xəritə məlumatları © [OpenStreetMap](https://www.openstreetmap.org) üzərindən
+    [ODbL](https://www.openstreetmap.org/copyright)
+details:
+  mapped_len: Xəritədə göstər
+  note: Qeyd
+  official_len: Marşrutun rəsmi uzunluğu
+  operator: Operator
+  subroutes_title: Bölmələr
+  superroutes_title: Hissəsidir
+  tags:
+    title: OpenStreetMap nişanları
+  website: Vebsayt
+  wikipedia: Vikipediya
+error:
+  panel_title: Xəta
+headline:
+  last_update: Son yeniləmə
+osmc_symbol:
+  background_heading: Arxa planda
+  foreground_heading: Ön planda
+routelist:
+  title: Marçrutlar
+search:
+  routes: Marşrutlar
+  title: Axtar
+settings:
+  base_map: Əsas xəritə
+  hillshading_layer: Relyefi göstər
+  language: Dil
+  route_layer: Marşrutların təbəqəsi
+site_title:
+  cycling: Veloidman
+  hiking: Piyada gəzintisi
+  mtb: Dag veloidmanı
+  skating: Diyircəkli skeyt
+...

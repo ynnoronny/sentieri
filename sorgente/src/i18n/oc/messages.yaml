@@ -1,0 +1,66 @@
+# Messages for Occitan (occitan)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Cedric31
+# Author: Dimitar
+# Author: Shirayuki
+---
+attribution:
+  data: Donadas cartograficas © [OpenStreetMap](https://www.openstreetmap.org) jos
+    [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: donnadas altimetricas per [SRTM/ASTER](help/acknowledgements)
+details:
+  mapped_len: Longor cartografiada
+  note: Nòta
+  official_len: Longor oficiala
+  operator: Operador
+  subroutes_title: Seccions
+  superroutes_title: Aparten a
+  tags:
+    title: Balisas OpenStreetMap
+  website: Site web
+  download:
+    format:
+      GPX: GPX
+elevation:
+  ascent: Montada cumulada
+  descent: Davalada cumulada
+  diagram:
+    altitude: Altitud (m)
+    distance: Distància (km)
+  title: Perfil d’altitud
+error:
+  load_error: Error de connexion al servidor.
+  panel_title: Error
+headline:
+  last_update: Darrièra mesa a jorn
+locate_me: Me localizar
+network:
+  downhill: davalada
+osmc_symbol:
+  back: Retorn
+  background_heading: Rèireplan
+  foreground_heading: Primièr plan
+routelist:
+  close: Tampar
+  rollup: Enrotlar
+  title: Itineraris
+search:
+  routes: Itineraris
+  title: Recercar
+settings:
+  base_map: Mapa de fons
+  browser_language: Utilizar los paramètres del navigador
+  hillshading_layer: Ombratge
+  language: Lenga
+  route_layer: Calc dels itineraris
+  title: Paramètres de la mapa
+  transparency: Transparéncia de la mapa
+site_title:
+  cycling: A bicicleta
+  hiking: A pè
+  mtb: A VTT
+  riding: Equitacion
+  skating: En rollers
+  slopes: Pistas d'espòrt d’ivèrn
+...

@@ -1,0 +1,61 @@
+# Messages for Colognian (Ripoarisch)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: Dittaeva
+# Author: Purodha
+---
+attribution:
+  data: Kaate-Daate sin_er © vun [OpenStreetMap](https://www.openstreetmap.org), ze
+    han onger dä [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: Daate övver de Hühde vun [SRTM/ASTER](Hölp un Aanäkännonge)
+details:
+  mapped_len: Op dä Landkaat aanjezeisch
+  note: Notez
+  official_len: De ofizjälle Längde
+  operator: Zohschtändesch es
+  subroutes_title: Afschnedde
+  superroutes_title: Deijl vun
+  tags:
+    title: OpenStreetMap sing Befähle
+  website: Wäbßaijt
+  wikipedia: Wikkipehdija
+elevation:
+  ascent: Der Aanschteesch, zesammejenumme
+  descent: Der Afschteesch, zesammejenumme
+  diagram:
+    altitude: De Hühde en Meeter
+    distance: Der Afschtand en Killomeeter
+  title: Et Profihl för de Hühde
+error:
+  panel_title: Fähler
+headline:
+  last_update: Zoläz jeändert
+network:
+  downhill: der Bersch eraf
+osmc_symbol:
+  back: Retuhr
+  background_heading: Hengerjrond
+  foreground_heading: Vüürjrond
+routelist:
+  close: Zohmaache
+  title: Wääje
+search:
+  routes: Wääje
+  title: Söhke
+settings:
+  base_map: De Jrondkaat
+  browser_language: Nemm dem Brauser sing Enschtällonge
+  hillshading_layer: Schummerong
+  language: De Schprohch
+  route_layer: De Wääje
+  title: Enschtällonge för de Kaat
+  transparency: Dorschseeschteschkeit vun dä Kaat
+site_title:
+  cycling: Radfahre
+  hiking: Wandere
+  mtb: Mauntenbaike
+  riding: Pähdsrigge
+  skating: Enlainerfahre
+  slopes: Pißte för der Winnterschpocht
+...

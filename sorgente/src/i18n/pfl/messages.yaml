@@ -1,0 +1,39 @@
+# Messages for Palatine German (Pälzisch)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: Manuae
+---
+attribution:
+  data: Kaadedaade vun [OpenStreetMap](https://www.openstreetmap.org) un Midawaida
+    ([CC BY-SA](https://creativecommons.org/licenses/by-sa/2.0/))
+details:
+  mapped_len: Uffde Kaad gzaischd
+  note: Hiewees
+  official_len: Offiziell Leng
+  operator: Bdraiwa
+  subroutes_title: Abschnidd
+  superroutes_title: Deel vun
+  website: Websaid
+error:
+  panel_title: Fehla
+headline:
+  last_update: Ledschdi Agdualisiarung
+osmc_symbol:
+  background_heading: Hinnagrund
+  foreground_heading: Voadagrund
+routelist:
+  title: Weesche
+search:
+  routes: Weesche
+  title: Suche
+settings:
+  base_map: Basiskaad
+  hillshading_layer: Schadierunge
+  route_layer: Weesche
+site_title:
+  cycling: Radfahre
+  hiking: Wondare
+  mtb: Maundebaige
+  skating: Rollschuh laafe
+...

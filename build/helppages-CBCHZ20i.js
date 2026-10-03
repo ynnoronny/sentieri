@@ -1,0 +1,2 @@
+var i={about:{title:"Um kortið",hiking:"<p>Hetta kortið vísir uppmerktar gongugøtur kring allan heimin.</p>\n",cycling:"<p>Hetta kortið vísir uppmerktar súkklurutur kring allan heimin.</p>\n"},rendering:{title:"Vísing av OSM dáta"},hierarchies:{title:"Relasjónshierarki"},osmc:{title:"osmc:symbol tag"},technical:{title:"Tøkniligir smálutir"}},t=i.about,r=i.rendering,e=i.hierarchies,a=i.osmc,n=i.technical;export{t as about,i as default,e as hierarchies,a as osmc,r as rendering,n as technical};
+//# sourceMappingURL=helppages-CBCHZ20i.js.map

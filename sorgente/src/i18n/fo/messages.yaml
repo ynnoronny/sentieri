@@ -1,0 +1,47 @@
+# Messages for Faroese (føroyskt)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: EileenSanda
+---
+attribution:
+  data: Kort dáta © [OpenStreetMap](https://www.openstreetmap.org) undir [ODbL](https://www.openstreetmap.org/copyright)
+details:
+  mapped_len: Vís longdina á kortinum
+  note: Viðmerking
+  official_len: Almenna longdin
+  operator: Ábygdari
+  subroutes_title: Sektiónir
+  superroutes_title: Partur av
+  tags:
+    title: OpenStreetMap tags
+  website: Heimasíða
+elevation:
+  descent: Samlað fall
+  diagram:
+    altitude: Hædd (m)
+    distance: Fjarstøða (km)
+  title: Hæddarprofilur
+error:
+  panel_title: Feilur
+headline:
+  last_update: Seinast dagført
+osmc_symbol:
+  background_heading: Bakgrund
+  foreground_heading: Forgrund
+routelist:
+  title: Rutur, leiðir
+search:
+  routes: Rutur, leiðir
+  title: Leita
+settings:
+  base_map: Grund kort
+  hillshading_layer: Hæddarkurvar
+  language: Mál
+  route_layer: Rutur
+site_title:
+  cycling: Súkkling
+  hiking: Vallararutur, gangitúrar
+  mtb: Fjallasúkkla
+  skating: Inline Skating
+...

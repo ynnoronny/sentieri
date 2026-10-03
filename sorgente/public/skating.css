@@ -1,0 +1,11 @@
+:root {
+      --theme-background-color: #c6929b;
+      --theme-font-color: #000;
+      --theme-sub-color: #ae5261;
+      --theme-sub-font-color: #e0e3e3;
+      --theme-sub-link-color: #6bbbbb;
+      --theme-banner-image: url('../img/banner_skating.jpg');
+      --theme-link-color: #731222;
+      --theme-button-background: #5a6268;
+      --theme-button-color: #fff;
+}

@@ -1,0 +1,85 @@
+# Messages for Luxembourgish (Lëtzebuergesch)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Robby
+# Author: Volvox
+---
+destination_sign:
+  more: Méi Detailer
+  title: Destinatiounen
+details:
+  altitude: Héicht
+  image: Bild
+  note: Notiz
+  official_len: Offiziell Längt
+  subroutes_title: Abschnitter
+  superroutes_title: Deel vu(n)
+  symbol: Symbol
+  tags:
+    key: Schlëssel
+    value: Wäert
+  type:
+    relation: Relatioun
+    way: Wee
+  website: Internetsite
+  wikipedia: Wikipedia
+  zoom_to: Op der Kaart weisen
+  download:
+    need_format: Wielt e Format
+    format:
+      title: Format
+      GPX: GPX
+      KML: KML
+elevation:
+  diagram:
+    altitude: Héicht(m)
+    distance: Distanz (km)
+  total: Gesamthéicht
+error:
+  load_error: Feeler beim Verbanne mam Server.
+  panel_title: Feeler
+  object_not_found: Objet net fonnt.
+  api_unavailable: API net disponibel.
+headline:
+  last_update: Lescht Aktualiséierung
+help: Iwwer dës Kaart
+locate_me: Mech lokaliséieren
+network:
+  downhill: Biergof
+  national: National Stroossen
+  nordic: Schilaanglaf
+  other: Aner Routen
+  regional: Regional Stroossen
+  skitour: Schi-Touren
+  sleigh: Schlittepist
+  winter_hike: Wanterwanderen
+osmc_symbol:
+  back: Zeréck
+  background_heading: Hannergrond
+  examples: Beispiller
+  foreground_heading: Vierdergrond
+  intro_header: Iwwersiicht
+  preview_heading: Kucken ouni ze späicheren
+  symbol_reference_heading: Vollstänneg Lëscht vun ënnerstëtzte Symboler
+routelist:
+  loading: Lueden...
+  close: Zoumaachen
+  title: Strecken
+search:
+  places: Plazen
+  routes: Strecken
+  title: Sichen
+settings:
+  base_map: Basiskaart
+  browser_language: Browserastellunge benotzen
+  language: Sprooch
+  title: Astellunge vun der Kaart
+  transparency: Kaartentransparenz
+site_title:
+  cycling: Mam Vëlo
+  hiking: Zu Fouss
+  osmc_symbol: Den Tag osmc:symbol
+  riding: Reiden
+  skating: Inline-Skating
+  slopes: Wantersportpisten
+...

@@ -1,0 +1,39 @@
+# Messages for Urdu (اردو)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Hindustanilanguage
+# Author: Obaid Raza
+---
+attribution:
+  data: نقشے کی معلومات © [OpenStreetMap](https://www.openstreetmap.org) [ODbL] کے
+    تحت (https://www.openstreetmap.org/copyright)
+details:
+  mapped_len: نقشہ کی لمبائی
+  note: یاددہانی
+  official_len: سرکاری لمبائی
+  operator: عامل
+  superroutes_title: حصہ
+  website: ویب سائٹ
+elevation:
+  diagram:
+    altitude: اونچائی (میٹر)
+    distance: فاصلہ (کلومیٹر)
+  title: ترقی پروفائل
+headline:
+  last_update: آخری تبدیلی
+osmc_symbol:
+  foreground: پیش منظر علامت ایک رنگ اور ہیئت جو خوشنما انڈراسکور پر مشتمل ہے۔ زیر
+    کا جدول وہ تمام مرکبات بتاتا ہے جواس سائٹ کی جانب سے پہچانے جاتے ہیں۔ یہ ان پیش
+    منظروں کو بھی پہچانتا ہے جو صرف ہیئت کے ناموں پر مشتمل ہیں۔ان کی علامتیں آخری
+    کالم میں دکھائی گئی ہیں۔
+search:
+  title: تلاش
+settings:
+  language: زبان
+site_title:
+  cycling: سائکلنگ
+  hiking: پیدل سفر
+  mtb: ایم ٹی بی
+  riding: گھڑ سواری
+  skating: ان لائن سکیٹنگ
+...

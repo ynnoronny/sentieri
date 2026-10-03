@@ -1,0 +1,176 @@
+# Messages for Hungarian (magyar)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: BáthoryPéter
+# Author: Csega
+# Author: Dittaeva
+# Author: Dj
+# Author: Dömcsi
+# Author: GBAB
+# Author: Grin
+# Author: Hanna Tardos
+# Author: Misibacsi
+# Author: Wolf Rex
+---
+attribution:
+  data: Térképadatok © [OpenStreetMap](https://www.openstreetmap.org), [ODbL](https://www.openstreetmap.org/copyright)
+    licenc szerint
+  elevation_title: magassági adatok [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: További részletek
+  no_data: Ehhez az útirányjelző táblához nincs megadva útirány.
+  title: Úti célok
+details:
+  altitude: Magasság
+  educational:
+    other: Tanösvény
+  image: Kép
+  mapped_len: Térképen látható hossz
+  note: Megjegyzés
+  oneway: Az útvonal csak egy irányba járható.
+  official_len: Hivatalos hossz
+  operator: Üzemeltető
+  pilgrimage:
+    christian: Keresztény zarándokút
+    other: Zarándokút
+  roundtrip: Körútvonal
+  route_symbol: Útjelzés
+  signed_direction: Az útvonal csak egy irányba van kijelölve a terepen.
+  subroutes_title: Szakaszok
+  superroutes_title: 'Része ennek:'
+  symbol: Szimbólum
+  linear:
+    "yes": Az útvonalat megjelenítő kapcsolat sorba van rendezve és egy darabban van.
+    sorted: Az útvonalat megjelenítő kapcsolat egy darabban van, de a tagjai nincsenek
+      sorba rendezve.
+    "no": A kapcsolat hézagos vagy más probléma van vele.
+  tags:
+    key: kulcs
+    title: OpenStreetMap címkék
+    value: érték
+  type:
+    guidepost: Útirányjelző tábla
+    node: Pont
+    relation: Kapcsolat
+    way: Vonal
+    wayset: Vonalkészlet
+  website: Weboldal
+  wikipedia: Wikipédia
+  zoom_to: Megjelenítés a térképen
+  analyze:
+    title: Kapcsolat elemzése
+    summary: A kapcsolat {num} szakaszból áll.
+    disclaimer: Ez úgy mutatja az útvonalszakaszokat, ahogyan azokat a Waymarked Trails
+      a kapcsolatból kiszámította, ami nem feltétlenül helyes. A súgó oldalon található
+      további információ arról, hogy a Waymarked Trails hogyan rendezi sorba a kapcsolatokat.
+    open_end: Az útvonal nyílt végpontja.
+    multi_end: Legalább három útvonalszakasz találkozási pontja.
+    two_end: Az útvonal megszakad ennél a pontnál, mert a kapcsolat nincs sorba rendezve.
+      A szaggatott vörös vonal mutatja az útvonal folytatódását.
+  download:
+    title: Útvonal letöltése
+    need_format: Formátum kiválasztása
+    need_direction: 'A kiválasztott vonalak tartalmazzák:'
+    start: Fájl letöltése
+    format:
+      title: Formátum
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJson
+    direction:
+      title: Tartalmazza a következő irányokat
+      forward: előre
+      backward: hátra
+      both: mindkettő
+    other_ways: További útvonalrészek
+elevation:
+  ascent: Összesített emelkedés
+  descent: Összesített ereszkedés
+  diagram:
+    altitude: Magasság (m)
+    distance: Távolság (km)
+  title: Magassági profil
+  total: Összes emelkedés/lejtés
+  unavailable: Nem találhatók magassági adatok.
+  warn_unsorted: Lehet, hogy az útvonal rendezetlen vagy hiányos. A magassági adatok
+    pontatlanok lehetnek.
+error:
+  load_error: Nem sikerült csatlakozni a szerverhez.
+  missing_id: Hiányzik az „id” paraméter.
+  missing_query: Hiányzik a „query” paraméter.
+  panel_title: Hiba
+  object_not_found: Az objektum nem található.
+  api_unavailable: API nem érhető el.
+headline:
+  last_update: Utolsó frissítés
+help: A térképről
+locate_me: Hol vagyok most?
+network:
+  continental: Kontinentális útvonalak
+  downhill: Lesiklás
+  national: Országos útvonalak
+  node: Ponthálózat-kapcsolatok
+  nordic: Sífutás
+  other: Más útvonalak
+  regional: Regionális útvonalak
+  skitour: Sítúrák
+  sled: Szánkópálya
+  sleigh: Lovasszán-útvonal
+  winter_hike: Téli túrázás
+osmc_symbol:
+  back: Vissza
+  background: A háttér hasonlóan működik. Ez is egy színből és egy alakzatból áll.
+    A háttér lehet csak egy színnév is, ami ilyen színű vásznat eredményez. Ez látható
+    az első sorban.
+  background_heading: Háttér
+  examples: Példák
+  foreground: Az előtérszimbólum egy színből és egy alakzatból áll, amelyeket egy
+    aláhúzásjel (_) köt össze. Az alábbi táblázat az oldal által felismert összes
+    kombinációt mutatja. Az olyan előtereket is felismeri, amelyek csak az alakzat
+    nevéből állnak. Ezek szimbólumai az utolsó oszlopban láthatók.
+  foreground_heading: Előtér
+  intro_header: Áttekintés
+  preview: Az alábbi beviteli mezőben adjon megy egy osmc:symbol értéket, hogy lássa,
+    hogyan fog megjelenni a térképen.
+  preview_heading: Előnézet
+  symbol_reference_heading: A támogatott szimbólumok teljes listája
+routelist:
+  loading: Betöltés…
+  close: Bezárás
+  more: Nagyítson további útvonalak megtekintéséhez.
+  rollup: Fel
+  title: Útvonalak
+search:
+  places: Helyek
+  routes: Útvonalak
+  title: Keresés
+  help: 'Kérjük, használjon kulcsszavakat a kereséshez! Rákereshet túraútvonalakra
+    (pl.: Appalachian Trail, E2) vagy helyekre is (pl.: Berlin).'
+settings:
+  base_map: Alaptérkép
+  browser_language: Használja a böngésző beállításait
+  hillshading_layer: Domborzatárnyékolás
+  language: Nyelv
+  route_layer: Útvonalréteg
+  title: Térképbeállítások
+  transparency: Térkép átlátszósága
+site_description:
+  cycling: Helyi és távolsági kerékpáros útvonalak az OpenStreetMapről származó térképekkel
+    és adatokkal.
+  hiking: Helyi és távolsági túra- és gyalogosútvonalak az OpenStreetMapről származó
+    térképekkel és adatokkal.
+  mtb: Hegyikerékpáros (MTB) útvonalak az OpenStreetMapről származó térképekkel és
+    adatokkal.
+  riding: Lovaglóútvonalak az OpenStreetMapről származó térképekkel és adatokkal.
+  skating: Görkorcsolya-útvonalak az OpenStreetMapről származó térképekkel és adatokkal.
+  slopes: Télisport-pályák, sípályák, sífutónyomok, téli túrák az OpenStreetMapről
+    származó térképekkel és adatokkal.
+site_title:
+  cycling: Kerékpározás
+  hiking: Túrázás
+  mtb: Mountain bike
+  osmc_symbol: Az osmc:symbol címke
+  riding: Lovaglás
+  skating: Görkorcsolya
+  slopes: Télisport-pályák
+...

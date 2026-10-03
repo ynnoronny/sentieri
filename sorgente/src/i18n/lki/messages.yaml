@@ -1,0 +1,32 @@
+# Messages for Laki (لەکی)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Arash71
+# Author: Hosseinblue
+# Author: Lakzon
+---
+details:
+  note: ویرنۆیسة-یادداشت
+  website: وبسایت
+error:
+  panel_title: خطا
+headline:
+  last_update: بروزرسانی دؤمائن
+osmc_symbol:
+  background_heading: پیش‌زمینه
+routelist:
+  title: مسیرها
+search:
+  routes: مسیرها
+  title: مِنِی کِردِن(گێردین)
+settings:
+  base_map: تقشه پایه
+  hillshading_layer: سایه تپه
+  language: زوون
+  route_layer: لایه مسیر
+  transparency: شفافیت نقشه
+site_title:
+  cycling: دوچرخه سواری
+  hiking: پیاده‌روی
+  mtb: ام تی بی
+...

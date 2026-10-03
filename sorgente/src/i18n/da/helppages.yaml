@@ -1,0 +1,319 @@
+# Messages for Danish (dansk)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Christian List
+# Author: EPO
+# Author: Fugithora
+# Author: Joedalton
+# Author: Kaare
+# Author: Naitsa
+# Author: Peter Alberti
+---
+about:
+  title: Om kortet
+  hiking: Dette kort viser skiltede vandreruter rundt om i verden.
+  cycling: Dette kort viser skiltede cykelruter rundt om i verden.
+  mtb: Dette kort viser skiltede mountainbikeruter rundt om i verden.
+  skating: Dette kort viser skiltede inline-skatingruter rundt om i verden.
+  riding: Dette kort viser skiltede rideruter rundt om i verden.
+  slopemap: Dette kort viser skiltede vintersportspister rundt om i verden.
+  osm: |-
+    Ruterne vises oven på det almindelige OpenStreetMap-kort og eventuelt et højdeprofillag. Rutekortet er dannet ud fra [OpenStreetMap-projektets](https://www.openstreetmap.org) (OSM) data.
+    OSM er et frit redigerbart verdenskort, som alle kan bidrage til. Det betyder, at det langt fra er komplet,
+    men det betyder også, at du kan bidrage ved at tilføje nye ruter og rette fejl i dem, der allerede er der.
+    Se [Guide til nybegyndere](https://wiki.openstreetmap.org/wiki/Da:Beginners%27_guide) for flere oplysninger om OpenStreetMap.
+rendering:
+  title: Visning af OSM-data
+  hikingroutes: |-
+    Vandreruter skal lægges ind i OSM som relationer. Præcis hvordan det fungerer,
+    er forklaret i detaljer på tagging-siden om
+    [vandreruter](https://wiki.openstreetmap.org/wiki/Walking_Routes)
+    i OSM-wikien. Dette kort viser relationer, der har mindst et af følgende tags:
+
+       type = route|superroute
+       route = foot|walking|hiking
+  cyclingroutes: |-
+    Cykelruter skal lægges ind i OSM som relationer. Præcis hvordan det fungerer,
+    er forklaret i detaljer på siden om
+    [cykelruter](https://wiki.openstreetmap.org/wiki/Cycle_routes)
+    i OSM-wikien. Dette kort viser relationer, der har mindst et af følgende tags:
+
+       type = route|superroute
+       route = bicycle
+
+    Mountainbikeruter vises på et særskilt [MTB-kort](https://mtb.waymarkedtrails.org).
+  mtbroutes: "Mountainbikeruter tagges efter samme princip som cykelruter, \nder er
+    forklaret i detaljer på siden om\n[cykelruter](https://wiki.openstreetmap.org/wiki/Cycle_routes)\ni
+    OSM-wikien. Relationer med de følgende tags vises som mountainbikeruter:\n\n   type
+    = route|superroute\n   route = mtb\n\nAlmindelige cykelruter vises på et særskilt
+    [cykelkort](https://cycling.waymarkedtrails.org)."
+  skatingroutes: |-
+    Skiltede skatingruter bør tagges efter samme princip som enhver anden type ruterelation.
+    For de tagging-regler, dette kort kan forstå, se wikisiden om
+    [inline-skatingruter i Schweiz](https://wiki.openstreetmap.org/wiki/Switzerland/InlineNetwork).
+    For at en rute skal kunne genkendes som en skatingrute, skal de følgende tags være til stede:
+
+       type = route|superroute
+       route = inline_skates
+  ridingroutes: "Skiltede hestestier skal tagges på samme måde som enhver anden ruterelation.
+    \nFor detaljer se [rutesiden i OSM-wikien](https://wiki.openstreetmap.org/wiki/Relation:route).\nFor
+    at blive genkendt som en hestesti, skal de følgende tags være til stede:\n\n    type
+    = route|superroute\n    route = horse"
+  sloperoutes: |-
+    Skiltede pister er ruter med taggene piste:type.
+    For at blive genkendt som en piste, skal de følgende tags være til stede:
+
+        piste:type = downhill|nordic|sled|hike|sleigh
+
+    For relationer skal de følgende tags være til stede:
+
+        type = route|superroute
+        route = ski|piste
+        piste:type = downhill|nordic|sled|hike|sleigh
+  slopeclassification: Klassifikationen af skipister (nedad) bestemmes af tagget `piste:difficulty`
+    og bruges for farven i gengivelsen.
+  classification: Klassificeringen (og dermed også rutens farve på kortet) bestemmes
+    ud fra `network`-tagget.
+  slopemaplabels: |-
+    Etiketten for skipister (nedad) "gættes" ud fra taggende i den følgende rækkefølge:
+
+    1. Hvis et `piste:ref`-tag findes, lav en tekstetiket med tagget `piste:ref`.
+    2. Hvis et `piste:name` findes, afled en reference fra denne,
+       ved først udelukkende at bruge store bogstaver og hvis det
+       fejler ved at bruge de første bogstaver i navnet.
+    3. Hvis et `ref`-tag findes, lav en tekstetiket med tagget `ref`.
+    4. Hvis det er en relation og et `name`-tag findes, afled en
+       reference fra denne, først ved udelukkende at bruge store
+       bogstaver og hvis dette fejler ved at bruge de første bogstaver
+       i navnet.
+    5. Giv op.
+
+    Nordiske pister er markeret med et tegn, der alene viser deres farve, hvis et farve-tag er til stede.
+  hikinglabels: |-
+    Etiketten på den enkelte rute bestemmes ud fra dens tags efter følgende regler:
+
+    1. Kontroller om der er [regler for at tilpasse visningen til lokale forhold](#help-hikinglocal).
+    2. Forsøg at tolke `osmc:symbol`-tagget. For detaljer om hvordan tagget tolkes,
+       se [regler for visning af oscm:symbolet](osmc_symbols.html).
+    3. Hvis der er et `ref`-tag, brug det til etiketteteksten.
+    4. Hvis der er et `name`-tag, så udled en reference fra det, ved først kun at brug de af bogstaverne, der er skrevet med stort, eller hvis
+       det ikke virker, brug de første bogstaver i navnet.
+    5. Giv op.
+  labels: |-
+    Etiketten på den enkelte rute bestemmes ud fra dens tags efter følgende regler:
+
+    1. Hvis der er et `ref`-tag, brug det til teksten.
+    2. Hvis der er et `name`-tag, så brug de af bogstaverne, der er skrevet med stort, eller hvis
+       det ikke virker, brug de første bogstaver i navnet.
+    3. Giv op.
+  hierarchy: Kortet understøtter også [relationshierarkier](#help-hierarchies).
+  guideposts: |-
+    [Vejvisere](https://wiki.openstreetmap.org/wiki/Da:Tag:information%3Dguidepost) med disse tags bliver vist:
+
+       tourism=information
+       information=guidepost
+       name=<navn>
+       ele=<højde>
+
+    `tourism` og `information` er obligatoriske. `name` og `ele` kan udelades.
+route_order:
+  title: Rækkefølge af ruter
+  text: "waymarkedtrails skal have ordentligt sorteret rute for at vise højdeprofilen
+    og for at downloade GPX og KML. Når den analyserer en rute, forsøger den så vidt
+    muligt at respektere rækkefølgen af medlemslinjestrengene i relationen, fordi
+    det gør det nemmere for kortlæggere at påvirke rækkefølgen uden at skulle prøve
+    sig frem. Hvis en relation synes at være uordnet, vil waymarkedtrails stadig sætte
+    linjestrengene i en rækkefølge, hvis og kun hvis linjestrengene kan danne en ubrudt
+    lineær rute. \n\nRelationsrollerne tages i betragtning ved sortering af ruten.
+    `forward` og `backward` roller kan anvendes til at markere sektioner, hvor ruten
+    skal følges på forskellige dele afhængigt af retning. Husk at disse roller er
+    defineret i forhold til linjestrengens retning, ikke ruten! Hvis der er tale om
+    en sådan delt sektion, skal du sørge for, at linjestrengene for hver retning vises
+    direkte efter hinanden i forholdet, og at linjestrengene stadig følger rutenes
+    rækkefølge. \n\nAlle andre roller betragtes som sidespor i den ene eller den anden
+    form og ignoreres for den generelle sortering af ruten. De vises stadig på kortet.
+    \n\nwaymarkedtrails er i stand til at håndtere uadskillede rundkørsler inden for
+    en rute. Tilføj blot den lukkede linjestreng uden nogen rolle, og rundkørslen
+    vil blive opdelt i passende sektioner. Dette fungerer også, når der er en V-tilkørsel
+    til rundkørslen, som er opdelt i fremad og bagud. Der er to tilfælde, hvor denne
+    håndtering fejler: \n\n * hvis rundkørslen af en eller anden grund blev opdelt
+    på flere linjestrenge, skal man tilføje dele med de relevante `forward` og `backward`
+    roller. \n* hvis rundkørslen er en del af en retningssektion, skal du opdele rundkørslen
+    og tilføje den anvendte del med den passende rolle. \n\nGenerel tommelfingerregel
+    for rækkefølge: Hvis JOSM-relationseditoren viser ruten som kontinuerlig, bør
+    waymakedtrails også kunne vise en lineær rute."
+hierarchies:
+  title: Relationshierarki
+  text: |-
+    Kortet understøtter også relationer, der indeholder andre relationer.  Disse hierarkier bruges på to forskellige måde i OSM-databasen: de bruges enten til at opdele meget lange ruter (f.eks. [E1](https://hiking.waymarkedtrails.org/#route?id=36367)), eller de bruges til at undgå dobbeltarbejde, når to ruter følger den samme linjestreng (se for eksempel den schweiziske [Via Francigena](https://hiking.waymarkedtrails.org/#route?id=124582), der indgår som en del af den europæiske [Via Romea Francigena](https://hiking.waymarkedtrails.org/#route?id=11860709)).
+    I det første tilfælde udgør underrelationerne ikke komplette ruter, og de bør derfor ikke vises uafhængigt af resten af ruten på kortet.
+
+    Hvordan præcist en underrelation håndteres under tegningen af kortet afhænger af `network`-tagget:
+
+    * Hvis en over- og underrelation har samme network-tag, betragtes underrelationen kun som et stykke af overrelationen. Det vil sige, at dens rute tilføjes til overrelationen, og underrelationen vises ikke på kortet.
+    * Hvis over- og underrelationerne har forskellige network-tags, betragtes relationen som uafhængig. Ruten for underrelationen tilføjes til overrelationen, og begge relationer vises på kortet.
+
+    *Bemærk:* Du kan altid se nærmere på underrelationer ved hjælp af rutebrowseren. Du kan ganske enkelt vælge overrelationen, og så vises en liste, hvor du kan vælge mellem underrelationerne.
+osmc:
+  title: osmc:symbol-tagget
+  text: |-
+    Tagget `osmc:symbol` gør det muligt at beskrive rutemarkører på en maskinlæsbar måde. Det er primært beregnet til symboler, der, der består af simple geometriske former. For en fuld beskrivelse og
+    historie om tagget, besøg wiki-siden [osmc:symbol page](https://wiki.openstreetmap.org/wiki/Key:osmc:symbol) på OSM wiki. waymarkedtrails følger stort set det syntaks, der er beskrevet
+    på wiki-siden med nogle begrænsninger og udvidelser, der er beskrevet her.
+
+    For at blive gengivet på kortet, skal tagget have et af følgende formater:
+
+        waycolor:background
+        waycolor:background:foreground
+        waycolor:background:foreground:foreground2
+        waycolor:background:foreground:foreground2:text:textcolor
+        waycolor:background:foreground:text:textcolor
+
+    `waycolor` skal altid være til stede, men ignoreres i dette kort. Derudover skal du angive en baggrund, selvom du kan lade feltet være tomt. Dernæst følger maksimalt to forskellige forgrunde. Til sidst kan man eventuelt tilføje en lille henvisningstekst, som tilføjes ovenpå. Tekstens farve skal altid angives. Bemærk, at waymarkedtrails ignorerer referencetekster, når de bliver for lange.
+    Hvor lang teksten kan være, afhænger af de valgte baggrunde: har en hård grænse på 4 tegn, diamantformede baggrunde tager kun et enkelt tegn, stribe- og bjælkeformede baggrunde tager ingen referencetekst overhovedet.
+  reference_footer: |-
+    Du kan finde den fulde liste over farver og former, som waymarkedtrails
+    kan gengive, i referencen nedenfor.
+  footer: |-
+    Se den ekstra [osmc:symbol](osmc_symbols.html) tag-side for en liste over symboler, der er
+    understøttet af Waymarked Trails.
+hikinglocal:
+  title: Visning tilpasset lokale forhold
+  text: |-
+    Der findes mange forskellige systemer til at markere vandreruter rundt om i verden. Selv om dette kort forsøger at bruge de mest generelle tags og vise dem godt, så vil det uundgåeligt gå galt med bestemte systemer og især med netværk af vandreruter. Det er muligt i udvalgte områder at tilpasse kortet til disse systemer, når standardvisningen er utilstrækkelig.
+
+    Nedenfor er en liste over områder, der bruger specielle kortsymboler. Hvis du ønsker kortet tegnet på en speciel måde i dit område, så læs anvisningerne nederst på siden.
+  swiss: |-
+    ## Schweiz
+
+    Schweiz har et omfattende netværk af afmærkede vandreruter, der dækker hele landet. Netværket er et knudenetværk, hvor navngivne vejviserskilte udgør knuderne. Alle stier er gennemgående tagget efter sværhedsgrad. Kortet viser disse stier i rødt med et stregmønster, der angiver sværhedsgraden:
+
+    * ![red line](route_std.png) *vandrerute*, tagget med ![diamond](yellow_diamond.svg). Tagget med `network=lwn` og `osmc:symbol=yellow:[...]:yellow_diamond`.
+    * ![dashed line](route_mnt.png) *bjergsti*, tagget med ![white-red-white](white_red_bar.svg). Tagget med `network=lwn` og `osmc:symbol=red:white:red_bar`.
+    * ![dotted line](route_alp.png) *alpin sti*, tagget med ![white-blue-white](white_blue_bar.svg). Tagget med `network=lwn` og `osmc:symbol=blue:white:blue_bar`.
+
+    Bemærk at udover dette netværk er der også nationale og regionale ruter, der vises som normalt.
+
+    For flere oplysninger om tagging af vandreruter i Schweiz i OSM, se [det schweiziske vandrenetværk](https://wiki.openstreetmap.org/wiki/Switzerland/HikingNetwork).
+  austria: |-
+    ## Østrig
+
+    Regionen Vorarlberg bruger et lignende klassifikationssystem som Schweiz. Ruter med tags `operator=Land Vorarlberg`, `network=rwn`
+    og `network:type=basic_network` vil blive markeret efter et sværhedsbaseret system:
+
+    * ![red line](route_std.png) osmc:symbol=yellow:white:yellow_upper
+    * ![dashed line](route_mnt.png) osmc:symbol=red:white:red_bar
+    * ![dotted line](route_alp.png) osmc:symbol=blue:white:blue_bar
+  italy: |-
+    ## Italien
+
+    Italian Alpine club (CAI) vedligeholder netværket af bjergstier, som er klassificeret ved sværhedsgrad svarende til hvad der findes i Schweitz.
+    Ruter markeret med `network=lwn`, `osmc:symbol=red:..` og `cai_scale`-tag vil blive genkendt som CAI-vedligeholdte stier og vist som røde linjer jævnfør deres sværhedsgrad.
+
+    * ![rød linje](route_std.png) cai_scale=T
+    * ![stiplet linje](route_mnt1.png) cai_scale=E
+    * ![stiplet linje](route_mnt2.png) cai_scale=EE
+    * ![prikket linje](route_alp.png) cai_scale=EEA*
+  uk: |-
+    ## Storbritannien
+
+    Klassifikationen af [langdistancestier i Storbritannien](https://wiki.openstreetmap.org/wiki/WikiProject_United_Kingdom_Long_Distance_Paths) (dem, der tagges med `network=uk_ldp`) afhænger af `operator`-tagget. Relationer, der har `operator=National Trails`, vises som nationale ruter, og alle andre vises som regionale ruter.
+
+    Relationer med et `network=lwn/rwn/nwn/iwn`-tag vises som sædvanligt.
+  czech: |-
+    ## Tjekkiet
+
+    Tjekkiet bruger et system baseret på 7 forskellige symboler i 4 forskellige farver til at markere ruter. Se beskrivelsen på [siden om tagging i Tjekkiet](https://wiki.openstreetmap.org/wiki/WikiProject_Czech_Republic/Editing_Standards_and_Conventions#Doporu.C4.8Den.C3.A9_typy_cest) (kun på tjekkisk).
+
+    Når der er et `kct_*`-tag, foretrækkes det frem for et `osmc:symbol`-tag. Derudover vil ruten blive omklassificeret, hvis der ikke er gyldigt netværkstag. Ruter med `kct_red=major` bliver nationale ruter, og andre `kct_*=major`-ruter bliver klassificeret som regionale.
+  slovakia: |-
+    ## Slovakiet
+
+    Slovakiet bruger det samme system til at markere vandreruter som Tjekkiet. Dog tagges de på en lidt anden måde, se [siden om vandreruter i Slovakiet](https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Hiking_routes).
+
+    Alle ruter med et `operator=KST`-tag håndteres i henhold til det system. Da ruter i Slovakiet bør have et gyldigt netværkstag, bliver de ikke omklassificeret.
+  hungary: |-
+    ## Ungarn
+
+    Ungarn bruger også et system med et fast sæt af symboler i forskellige farver. Disse markeres med et specielt tag, [jel](https://wiki.openstreetmap.org/wiki/Key:jel).
+    Dette tag bliver givet større prioritet end et eventuelt `osmc:symbol`-tag.
+  germany: |-
+    ## Tyskland
+
+    ### Fränkischer Albverein
+
+    Netværket ved Nürnberg er ganske tæt, derfor vil regionale ruter med tagget `operator=Fränkischer Albverein` blive vist på lavere zoomniveauer end normalt.
+  ukcycle: |-
+    ## Storbritannien
+
+    ### Norwich
+
+    Norwich har et system af farvekodede ruter. Ruter med tagget `operator=Norwich City Council` markeres med en farvet firkant svarende til `colour`-tagget.
+elevationprofiles:
+  title: Højdeprofiler
+  general: |-
+    Højdeprofilerne laves ved hjælp af af højdedata fra [ASTER global digital højdemodel (GDEM) version 2](http://asterweb.jpl.nasa.gov/gdem.asp), og hverken "ele"-tagget i OpenStreetMap eller tunneller og broer medregnes.
+
+    Hvis ruten har flere end to endepunkter eller består af mere end et segment, vil der ikke blive vist nogen højdeprofil. Retningen på profilen følger ruten fra vest mod øst eller fra nord mod syd. Hvis ruterne havde elementer med roller som "start" og "mål" og/eller var listet op kontinuert fra start til slut, ville vi måske være istand til at bestemme retningen på ruten ud fra selve relationen. Du kan eventuelt holde dette i tankerne, hvis du kortlægger ruter på OpenStreetMap.
+
+    Der er huller, såkaldte "tomrum", hvor vi ikke har nogen højdedata. Disse vises med huller i højdeprofillinjen.
+
+    Bemærk, at selvom ASTER version 2 nok er den bedste, frie, globale DEM, har den sine begrænsninger med hensyn til nøjagtighed og dækning, se deres [konklusionsrapport angående valideringen](http://www.jspacesystems.or.jp/ersdac/GDEM/ver2Validation/Summary_GDEM2_validation_report_final.pdf) for flere oplysninger. Unøjagtighederne forværres yderligere af unøjagtigheden af dataene i OSM, [en udglatningsteknik](https://github.com/waymarkedtrails/waymarked-trails-site/commit/602e12f38bfdc50c7e07bd3f44e080d72bcbb2a2), vi anvender, og opløsningen af profilen, som bliver lavere, jo længere ruten bliver.
+technical:
+  title: Tekniske detaljer
+  general: |-
+    Rutekortlaget opdateres hvert minut og er normalt 2-5 minutter efter OSM-serveren. Datoen i det øverste venstre hjørne angiver den seneste opdatering. Opdateringer af det underliggende Mapnik-kort bliver ikke styret af denne hjemmeside. Afhængigt af belastningen på OSM-serveren vil de tage mellem et minut og nogle få timer.
+
+    Kildekoden til denne hjemmeside er tilgængelig under en GPL-licens og fordelt over flere arkiver:
+    * [backend-kode og kortgenerering](https://github.com/waymarkedtrails/waymarkedtrails-backend/)
+    * [API-tjeneste](https://github.com/waymarkedtrails/waymarkedtrails-api/)
+    * [hjemmeside-frontend](https://github.com/waymarkedtrails/waymarkedtrails-website/)
+
+    Hvis du blot vil rapportere en fejl eller diskutere funktioner på hjemmesiden, kan du bruge [issue tracker](https://github.com/waymarkedtrails/waymarked-trails-site/issues)
+    eller [diskussionsfunktionen](https://github.com/waymarkedtrails/waymarked-trails-site/discussions) i projektarkivet på Github.
+  translation: |-
+    ## Oversættelser
+
+    Oversættelser håndteres af de evigt hjælpsomme folk på [translatewiki.net](https://translatewiki.net). Hvis du har lyst til at bidrage med en oversættelse til dit eget sprog eller give kommentarer til de eksisterende oversættelser, kan du besøge [projektsiden på translatewiki.net](https://translatewiki.net/wiki/Translating:Waymarked_Trails).
+legal:
+  title: Juridiske betingelser og betingelser for brug
+  copyright: |-
+    Rutekortlaget er tilgængelig under [Creative Commons Navngivelse-DelPåSammeVilkår 3.0 Tyskland-licensen](https://creativecommons.org/licenses/by-sa/3.0/de/deed.en
+    ) og GPX-sporene er under [ODbL](https://opendatacommons.org/licenses/odbl/). De kan genbruges og ændres, så længe det resulterende værk bruger en kompatibel licens, og OpenStreetMap-projektet og denne hjemmeside nævnes.
+  usage: |-
+    ## Betingelser for brug
+
+    Du må godt bruge kortlaget på andre hjemmesider, så længe trafikmængden er moderat. Vær så venlig at mellemlagre kortbillederne så meget som muligt og angive en korrekt HTTP-"referrer". Massedownload af kortbilleder frarådes på det stærkeste.
+
+    GPX-spor er gjort tilgængelig som et hjælpemiddel for brugere af denne side. Massedownload er ikke tilladt.
+  disclaimer: |-
+    ## Ansvarsfraskrivelse
+
+    Hverken kortets korrekthed eller fuldstændighed kan garanteres. Hvis du tager ud på en vandretur, så medbring et godt papirkort, det passende udstyr og din almindelige, sunde fornuft. Naturen kan være så hensynsløs, som den er smuk.
+
+    Denne hjemmeside indeholder henvisninger til eksterne hjemmesider. Forfatteren af denne hjemmeside har ingen indflydelse på indholdet af disse hjemmesider og tager intet ansvar for det.
+acknowledgements:
+  title: Tak til
+  text: |-
+    Alle kortdata stammer fra [OpenStreetMap og dets bidragydere](https://www.openstreetmap.org) og er gjort tilgængelig under ODbl-licensen. Grundkortet stammer også fra OSM. Der er flere oplysninger på [OSMs side om ophavsret](https://www.openstreetmap.org/copyright).
+
+    Højdeprofillaget og højdekurverne kommer fra en sammenblanding af SRTM- og ASTER GDEM-data. ASTER GDEM er lavet af METI og NASA. Efterbehandlingen blev venligst stillet til råde af Yves Cainaud fra [opensnowmap.org](https://opensnowmap.org).
+
+    Højdeprofilkoden er udviklet af Espen Oldeman Lund i samarbejde med [Kresendo](https://www.kresendo.no) og TG4NP-projektet på [Western Norway Research Institute](https://www.vestforsk.no).
+
+    Vintersportspisteudgaven er udviklet af Michael Spreng. Ridningssymbolet er
+    udarbejdet af Robert Whittaker.
+
+    Oversættelser af denne hjemmeside kommer fra [translatewiki.net og dens bidragydere](https://translatewiki.net/wiki/Category:Waymarked_Trails_translators). En særskilt tak går til de pionæroversættere, der bidrog med oversættelser før translatewiki.net: Yves Cainaud (fransk),
+    Oscar Formaggi (italiensk),
+    Gustavo [Tuentibiker](http://www.blogger.com/profile/12473561703699888751) Ramis (spansk),
+    [Guttorm Flatabø](https://guttormflatabo.com)/TG4NP (norsk bokmål og nynorsk),
+    Mads Lumholt/TG4NP (dansk), Magnús Smári Snorrason/TG4NP (islandsk),
+    Lars Mikaelsson/TG4NP (svensk) og Elina Pesonen (finsk).
+contact:
+  title: Kontakt
+  text: |-
+    Spørgsmål og kommentarer til denne hjemmeside kan sendes til: [lonvia@denofr.de](mailto:lonvia@denofr.de).
+
+    Tekniske fejl kan også rapporteres på [projektets fejlhåndtering på [github](https://github.com/waymarkedtrails/waymarked-trails-site/issues). Før du indrapporterer en fejl, bedes du kontrollere at problemet ikke skyldes dataene i OSM.
+...

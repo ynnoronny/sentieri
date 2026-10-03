@@ -1,0 +1,172 @@
+# Messages for Galician (galego)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Elisardojm
+# Author: Iváns
+# Author: Toliño
+# Author: Vivaelcelta
+---
+attribution:
+  data: Datos cartográficos © do [OpenStreetMap](https://www.openstreetmap.org) baixo
+    a licenza [ODbL](https://www.openstreetmap.org/copyright/gl)
+  elevation_title: datos de elevación de [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Máis detalles
+  no_data: Non hai información de destino dispoñible para este marco.
+  title: Destinos
+details:
+  altitude: Altitude
+  educational:
+    other: Esta é unha ruta educativa.
+  image: Imaxe
+  mapped_len: Lonxitude cartografada
+  note: Nota
+  oneway: Esta ruta só se pode seguir cara adiante.
+  official_len: Lonxitude oficial
+  operator: Operador
+  pilgrimage:
+    christian: Esta é unha ruta de peregrinos cristiáns.
+    other: Esta é unha ruta de peregrinos.
+  roundtrip: Esta ruta é de ida e volta.
+  route_symbol: Símbolo de ruta
+  signed_direction: Esta ruta só está sinalizada cara adiante.
+  subroutes_title: Seccións
+  superroutes_title: Parte de
+  symbol: Símbolo
+  linear:
+    "yes": A relación para esta ruta está ordenada e nun único anaco.
+    sorted: A relación para esta ruta está nun único anaco, pero os membros non están
+      ordenados.
+    "no": A relación ten buratos ou outros problemas.
+  tags:
+    key: clave
+    title: Etiquetas do OpenStreetMap
+    value: valor
+  type:
+    guidepost: Marco
+    node: Nó
+    relation: Relación
+    way: Vía
+    wayset: Conxunto de vías
+  website: Páxina web
+  wikipedia: Wikipedia
+  zoom_to: Amosar no mapa
+  analyze:
+    title: Analizar a relación
+    summary: Esta relación ten {num} segmentos.
+    disclaimer: |-
+      Isto mostra os segmentos de ruta tal e como foron calculados por rutas marcadas
+      da relación, algo que non sempre é correcto. Para atopar máis información
+      sobre como se ordenan as rutas, visite as páxinas de axuda.
+    open_end: Final aberto na ruta.
+    multi_end: Neste punto conflúen máis de dous tramos do percorrido.
+    two_end: |-
+      Punto onde se interrompe a ruta porque a relación non está ordenada.
+      As liñas descontinuas vermellas indican onde continúa a ruta.
+  download:
+    title: Descargar a ruta
+    need_format: Escolle un formato
+    need_direction: Escolle as vías a incluír
+    start: Obter o ficheiro
+    format:
+      title: Formato
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJson
+    direction:
+      title: Incluír as vías nas indicacións
+      forward: adiante
+      backward: atrás
+      both: ambas
+    other_ways: Partes adicionais da ruta
+elevation:
+  ascent: Ascenso acumulado
+  descent: Descenso acumulado
+  diagram:
+    altitude: Altitude (m)
+    distance: Distancia (km)
+  title: Perfil de elevación
+  total: Desnivel total
+  unavailable: Non se atoparon datos de elevación.
+  warn_unsorted: Seica a ruta está incompleta ou desordenada. A información da elevación
+    pode ser pouco precisa.
+error:
+  load_error: Erro ó conectarse ó servidor.
+  missing_id: Falta o parámetro "id".
+  missing_query: Falta o parámetro "query".
+  panel_title: Erro
+  object_not_found: Non se atopou o obxecto.
+  api_unavailable: A API non está dispoñible.
+headline:
+  last_update: Última actualización
+help: Acerca do mapa
+locate_me: Localizarme
+network:
+  continental: Rutas continentais
+  downhill: Descenso
+  national: Rutas nacionais
+  node: Conexións da rede de nós
+  nordic: Esquí nórdico
+  other: Outras rutas
+  regional: Rutas rexionais
+  skitour: Esquí de montaña
+  sled: Pista de zorra
+  sleigh: Pista de zorra
+  winter_hike: Sendeirismo invernal
+osmc_symbol:
+  back: Volver
+  background: O fondo funciona de xeito semellante. Tamén contén unha cor e unha forma.
+    O fondo tamén pode ser só un nome de cor que resulta nun cadro da cor escollida.
+    Isto amósase na primeira fila.
+  background_heading: Fondo
+  examples: Exemplos
+  foreground: O símbolo do primeiro plano está formado por unha cor e unha forma ligadas
+    por un guión baixo. A táboa de abaixo amosa tódalas combinacións recoñecidas por
+    este sitio. Tamén recoñece frontes que formadas só polo nome da forma. Os símbolos
+    para estes amósanse na última columna.
+  foreground_heading: Primeiro plano
+  intro_header: Vista xeral
+  preview: |-
+    Escriba un valor osmc:symbol no campo de entrada
+          para ollar de que xeito se representará no mapa.
+  preview_heading: Vista previa
+  symbol_reference_heading: Lista completa de símbolos compatibles
+routelist:
+  loading: Cargando...
+  close: Pechar
+  more: Achegue para ollar máis rutas.
+  rollup: Agochar
+  title: Rutas
+search:
+  places: Lugares
+  routes: Rutas
+  title: Procurar
+  help: Use palabras clave para buscar. Pode procurar nomes de rutas (por exemplo,
+    sendeiro dos Apalaches, E2) ou lugares (por exemplo, Berlín).
+settings:
+  base_map: Mapa de base
+  browser_language: Empregar os axustes do navegador
+  hillshading_layer: Sombreado de ladeiras
+  language: Lingua
+  route_layer: Capa de rutas
+  title: Axustes do mapa
+  transparency: Transparencia do mapa
+site_description:
+  cycling: Rutas ciclistas locais e de longa distancia, con mapas e información do
+    OpenStreetMap.
+  hiking: Rutas de sendeirismo local e de longa distancia, con mapas e información
+    do OpenStreetMap.
+  mtb: Rutas de ciclismo de montaña, con mapas e información do OpenStreetMap.
+  riding: Rutas de equitación, con mapas e información do OpenStreetMap.
+  skating: Rutas de patinaxe en liña, con mapas e información do OpenStreetMap.
+  slopes: Pistas de deportes de inverno, descenso en esquí, patinaxe de fondo, sendeirismo
+    invernal, con mapas e información do OpenStreetMap.
+site_title:
+  cycling: Ciclismo
+  hiking: Sendeirismo
+  mtb: Ciclismo de montaña
+  osmc_symbol: A etiqueta osmc:symbol
+  riding: Equitación
+  skating: Patinaxe en liña
+  slopes: Pistas de deportes de inverno
+...

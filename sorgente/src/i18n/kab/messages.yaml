@@ -1,0 +1,49 @@
+# Messages for Kabyle (Taqbaylit)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Belkacem77
+# Author: Sayem AtVkm
+---
+details:
+  note: Tazmilt
+  official_len: Teɣzi tunsibt
+  operator: Amahal
+  subroutes_title: Tigezmiyin
+  superroutes_title: D ayla n
+  tags:
+    title: Ticraḍ OpenStreetMap
+  website: Asmel web
+elevation:
+  diagram:
+    distance: Ameccaq
+error:
+  load_error: Tuccḍa n tuqqna ar uqedac
+  panel_title: Tuccḍa
+headline:
+  last_update: Lqem aneggaru
+help: ɣef tkarḍa
+locate_me: Sideg-iyi
+osmc_symbol:
+  back: Uɣal
+  background_heading: Agilal
+  examples: Imedyaten
+  foreground_heading: Aɣawas amezwaru
+routelist:
+  close: Mdel
+  rollup: Skur
+  title: Iberdan
+search:
+  routes: Iberdan
+  title: Nadi
+settings:
+  base_map: Takarḍa tazadurt
+  browser_language: Seqdec iɣewwaṛen n iminig
+  hillshading_layer: Agazal
+  language: Tutlayt
+  title: Iɣewwaṛen n tekarḍa
+  transparency: Asuseɣ n tkarḍa
+site_title:
+  cycling: S uvilu
+  hiking: ɣef uḍar
+  riding: Tanaka
+...

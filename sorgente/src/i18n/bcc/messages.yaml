@@ -1,0 +1,33 @@
+# Messages for Southern Balochi (جهلسری بلوچی)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Baloch Afghanistan
+# Author: FarsiNevis
+# Author: Moshtank
+---
+details:
+  note: نکته
+  official_len: Official length
+  operator: اوپیراتور
+  subroutes_title: بخش‌ها
+  superroutes_title: بخشی شه
+  tags:
+    title: برچسب‌های نقشه باز شهری
+  website: وب سایت
+error:
+  panel_title: مِشتک
+headline:
+  last_update: آخرین روزآمدسازی
+osmc_symbol:
+  background_heading: پیش‌زمینه
+routelist:
+  title: مسیرها
+search:
+  routes: مسیرها
+settings:
+  base_map: تقشه پایه
+  hillshading_layer: سایه تپه
+  language: زبان
+  route_layer: لایه مسیر
+  transparency: شفافیت نقشه
+...

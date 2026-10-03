@@ -1,0 +1,32 @@
+# Messages for Burmese (မြန်မာဘာသာ)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dr Lotus Black
+---
+details:
+  note: မှတ်စု
+  subroutes_title: အပိုင်းများ
+  website: ဝဘ်ဆိုဒ်
+  wikipedia: ဝီကီပီးဒီးယား
+elevation:
+  diagram:
+    distance: အကွာအဝေး (ကီလိုမီတာ)
+error:
+  panel_title: အမှား
+headline:
+  last_update: နောက်ဆုံး မွမ်းမံမှု
+help: မြေပုံအကြောင်း
+osmc_symbol:
+  back: နောက်သို့
+  background_heading: နောက်ခံ
+  examples: ဥပမာများ
+  foreground_heading: ရှေ့ခံ
+  preview_heading: ကြိုတင်အစမ်းကြည့်ရှုရန်
+routelist:
+  close: ပိတ်ရန်
+search:
+  title: ရှာဖွေရန်
+settings:
+  language: ဘာသာစကား
+  title: မြေပုံ အပြင်အဆင်များ
+...

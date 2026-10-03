@@ -1,0 +1,347 @@
+# Messages for Slovenian (slovenščina)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Eleassar
+# Author: JanezPavelZebovec
+# Author: Lesko987
+# Author: Shirayuki
+---
+about:
+  title: O zemljevidu
+  hiking: Zemljevid prikazuje označene pohodniške poti po vsem svetu.
+  cycling: Zemljevid prikazuje označene kolesarske poti po vsem svetu.
+  mtb: Zemljevid prikazuje označene poti za gorsko kolesarjenje po vsem svetu.
+  skating: Zemljevid prikazuje označene poti za rolanje po vsem svetu.
+  riding: Zemljevid prikazuje označene jahalne poti po vsem svetu.
+  slopemap: Zemljevid prikazuje označene zimske športne proge po vsem svetu.
+  osm: |-
+    Poti so postavljene na standardni zemljevid OpenStreetMap in po želji na sloj senčenja vzpetin. Zemljevid poti je ustvarjen iz
+    podatkov iz projekta [OpenStreetMap](https://www.openstreetmap.org) (OSM). OSM je zemljevid sveta, ki ga je mogoče prosto urejati, pri čemer lahko sodeluje vsak. Kar pomeni, da ni nikakor končan, vendar tudi to, da lahko prispevate z dodajanjem novih poti in popravljanjem napak na obstoječih. Če želite izvedeti več o OpenStreetMap, glejte [Vodnik za začetnike] (https://wiki.openstreetmap.org/wiki/Beginners%27_Guide).
+rendering:
+  title: Upodabljanje podatkov OSM
+  hikingroutes: |-
+    Pohodniške poti morate v OSM vnesti kot zveze. To je podrobno opisano na strani o označevanju
+    [walking routes](https://wiki.openstreetmap.org/wiki/Walking_Routes) v dokumentaciji vikija OSM. Ta zemljevid prikazuje zveze, ki imajo vsaj naslednje oznake:
+
+        type = route|superroute
+        route = foot|walking|hiking
+  cyclingroutes: "Kolesarske poti morate v OSM vnesti kot zveze. To je podrobno opisano
+    na strani o označevanju \n[cycling routes](https://wiki.openstreetmap.org/wiki/Cycle_routes)
+    v dokumentaciji vikija OSM. Ta zemljevid prikazuje zveze, ki imajo vsaj naslednje
+    oznake:\n\n    type = route|superroute\n    route = bicycle\n\nPoti za gorsko
+    kolesarjenje so prikazane na ločenem [zemljevidu goskega kolesarjenja](https://mtb.waymarkedtrails.org/sl/)."
+  mtbroutes: "Gorske kolesarske poti morate v OSM vnesti kot zveze. To je podrobno
+    opisano na strani o označevanju \n[cycling routes](https://wiki.openstreetmap.org/wiki/Cycle_routes)
+    v dokumentaciji vikija OSM. Ta zemljevid prikazuje zveze, ki imajo vsaj naslednje
+    značke:\n\n    type = route|superroute\n    route = mtb\n\nKolesarske poti so
+    prikazane na ločenem [kolesarskem zemljevidu](https://cycling.waymarkedtrails.org/sl/)."
+  skatingroutes: |-
+    Označene poti za rolanje je treba označiti
+    kot vse druge zveze poti.
+    Za označevanje, ki ga razume ta zemljevid,
+    glejte vikistran o
+    [švicarskih poteh za rolanje](https://wiki.openstreetmap.org/wiki/Switzerland/InlineNetwork).
+    Da bi bila pot prepoznana kot pot za rolanje, morajo biti prisotne naslednje značke:
+
+     type = route|superroute
+     route = inline_skates
+  ridingroutes: |-
+    Jahalne poti, označene s kažipoti, morajo biti označene kot vse druge zveze poti.
+    Za podrobnosti glejte [stran o poteh v vikiju OSM](https://wiki.openstreetmap.org/wiki/Relation:route).
+    Da bi bila pot prepoznana kot jahalna, morajo biti prisotne naslednje značke:
+
+     type = route|superroute
+     route = horse
+  sloperoutes: |-
+    Označene zimske športne proge so poti z značkami piste:type.
+    Da bi bile prepoznane kot proge, morajo biti prisotne naslednje značke:
+
+        piste:type = downhill|nordic|sled|hike|sleigh
+
+    Za zveze morajo biti prisotne naslednje značke:
+
+        type = route|superroute
+        route = ski|piste
+        piste:type = downhill|nordic|sled|hike|sleigh
+  slopeclassification: |-
+    Razvrstitev smučarskih prog se
+    določi z značko »piste:difficulty« in uporabi
+    za določitev barve pri upodabljanju.
+  classification: |-
+    Značka »route« z več vrednostmi
+    je podprta, če so te ločene s
+    podpičji brez presledkov.
+    Razvrstitev (in s tem barva poti na zemljevidu) se določi z značko »network«.
+  slopemaplabels: |-
+    Oznaka za smučarske proge se »ugane« iz značk v naslednjem vrstnem redu:
+
+    1. Če obstaja značka »piste:ref«, uporabite besedilno oznako z značko »piste:ref«.
+    2. Če obstaja značka »piste:name«, izpeljite referenco iz nje, najprej z uporabo
+     samo velikih črk, če pa to spodleti, pa z uporabo prvih črk
+     imena.
+    3. Če obstaja značka »ref«, uporabite besedilno oznako z značko »ref«.
+    4. Če gre za zvezo in obstaja značka »name«, izpeljite referenco iz nje, najprej z uporabo
+     samo velikih črk, če pa to spodleti, pa z uporabo prvih črk
+     imena.
+    5. Odnehajte.
+
+    Proge za nordijsko smučanje so označene z znakom, ki prikazuje samo njihovo barvo, če je prisotna barvna značka.
+  hikinglabels: |-
+    Oznaka za vsako pot se »ugane« iz značk v naslednjem vrstnem redu:
+
+    1. Preverjanje [lokalnih pravil upodabljanja](#help-hikinglocal).
+    2. Poskus interpretacije značke »osmc:symbol«. Za podrobnosti o tem, kateri deli
+     se razumejo, glejte [pravila upodabljanja osmc:symbol](osmc_symbols.html).
+    3. Če obstaja značka »ref«, se uporabi besedilna oznaka z značko »ref«.
+    4. Če obstaja značka »name«, se referenca izpelje iz nje, najprej z uporabo
+     samo velikih črk, če pa to spodleti, pa z uporabo prvih črk
+     imena.
+    5. Odnehanje.
+  labels: |-
+    Oznaka za vsako pot se »ugane« iz značk v naslednjem vrstnem redu:
+
+    1. Če obstaja značka »ref«, uporabite besedilno oznako z značko »ref«.
+    2. Če obstaja značka »name«, izpeljite referenco iz nje, najprej z uporabo
+     samo velikih črk, če ps to spodleti, pa z uporabo prvih črk imena.
+    3. Odnehajte.
+  hierarchy: Zemljevid podpira tudi [hierarhije zvez](#help-hierarchies).
+  guideposts: |-
+    [Kažipoti](https://wiki.openstreetmap.org/wiki/Tag:information%3Dguidepost)
+    so prepoznani po naslednjih značkah:
+
+        tourism=information
+        information=guidepost
+        name=<name>
+        ele=<altitude>
+
+    Znački »tourism« in »information« sta obvezni. Znački »name« in »ele« lahko izpustite.
+route_order:
+  title: Razvrščanje poti
+  text: |-
+    Waymarked Trails potrebuje pravilno razvrščene poti za prikaz višinskega profila in za prenos datotek GPX in KML. Pri analizi poti poskuša čim bolj upoštevati vrstni red članov znotraj zveze, ker to kartografom olajša vplivanje na vrstni red, ne da bi se morali zateči k poskusom in napakam. Če se zdi relacija nerazvrščena, bo Waymarked Trails še vedno razvrstil poti, če in samo če lahko poti tvorijo neprekinjeno linearno pot.
+
+    Pri razvrščanju poti se upoštevajo vloge relacij. Vlogi `naprej` in `nazaj` se lahko uporabita za označevanje odsekov, kjer je treba slediti poti na različnih delih, odvisno od smeri. Vedite, da so te vloge opredeljene glede na smer vrisane poti, ne pa glede na smer dejanske poti. Če imate tak razdeljen odsek,
+    se prepričajte, da se poti za vsako smer pojavijo neposredno
+    druga za drugo v relaciji in da poti še vedno sledijo
+    vrstnemu redu poti.
+
+    Vse druge vloge se štejejo za stranske poti takšne ali drugačne oblike in se pri splošnem razvrščanju poti prezrejo. Še vedno se prikažejo na zemljevidu.
+
+    Waymarked Trails lahko obravnava nerazdeljena krožišča znotraj
+    poti. Preprosto dodajte zaprto pot brez kakršne koli vloge in krožišče se bo notranje razdelilo na ustrezne odseke. To deluje celo če obstaja V-dostop do krožišča, ki je razdeljen na
+    "naprej" in "nazaj". Obstajata dva primera, ko ta obravnava ne uspe:
+
+    * če je bilo krožišče iz nekega razloga razdeljeno na več poti,
+     potem _morate_ dodati dele z ustreznimi vlogami `naprej` in `nazaj`.
+    * Če je krožišče del smernega odseka, morate krožišče
+     razdeliti in dodati uporabljeni del z ustrezno vlogo.
+
+    Splošno pravilo za razvrščanje: če JOSM-ov urejevalnik zvez
+    prikaže pot kot neprekinjeno, potem bi moral biti Waymaked trails sposoben prikazati tudi linearno pot.
+hierarchies:
+  title: Hierarhije zvez
+  text: |-
+    Zemljevid podpira tudi hierarhije zvez, tj. zveze, ki same vsebujejo
+    zveze. Te hierarhije se v zbirki podatkov OSM uporabljajo na dva različna načina: bodisi se uporabljajo za razdelitev zelo dolgih poti
+    (npr. [E1](https://hiking.waymarkedtrails.org/#route?id= 36367)) ali za preprečitev podvojitve dela, kjer dve poti potekata po isti trasi (glejte
+    na primer švicarsko [ViaFrancigena](https://hiking.waymarkedtrails.org/#route?id) =124582)
+    ki je del evropske [Via Francigena](https://hiking.waymarkedtrails.org/#route?id=11860709)).
+    V prvem primeru podzveze same niso popolne poti
+    in zato na zemljevidu ne bi smele biti prikazane neodvisno.
+
+    Kako natančno upodabljalnik obravnava podzvezo, je odvisno od značke
+    »network«:
+
+    * Če imata nadrejena in podrejena zveza isto mrežno značko, se podrejena
+     zveza šteje le za stopnjo nadrejene zveze. Njena pot
+     se zato doda nadrejeni zvezi, podrejena zveza pa
+     na zemljevidu ni prikazana.
+    * Če se mrežni znački nadrejene in podrejene zveze razlikujeta,
+     se domneva, da sta neodvisni. Pot podrejene zveze
+     se doda nadrejeni zvezi, na zemljevidu pa sta prikazani obe zvezi.
+
+    *Opomba:* Podzveze lahko kadar koli pregledate v brskalniku poti. Preprosto
+    izberite nadrejeno zvezo in prikazali boste seznam njenih podzvez, ki jih lahko izberete.
+osmc:
+  title: Značka osmc:symbol
+  text: |-
+    Oznaka `osmc:symbol` omogoča strojno berljiv opis simbolov poti. Namenjena je predvsem simbolom, ki so sestavljeni iz preprostih geometrijskih oblik. Za celoten opis in zgodovino oznake obiščite stran [osmc:symbol](https://wiki.openstreetmap.org/wiki/Key:osmc:symbol) na vikiju OSM. Waymarked Trails v večinoma sledi skladnji, opisani na vikistrani, z nekaj omejitvami in razširitvami, opisanimi tukaj.
+
+    Da se simbol lahko prikaže na zemljevidu, mora imeti eno od naslednjih oblik zapisa:
+
+        waycolor:background
+        waycolor:background:foreground
+        waycolor:background:foreground:foreground2
+        waycolor:background:foreground:foreground2:text:textcolor
+        waycolor:background:foreground:text:textcolor
+
+    `waycolor` mora biti vedno prisoten, vendar se na tem zemljevidu ne uporablja. Poleg tega morate določiti ozadje, čeprav lahko polje pustite prazno. Nato sledita največ dve različni ospredji. Na koncu lahko po želji dodate majhno referenčno besedilo, ki se prikaže na simbolu. Barva besedila mora biti vedno določena. Upoštevajte, da bo Waymarked Trails prezrl referenčna besedila, če postanejo predolga. Dovoljena dolžina je odvisna od izbranega ozadja: stroga omejitev je 4 znaki, ozadje v obliki diamanta sprejme samo en znak, črtasta in pasovna ozadja pa sploh ne sprejemajo besedila.
+  reference_footer: |-
+    Celoten seznam barv in oblik, ki jih lahko upodobi Waymarked Trails
+    , najdete v spodnjem sklicu.
+  footer: Za seznam simbolov, ki jih podpira Waymarked Trails, glejte dodatno stran
+    z oznako [osmc:symbol](osmc_symbols.html).
+hikinglocal:
+  title: Lokalizirano upodabljanje
+  text: |-
+    Po svetu se za označevanje pohodniških poti uporabljajo številni različni sistemi. Ta zemljevid poskuša uporabljati najsplošnejše značke, da bi zagotovil njihovo primerno upodabljanje, toda pri nekaterih sistemih, zlasti pri mrežah pohodniških poti, to zagotovo spodleti. Za prilagoditev tem sistemom je zemljevid mogoče lokalizirati za regije, pri katerih
+    standardno upodabljanje ne zadostuje.
+
+    Tu je prikazan seznam regij, ki uporabljajo posebne kartografske simbole. Če želite, da bo vaša regija upodobljena na poseben način, preberite nasvete na koncu strani.
+  swiss: |-
+    ## Švica
+
+    Švica ima obsežno mrežo označenih pohodniških poti, ki pokrivajo celotno državo. Ta mreža je vozliščno omrežje, v katerem imajo vlogo vozlišč kažipoti. Vse poti so dosledno označene glede na njihovo težavnost.
+    Na zemljevidu so te poti prikazane rdeče z vzorcem črt, ki označuje težavnost.
+
+    * ![rdeča črta](route_std.png) *pohodniška pot*, označena z ![diamant](yellow_diamond.svg). Označeno z `network=lwn` in `osmc:symbol=yellow:[...]:yellow_diamond`.
+    * ![črtkana črta](route_mnt.png) *planinska pot*, označena z ![belo-rdeče-belo](white_red_bar.svg). Označeno z `network=lwn` in `osmc:symbol=red:white:red_bar`.
+    * ![pikčasta črta](route_alp.png) *gorniška pot*, označena z ![belo-modro-belo](white_blue_bar.svg). Označeno z `network=lwn` in `osmc:symbol=blue:white:blue_bar`.
+
+    Upoštevajte, da so prek te mreže na običajen način prikazane številne državne in regionalne poti.
+
+    Za več informacij o označevanju pohodniških poti v Švici v OSM glejte: [Švicarsko pohodniško omrežje](https://wiki.openstreetmap.org/wiki/Switzerland/HikingNetwork).
+  austria: |-
+    ## Avstrija
+
+    Regija Vorarlberg uporablja podoben sistem klasifikacije kot Švica. Poti z oznakami `operator=Land Vorarlberg`, `network=rwn` in `network:type=basic_network` bodo označene s shemo, ki temelji na težavnosti:
+
+    * ![rdeča črta](route_std.png) osmc:symbol=yellow:white:yellow_upper
+    * ![črtkana črta](route_mnt.png) osmc:symbol=red:white:red_bar
+    * ![pikčasta črta](route_alp.png) osmc:symbol=blue:white:blue_bar
+  italy: |-
+    ## Italija
+
+    Italijanski gorniški klub (CAI, ''Club Alpino Italiana'') vzdržuje mrežo planinskih poti
+    ki so po težavnosti razvrščene podobno kot v Švici.
+    Poti, označene z značkami »network=lwn«, »osmc:symbol=red:..« in »cai_scale«,
+    bodo prepoznane kot poti, ki jih vzdržuje CAI, in prikazane kot rdeče črte
+    glede na njihovo težavnost.
+
+    * ![rdeča črta](route_std.png) cai_scale=T
+    * ![črtkana črta](route_mnt1.png) cai_scale=E
+    * ![črtkana črta](route_mnt2.png) cai_scale=EE
+    * ![pikčasta črta](route_alp.png) cai_scale=EEA*
+  uk: |-
+    ## Združeno kraljestvo
+
+    Razvrstitev [dolgih poti v Združenem kraljestvu](https://wiki.openstreetmap.org/wiki/WikiProject_United_Kingdom_Long_Distance_Paths)
+    (tistih, ki so označene z »network=uk_ldp«) je odvisna od značke »operator«. Zveze
+    z »operator=National Trail« so prikazane kot nacionalne poti, vse druge zveze pa
+    kot regionalne poti.
+
+    Zveze z »network=lwn/rwn/nwn/iwn« so obravnavane kot običajno.
+  czech: |-
+    ## Češka republika
+
+    Država uporablja standardno označevanje poti, ki ga sestavlja 7 simbolov v 4 različnih barvah. Za opis glejte [češko stran za označevanje](https://wiki.openstreetmap.org/wiki/WikiProject_Czech_Republic/Editing_Standards_and_Conventions#Doporu.C4.8Den.C3.A9_typy_cest) (samo v češčini).
+
+    Ko je oznaka `kct_*` na voljo, ima prednost pred katero koli oznako `osmc:symbol`. Poleg tega se pot prerazvrsti, če ni mogoče najti veljavne mrežne značke. Poti s `kct_red=major` postanejo državne poti, preostale `kct_*=major` se razvrstijo kot regionalne.
+  slovakia: |-
+    ## Slovaška
+
+    Slovaška uporablja enako standardno označevanje poti kot Češka. Vendar je
+    shema označevanja nekoliko drugačna, glejte
+    [slovaško pohodniško stran](https://wiki.openstreetmap.org/wiki/WikiProject_Slovakia/Hiking_routes).
+
+    V skladu s to shemo so označene vse poti z »operator=KST«. Ker bi morale poti
+    na Slovaškem imeti veljavno mrežno značko, se prerazvrstitev ne izvede.
+  hungary: |-
+    ## Madžarska
+
+    Tudi Madžarska uporablja sistem s standardnim naborom simbolov v različnih barvah. Ti
+    so označeni z lastno oznako [jel](https://wiki.openstreetmap.org/wiki/Key:jel).
+    Ta oznaka ima prednost pred katero koli oznako `osmc:symbol`.
+  germany: |-
+    ## Nemčija
+
+    ### Fränkischer Albverein
+
+    Mreža v okolici Nürnberga je precej gosta, zato bodo regionalne poti, označene
+    z `operator=Fränkischer Albverein` prikazane pri večji povečavi kot običajno.
+  ukcycle: |-
+    ## Združeno kraljestvo
+
+    ### Norwich
+
+    Norwich uporablja sistem barvno označenih poti. Poti, označene z
+    `operator=Norwich City Council`, so označene z barvnim kvadratkom glede na oznako `colour`.
+elevationprofiles:
+  title: Višinski profili
+  general: |-
+    Višinski profili so ustvarjeni s podatki o nadmorski višini iz modela [ASTER global digital elevation model (GDEM), različica 2](https://asterweb.jpl.nasa.gov/gdem.asp), značka »ele« v OpenStreetMap se ne upošteva, prav tako se ne upoštevajo predori in mostovi. ASTER GDEM je izdelek METI in NASA.
+
+    Če ima pot več kot dve končni točki ali če je sestavljena iz več kot enega segmenta, profil ne bo upodobljen. Smer profila sledi trasi zahod–vzhod ali sever–jug. Če bi imele poti elemente z vlogami, kot sta »start« (začetek) in »goal« (cilj), in/ali če bi bile navedene neprekinjeno od začetka do cilja, bi morda lahko določili smer iz same zveze poti. To boste morda želeli imeti v mislih, če boste kartirali poti v OpenStreetMap.
+
+    Obstajajo vrzeli, tako imenovane »praznine«, za katere nimamo podatkov o nadmorski višini. Te so prikazane s prekinitvami v črti višinskega profila.
+
+    Upoštevajte, da je različica ASTER 2 sicer verjetno najboljša prosta globalna DEM, vendar ima svoje omejitve tako glede natančnosti kot pokritosti; za več informacij glejte [poročilo o povzetku validacije](https://www.jspacesystems.or .jp/ersdac/GDEM/ver2Validation/Summary_GDEM2_validation_report_final.pdf). Netočnosti so še večje zaradi netočnosti podatkov OSM, [tehnike mehčanja](https://github.com/waymarkedtrails/waymarked-trails-site/commit/602e12f38bfdc50c7e07bd3f44e080d72bcbb2a2), ki jo uporabljamo, in ločljivosti profila, ki je tem manjša, čim daljša je pot.
+technical:
+  title: Tehnične podrobnosti
+  general: "Prekrivni sloj poti se posodobi vsako minuto in za strežnikom OSM običajno
+    zaostaja 2–5 minut. Zadnjo posodobitev prikazuje datum v zgornjem levem kotu.
+    Posodobitve osnovnega zemljevida Mapnik niso pod nadzorom tega mesta. Glede na
+    trenutno obremenitev strežnika OSM trajajo od minute do nekaj ur.\n\nIzvorna koda
+    za to spletno mesto je na voljo pod licenco GPL in je\nrazdeljena v več shrambah:\n*
+    [zaledna koda in generiranje zemljevidov](https://github.com/waymarkedtrails/waymarkedtrails-backend/)\n*
+    [API-storitev](https://github.com/waymarkedtrails/waymarkedtrails-api/) \n* [obličje
+    spletnega mesta](https://github.com/waymarkedtrails/waymarkedtrails-website/)\n\nČe
+    želite samo sporočiti napako ali razpravljati o možnostih spletnega mesta,\nlahko
+    uporabite [sledilnik težav](https://github.com/waymarkedtrails/waymarked-trails-site/issues)\nali
+    [možnost za razpravljanje](https://github.com/waymarkedtrails/waymarked-trails-site/discussions)
+    shrambe projekta v GitHubu."
+  translation: |-
+    ## Prevodi
+
+    Prevode zagotavljajo hvalevredni ljudje na
+    [translatewiki.net](https://translatewiki.net). Če želite prispevati prevod
+    v svojem jeziku ali posredovati povratne informacije o obstoječih prevodih, obiščite stran projekta
+    [translatewiki.net](https://translatewiki.net/wiki/Translating:Waymarked_Trails).
+legal:
+  title: Pravni poduk in pogoji uporabe
+  copyright: "Sloj poti je na voljo pod licenco\n[Creative Commons Attribution-Share
+    Alike 3.0 Germany](https://creativecommons.org/licenses/by-sa/3.0/de/deed.sl),
+    sledi GPX pa pod licenco \n[ODbL](https://opendatacommons.org/licenses/odbl/).\nLahko
+    jih naprej uporabljate in spreminjate, če nastalo delo uporablja združljivo licenco\nter
+    sta omenjena projekt OpenStreetMap in to spletno mesto."
+  usage: |-
+    ## Pravilnik o uporabi
+
+    Ta prekrivni sloj lahko uporabljate na drugih spletnih mestih, če so stopnje dostopa zmerne. Prosimo, čim pogosteje predpomnite ploščice in uporabite pravilno nastavljenega napotitelja. Masovni prenos ploščic je močno odsvetovan.
+
+    Obiskovalcem tega spletnega mesta so za priročnost na voljo sledi GPX. Masovni prenos ni dovoljen.
+  disclaimer: |-
+    ## Zavrnitev odgovornosti
+
+    Ne jamčimo niti za pravilnost niti za popolnost tega zemljevida. Če greste na izlet, si priskrbite spodoben papirnati zemljevid, primerno opremo in ne puščajte zdrave pameti doma.
+    Narava je lahko lepa, vendar tudi neusmiljena.
+
+    To spletno mesto vsebuje povezave do zunanjih spletnih mest. Avtor te strani nima vpliva na
+    vsebino teh spletnih strani in zanjo ne prevzema nobene odgovornosti.
+acknowledgements:
+  title: Priznanja
+  text: |-
+    Vse podatke zemljevida zagotavljajo [OpenStreetMap in sodelavci](https://www.openstreetmap.org) in se delijo pod dovoljenjem ODbL. OSM zagotavlja tudi osnovni zemljevid.
+    Za več informacij glejte [stran OSM o avtorskih pravicah](https://www.openstreetmap.org/copyright).
+
+    Zemljevid podlage OpenTopoMap-R je prijazno zagotovil [openmaps.fr](https://openmaps.fr/about-openmaps.fr.html). Če vam je všeč, razmislite o daru za vzdrževanje njihovih strežnikov. Za več informacij obiščite [openmaps donation page](https://openmaps.fr/donate).
+
+    Podatki senčenja in nadmorske višine so bili ustvarjeni na podlagi kombinacije podatkov SRTM in ASTER GDEM.
+    ASTER GDEM je izdelek METI in NASA.
+    Za poobdelavo je prijazno poskrbel Yves Cainaud iz [opensnowmap.org](https://opensnowmap.org).
+
+    Kodo za višinski profil je razvil Espen Oldeman Lund v sodelovanju med [Kresendo](https://www.kresendo.no) in projektom TG4NP na [Western Norway Research Institute](https://www.vestforsk.no).
+
+    Različico za zimske športne proge je razvil Michael Spreng. Simbol prog je pripravil Robert Whittaker.
+
+    Cilje kažipotov je obdelal [Mueschelsoft](http://osm.mueschelsoft.de/destinationsign/example/index.htm). Zahvaljujemo se Janu Michelu za ponujeno storitev.
+
+    Za prevode tega spletnega mesta so poskrbeli
+    [translatewiki.net in njegovi sodelavci](https://translatewiki.net/wiki/Category:Waymarked_Trails_translators). Posebna zahvala gre pionirskim prevajalcem, ki so zagotavljali prevode pred portalom translatewiki.net: Yvesu Cainaudu (francoščina), Oscar Formaggi (italijanščina), Gustavo [Tuentibiker](https://www.blogger.com/profile/12473561703699888751) Ramis (španščina), [Guttorm Flatabø](https://guttormflatabo.com)/TG4NP (norveški bokmål in nynorsk), Mads Lumholt/TG4NP (danščina), Magnús Smári Snorrason/TG4NP (islandščina), Lars Mikaelsson/TG4NP (švedščina) in Elina Pesonen (finščina).
+contact:
+  title: Stik
+  text: |-
+    Vprašanja in komentarje o tem spletnem mestu lahko pošljete na: [lonvia@denofr.de](mailto:lonvia@denofr.de).
+
+    Napake je mogoče prijaviti v [sledilniku težav projekta v githubu](https: //github.com/waymarkedtrails/waymarked-trails-site/issues). Preden prijavite napako, se prepričajte, da vzrok vaše težave ni v podatkih OSM.
+...

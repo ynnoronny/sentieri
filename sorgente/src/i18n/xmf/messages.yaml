@@ -1,0 +1,58 @@
+# Messages for Mingrelian (მარგალური)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Narazeni
+---
+destination_sign:
+  more: უმოსი დეტალეფი
+  title: მალობეფი
+details:
+  altitude: სიმაღალა
+  image: სურათი
+  note: ხვილაფა
+  operator: ოპერატორი
+  subroutes_title: გიმნართეფი
+  tags:
+    title: OpenStreetMap ხინტკეფი
+  website: ვებ-ხასჷლა
+  zoom_to: რუკას ძირაფა
+  download:
+    format:
+      GPX: GPX
+      KML: KML
+elevation:
+  ascent: ართამი ეშულა
+  descent: ართამი დილულა
+  diagram:
+    altitude: სიმაღალა (მ)
+    distance: მეძენა (კმ)
+  title: რელიეფიშ პროფილი
+error:
+  load_error: სერვერშა მერსხუაფაშ ჩილათა.
+  panel_title: ჩილათა
+headline:
+  last_update: ბოლო გოახალაფა
+help: რუკაშ გეშა
+locate_me: დობგორით
+osmc_symbol:
+  back: უკახალე
+  background_heading: ფონი
+  examples: სამანგეფი
+  foreground_heading: თარი ფერი
+  preview_heading: გიწოთოლორაფა
+routelist:
+  close: კილუა
+  rollup: ტყობინაფა
+  title: მარშრუტეფი
+search:
+  routes: მარშრუტეფი
+  title: გორუა
+settings:
+  base_map: საბაზე რუკა
+  hillshading_layer: რელიეფიშ ლანდი
+  language: ნინა
+  title: რუკაშ პარამეტრეფი
+site_title:
+  cycling: ველოსპორტი
+  riding: ცხენენჯუა
+...

@@ -1,0 +1,44 @@
+# Messages for Marathi (मराठी)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Sau6402
+# Author: V.narsikar
+---
+details:
+  mapped_len: नकाशात असलेली लांबी
+  note: टिप्पणी
+  official_len: अधिकृत लांबी
+  operator: यंत्रचालक
+  subroutes_title: विभाग
+  superroutes_title: चा भाग
+  tags:
+    title: ओपनस्ट्रीटमॅपच्या खूणपताका
+  website: संकेतस्थळ
+elevation:
+  diagram:
+    altitude: उन्नतन (मि)
+    distance: अंतर (किमी)
+  title: एलिव्हेशन प्रोफाईल
+error:
+  panel_title: चूक
+headline:
+  last_update: शेवटील अद्यतन
+osmc_symbol:
+  background_heading: मागची बाजु
+  foreground_heading: समोरची बाजु
+routelist:
+  title: वाटा
+search:
+  routes: वाटा
+  title: शोध
+settings:
+  base_map: मूळ नकाशा
+  hillshading_layer: डोंगराचे शेडींग
+  language: भाषा
+  route_layer: रस्त्याचा थर
+site_title:
+  cycling: सायकलिंग
+  hiking: हायकिंग
+  mtb: एमटीबी
+  skating: ईनलाईन स्केटींग
+...

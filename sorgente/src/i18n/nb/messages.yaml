@@ -1,0 +1,74 @@
+# Messages for Norwegian Bokmål (norsk bokmål)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dittaeva
+# Author: Jon Harald Søby
+# Author: Kingu
+# Author: SuperPotato
+# Author: Wouterkoch
+---
+attribution:
+  data: Kartdata © [OpenStreetMap](https://www.openstreetmap.org) under [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: høgdedata av [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Flere detaljer
+  title: Mål
+details:
+  mapped_len: Vist på kartet
+  note: Melding
+  official_len: Offisiell lengde
+  operator: Ansvarlig
+  subroutes_title: Deler
+  superroutes_title: Del av
+  tags:
+    title: OpenStreetMap-tagger
+  website: Vevside
+  zoom_to: Vis på kart
+  download:
+    format:
+      GPX: GPX
+elevation:
+  ascent: Akkumulert stigning
+  descent: Akkumulert nedstigning
+  diagram:
+    altitude: Høyde (m)
+    distance: Avstand (km)
+  title: Høgdeprofil
+error:
+  load_error: Feil under tilkobling til tjeneren.
+  panel_title: Feil
+headline:
+  last_update: Sist oppdatert
+help: Om kartet
+locate_me: Finn meg
+network:
+  downhill: nedoverbakke
+osmc_symbol:
+  back: Tilbake
+  background_heading: Bakgrunn
+  examples: Eksempler
+  foreground_heading: Forgrunn
+  preview_heading: Forhåndsvis
+routelist:
+  close: Lukk
+  rollup: Rull opp
+  title: Ruter
+search:
+  routes: Ruter
+  title: Søk
+settings:
+  base_map: Bakgrunnskart
+  browser_language: Bruk nettleserens innstillinger
+  hillshading_layer: Høydelag
+  language: Språk
+  route_layer: Ruter
+  title: Kartinnstillinger
+  transparency: Kart-transparens
+site_title:
+  cycling: Sykkelruter
+  hiking: Vandreruter
+  mtb: Terrengsykkelruter
+  riding: Ridning
+  skating: Inline-skøyte-ruter
+  slopes: Vintersportbakker
+...

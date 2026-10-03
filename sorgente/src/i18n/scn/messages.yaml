@@ -1,0 +1,77 @@
+# Messages for Sicilian (sicilianu)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Ajeje Brazorf
+# Author: GianAntonucci
+# Author: Sarvaturi
+---
+attribution:
+  data: Dati mappa © [OpenStreetMap](https://www.openstreetmap.org) cu licenza [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: dati di cota di [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Cchiossai dittagghî
+details:
+  altitude: Autitùtini
+  image: Mmàggini
+  mapped_len: Taliatu ntâ mappa
+  note: Nota
+  official_len: Lunghizza officiali
+  operator: Upiraturi
+  subroutes_title: Sizzioni
+  superroutes_title: Parti di
+  symbol: Sìmmulu
+  tags:
+    key: chiavi
+    title: Etichetti OpenStreetMap
+    value: valuri
+  type:
+    node: Nudu
+    relation: Rilazzioni
+    way: Passu
+  website: Situ web
+  zoom_to: Ammustra ntâ mappa
+  download:
+    format:
+      GPX: GPX
+      KML: KML
+elevation:
+  ascent: Acchianata accumulata
+  descent: Scisa accumulata
+  diagram:
+    altitude: Altitùdini (m)
+    distance: Distanza (km)
+  title: Prufilu altimètricu
+error:
+  panel_title: Erruri
+headline:
+  last_update: Ùrtimu aggiurnamentu
+help: Nfurmazzioni supra la mappa
+osmc_symbol:
+  background_heading: Sfunnu
+  examples: Asempi
+  foreground_heading: Ntô primu pianu
+  preview_heading: Antiprima
+routelist:
+  close: Chiudi
+  title: Pircursi
+search:
+  places: Lochi
+  routes: Pircursi
+  title: Cerca
+settings:
+  base_map: Mappa di basi
+  browser_language: Usa mpustazzioni dû browser
+  hillshading_layer: Hill shading
+  language: Lingua
+  route_layer: Route layer
+  title: Mpustazzioni mappa
+  transparency: Trasparenza mappa
+site_title:
+  cycling: Ciclismu
+  hiking: Escursioni a pedi
+  mtb: Mountain bike
+  osmc_symbol: Lu tag osmc:symbol
+  riding: Passiati a cavaddu
+  skating: Pattinaggiu n lìnia
+  slopes: Pisti pi sport mmirnali
+...

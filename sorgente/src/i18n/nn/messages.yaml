@@ -1,0 +1,53 @@
+# Messages for Norwegian Nynorsk (norsk nynorsk)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Dimitar
+# Author: Dittaeva
+# Author: Njardarlogar
+---
+attribution:
+  data: Kartdata © [OpenStreetMap](https://www.openstreetmap.org) under [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: høgdedata av [SRTM/ASTER](help/acknowledgements)
+details:
+  mapped_len: Vist på kartet
+  note: Melding
+  official_len: Offisiell lengd
+  operator: Ansvarleg
+  subroutes_title: Deler
+  superroutes_title: Del av
+  tags:
+    title: OpenStreetMap-taggar
+  website: Vevside
+elevation:
+  ascent: Akummulert stiging
+  descent: Akkumulert nedstiging
+  diagram:
+    altitude: Høgd (m)
+    distance: Avstand (km)
+  title: Høgdeprofil
+error:
+  panel_title: Feil
+headline:
+  last_update: Sist oppdatert
+osmc_symbol:
+  background_heading: Bakgrunn
+  foreground_heading: Framgrunn
+routelist:
+  title: Ruter
+search:
+  routes: Ruter
+  title: Søk
+settings:
+  base_map: Bakgrunnskart
+  hillshading_layer: Høgdelag
+  language: Språk
+  route_layer: Ruter
+  transparency: Kart-transparens
+site_title:
+  cycling: Sykkelruter
+  hiking: Vandreruter
+  mtb: Terrengsykkelruter
+  riding: aking
+  skating: Inline-skøyte-ruter
+  slopes: Vintersportsbakkar
+...

@@ -1,0 +1,75 @@
+# Messages for Venetian (vèneto)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Alunardon90
+# Author: Fierodelveneto
+---
+attribution:
+  data: Dati mapa © [OpenStreetMap](https://www.openstreetmap.org) soto licensa [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: dati de cuora de [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: Pì detaji
+  title: Destinasion
+details:
+  altitude: Altitùdene
+  image: Imàzene
+  mapped_len: Vixuałixà so ła mapa
+  note: Note
+  official_len: Longhesa oficiałe
+  operator: Operador
+  subroutes_title: Sesion
+  superroutes_title: Parte de
+  tags:
+    title: Note de OpenStreetMap
+  website: sito web
+  zoom_to: Mostra inte ła mapa
+  download:
+    format:
+      GPX: GPX
+      KML: KML
+elevation:
+  ascent: Aseza cumułada
+  descent: Deseza cumułada
+  diagram:
+    altitude: Altitùdene (m)
+    distance: Distansa (km)
+  title: Profiło altimètrego
+  unavailable: Nisun dato catà su l'altura ojeto.
+error:
+  load_error: Eror de conesion al sèrver.
+  panel_title: Erore
+headline:
+  last_update: Ultimo ajornamento
+help: Informasion so ła mapa
+locate_me: Pozisióname
+network:
+  downhill: diseze
+osmc_symbol:
+  back: Indrio
+  background_heading: Sfondo
+  examples: Ezenpi
+  foreground_heading: In primo pian
+  preview_heading: Vista prèvia
+routelist:
+  close: Sara
+  rollup: Inròdoła
+  title: Percorsi
+search:
+  routes: Percorsi
+  title: Serca
+settings:
+  base_map: Mapa de baxe
+  browser_language: Dòpara łe inpostasion del navegadore web
+  hillshading_layer: Onbrejamento rilievi
+  language: Łéngua
+  route_layer: Liveło de percorso
+  title: Costuma ła mapa
+  transparency: Trasparense mapa
+site_title:
+  cycling: Ciclixmo
+  hiking: Escursion a pie
+  mtb: Bici da montagna
+  riding: A spaso a cavało
+  skating: Patinajo in linea
+  slopes: Piste par spor de inverno
+...

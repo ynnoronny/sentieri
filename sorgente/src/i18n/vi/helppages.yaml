@@ -1,0 +1,76 @@
+# Messages for Vietnamese (Tiếng Việt)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Bapham123
+# Author: Minh Nguyen
+# Author: Nguyenphutrong2
+---
+about:
+  title: Giới thiệu về bản đồ
+  hiking: Bản đồ này có các tuyến đường đi bộ đường dài có biển chỉ đường trên toàn
+    thế giới.
+  cycling: Bản đồ này có các tuyến đường xe đạp có biển chỉ đường trên toàn thế giới.
+  mtb: Bản đồ này có các tuyến đường xe đạp leo núi có biển chỉ đường trên toàn thế
+    giới.
+  skating: Bản đồ này có các tuyến đường trượt băng có biển chỉ đường trên toàn thế
+    giới.
+  osm: Các tuyến đường được vẽ trên bản đồ chuẩn OpenStreetMap cùng một lớp đồi bóng
+    tùy chọn. Bản đồ tuyến đường được tạo ra từ dữ liệu của dự án [OpenStreetMap](http://www.openstreetmap.org)
+    (OSM). OSM là một bản đồ thế giới nguồn mở cho phép mọi người tham gia sửa đổi.
+    Vì nó chưa hoàn toàn, bạn có thể đóng góp các tuyến đường mới và chỉnh sửa các
+    lỗi trên bản đồ. Để tìm hiểu thêm về OpenStreetMap, hãy đọc [hướng dẫn bắt đầu](http://wiki.openstreetmap.org/wiki/Vi:Beginners'_guide?uselang=vi).
+rendering:
+  title: Kết xuất dữ liệu OSM
+hierarchies:
+  title: Cấp bậc quan hệ
+osmc:
+  title: Thẻ osmc:symbol
+hikinglocal:
+  title: Kiểu kết xuất địa phương
+elevationprofiles:
+  title: Biểu đồ cao độ
+technical:
+  title: Chi tiết kỹ thuật
+  translation: |-
+    ## Bản dịch
+
+    Các bản dịch được những người tốt bụng tại [translatewiki.net](https://translatewiki.net) bảo quản. Để đóng góp một bản dịch trong ngôn ngữ của bạn hoặc phản hồi về một bản dịch đã được đóng góp, hãy ghé vào [trang dự án tại translatewiki.net](https://translatewiki.net/wiki/Translating:Waymarked_Trails?uselang=vi).
+legal:
+  title: Điều khoản pháp luật và sử dụng
+  copyright: Lớp tuyến đường được phát hành theo [Giấy phép Creative Commons Ghi công–Chia
+    sẻ tương tự 3.0 Đức](https://creativecommons.org/licenses/by-sa/3.0/de/deed.vi),
+    và các tuyên đường GPX được phát hành theo [ODbL](https://opendatacommons.org/licenses/odbl/).
+    Bạn được phép tái sử dụng và thay đổi chúng, miễn là tác phẩm dẫn xuất được phát
+    hành theo một giấy phép thích hợp và dự án OpenStreetMap cùng trang này được ghi
+    công.
+acknowledgements:
+  title: Ghi công
+  text: |-
+    Tất cả dữ liệu bản đồ được cung cấp bởi [OpenStreetMap và những người đóng góp](https://www.openstreetmap.org)
+    và được phân phối theo giấy phép ODbL. Bản đồ cơ sở cũng được cung cấp bởi OSM.
+    Để biết thêm thông tin, hãy xem
+    [trang bản quyền OSM](https://www.openstreetmap.org/copyright).
+
+    Dữ liệu độ cao và bóng đồi được tạo từ sự kết hợp dữ liệu SRTM và ASTER GDEM.
+    ASTER GDEM là sản phẩm của METI và NASA.
+    Quá trình xử lý hậu kỳ được cung cấp bởi Yves Cainaud từ [opensnowmap.org](https://opensnowmap.org).
+
+    Mã hồ sơ độ cao đã được phát triển bởi Espen Oldeman Lund do sự hợp tác giữa [Kresendo](https://www.kresendo.no) và dự án TG4NP tại [Viện nghiên cứu Tây Na Uy](https://www.vestforsk.no).
+
+    Biến thể thể thao trượt dốc mùa đông đã được phát triển bởi Michael Spreng. Biểu tượng cưỡi ngựa là
+    do Robert Whittaker chuẩn bị.
+
+    Các điểm đến trong bảng hướng dẫn do [Mueschelsoft](http://osm.mueschelsoft.de/destinationsign/example/index.htm) xử lý. Xin chân thành cảm ơn Jan Michel đã cung cấp dịch vụ.
+
+    Bản dịch của trang Web này được cung cấp bởi [translatewiki.net và các biên dịch viên](https://translatewiki.net/wiki/Category:Waymarked_Trails_translators). Xin gửi lời cảm ơn đặc biệt tới những dịch giả tiên phong đã cung cấp bản dịch trước khi sử dụng translatewiki.net: Yves Cainaud (tiếng Pháp),
+    Oscar Formaggi (tiếng Ý), Gustavo [Tuentibiker](https://www.blogger.com /profile/124735617036999888751) Ramis (tiếng Tây Ban Nha),
+    [Guttorm Flatabø](https://guttormflatabo.com)/TG4NP (tiếng Na Uy bokmål và nynorsk),
+    Mads Lumholt/TG4NP (tiếng Đan Mạch), Magnús Smári Snorrason/ TG4NP (Islandic),
+    Lars Mikaelsson/TG4NP (Thụy Điển) và Elina Pesonen (Phần Lan).
+contact:
+  title: Liên lạc
+  text: |-
+    Xin gửi câu hỏi và lời phản hồi về trang này cho [lonvia@denofr.de](mailto:lonvia@denofr.de).
+
+    Cũng có thể báo lỗi trên [trang vấn đề của dự án tại GitHub](https://github.com/waymarkedtrails/waymarked-trails-site/issues). Trước khi báo lỗi, xin chắc chắn rằng vấn đề không phải do dữ liệu OSM.
+...

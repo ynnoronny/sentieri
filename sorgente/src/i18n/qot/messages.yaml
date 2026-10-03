@@ -1,0 +1,160 @@
+attribution:
+  data: Map data © [OpenStreetMap](https://www.openstreetmap.org) under [ODbL](https://www.openstreetmap.org/copyright)
+  elevation_title: elevation data by [SRTM/ASTER](help/acknowledgements)
+destination_sign:
+  more: More details
+  no_data: No destination information available for this guidepost.
+  title: Destinations
+details:
+  altitude: Altitude
+  educational:
+    other: This is an educational trail.
+  image: Image
+  mapped_len: Mapped length
+  note: Note
+  oneway: This route can only be followed in forward direction.
+  official_len: Official length
+  operator: Operator
+  pilgrimage:
+    christian: This is a Christian pilgrim's route.
+    other: This is a pilgrim's route.
+  roundtrip: This route is a roundtrip.
+  route_symbol: Route symbol
+  signed_direction: This route is only signed in forward direction.
+  subroutes_title: Sections
+  superroutes_title: Part of
+  symbol: Symbol
+  linear:
+    "yes": The relation for this route is sorted and in one piece.
+    "sorted": The relation for this route is in one piece but members are not sorted.
+    "no": The relation has holes or other issues.
+  tags:
+    key: key
+    title: OpenStreetMap tags
+    value: value
+  type:
+    guidepost: Guidepost
+    node: Node
+    relation: Relation
+    way: Way
+    wayset: Wayset
+  website: Website
+  wikipedia: Wikipedia
+  zoom_to: Show on map
+  analyze:
+    title: Analyze relation
+    summary: This relation has {num} segments.
+    disclaimer: |
+      This shows the route segments as they were computed by waymarkedtrails
+      from the relation, which may not always be correct. For more information
+      how waymarkedtrails sorts routes, visit the help pages.
+    open_end: Open end in the route.
+    multi_end: More than two segments of the route meet in this point.
+    two_end: |
+      Point where route is interrupted because relation is not sorted.
+      The red dashed lines shows where the route continues.
+  download:
+    title: Download route
+    need_format: Choose a format
+    need_direction: Choose ways to include
+    start: Get file
+    format:
+      title: Format
+      GPX: GPX
+      KML: KML
+      GeoJson: GeoJson
+    direction:
+      title: Include ways in direction
+      forward: forwards
+      backward: backwards
+      both: both
+    other_ways: Additional route parts
+elevation:
+  ascent: Accumulated ascent
+  descent: Accumulated descent
+  diagram:
+    altitude: Altitude (m)
+    distance: Distance (km)
+  title: Elevation profile
+  total: Total ascent/descent
+  unavailable: No elevation data found.
+  warn_unsorted: Route is potentially unordered or incomplete. Elevation information
+    might be inaccurate.
+error:
+  load_error: Error connecting to server.
+  missing_id: Missing parameter 'id'.
+  missing_query: Missing parameter 'query'.
+  panel_title: Error
+  object_not_found: Object not found.
+  api_unavailable: API not available.
+headline:
+  last_update: Last update
+help: About the map
+locate_me: Locate me
+network:
+  continental: Continental routes
+  downhill: Downhill
+  national: National routes
+  node: Node network connections
+  nordic: Nordic skiing
+  other: Other routes
+  regional: Regional routes
+  skitour: Ski tours
+  sled: Sledding piste
+  sleigh: Sleigh piste
+  winter_hike: Winter hiking
+osmc_symbol:
+  back: Back
+  background: The background works in a similar way. It also consists of a color and
+    a shape. The background may also be only a color name which results in a canvas
+    of the chosen color.This is shown in the first row.
+  background_heading: Background
+  examples: Examples
+  foreground: The foreground symbol consists of a color and a shape linked by an underscore.
+    The table below shows all combinations recognised by this site. It also recognises
+    foregrounds that consist only of the name of the shape. The symbols for those
+    are shown in the last column.
+  foreground_heading: Foreground
+  intro_header: Overview
+  preview: "Type an osmc:symbol value into the input field below\n     to see how\
+    \ it will be rendered on the map."
+  preview_heading: Preview
+  symbol_reference_heading: Full list of supported symbols
+routelist:
+  loading: Loading...
+  close: Close
+  more: Zoom in to see more routes.
+  rollup: Roll up
+  title: Routes
+search:
+  places: Places
+  routes: Routes
+  title: Search
+  help: Please use keywords to search with. You can search on names of trails (e.g. Appalachian Trail, E2) or places (e.g. Berlin).
+settings:
+  base_map: Base map
+  browser_language: Use browser settings
+  hillshading_layer: Hill shading
+  language: Language
+  route_layer: Route layer
+  title: Map settings
+  transparency: Map transparency
+site_description:
+  cycling: Local and long-distance cycling routes, with maps and information from
+    OpenStreetMap.
+  hiking: Local and long-distance hiking and walking routes, with maps and information
+    from OpenStreetMap.
+  mtb: Mountain-biking routes (MTB), with maps and information from OpenStreetMap.
+  riding: Horse riding routes, with maps and information from OpenStreetMap.
+  skating: Inline-skating routes, with maps and information from OpenStreetMap.
+  slopes: Winter sport slopes, downhill skiing, cross-country skating, winter walking,
+    with maps and information from OpenStreetMap.
+site_title:
+  cycling: Cycling
+  hiking: Hiking
+  mtb: MTB
+  osmc_symbol: The osmc:symbol tag
+  riding: Horse Riding
+  skating: Inline Skating
+  slopes: Winter Sport Slopes
+

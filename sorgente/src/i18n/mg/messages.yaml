@@ -1,0 +1,40 @@
+# Messages for Malagasy (Malagasy)
+# Exported from translatewiki.net
+# Export driver: phpyaml
+# Author: Jagwar
+---
+details:
+  note: Naoty
+  subroutes_title: Fizarana
+  superroutes_title: Singan'i
+  website: Tranonkala
+  download:
+    format:
+      GPX: GPX
+elevation:
+  diagram:
+    altitude: Haavo (m)
+    distance: Halavirana (km)
+error:
+  panel_title: Hadisoana
+headline:
+  last_update: Nohavaozina farany
+locate_me: Aiza aho
+osmc_symbol:
+  back: Hiverina
+routelist:
+  close: Hidiana
+  title: Lalana
+search:
+  routes: Lalana
+  title: Hikaroka
+settings:
+  base_map: Sarintany fototra
+  language: Fiteny
+  title: Parametatry ny sarintany
+site_title:
+  cycling: Bisikileta
+  hiking: Tongotra
+  mtb: Mandeha VTT
+  riding: Soavaly
+...
