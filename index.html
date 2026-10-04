@@ -1,58 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#2f4a2b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Sentieri">
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    <meta name="keywords" lang="en" content="waymarkedtrails, hiking routes, walking, openstreetmap" />
-    <meta name="description" id="meta-description" />
-    <title>Sentieri</title>
-
-    <link rel="shortcut icon" href="img/map_hiking.ico" />
-    <link rel='stylesheet' href='hiking.css'>
-    <link rel='stylesheet' href='build/bundle.min.css'>
-
-    <script id="WMTConfig" type="application/json">
-        {
-            "TITLE": "hiking",
-
-            "ROUTE_GROUPS" : [
-                { "id": "INT", "label": "network.continental"},
-                { "id": "NAT", "label": "network.national"},
-                { "id": "REG", "label": "network.regional"},
-                { "id": "", "label": "network.other"},
-                { "id": "NDS", "label": "network.node" }
-            ],
-            "HELP" : [
-                { "l": 0, "section": "about", "paragraphs": ["hiking", "osm"]},
-                { "l": 0, "section": "rendering", "paragraphs": ["hikingroutes", "classification", "hikinglabels", "hierarchy", "guideposts"]},
-                { "l": 1, "section": "route_order", "paragraphs": ["text"]},
-                { "l": 1, "section": "hierarchies", "paragraphs": ["text"]},
-                { "l": 1, "section": "osmc", "paragraphs": ["text", "footer"]},
-                { "l": 1, "section": "hikinglocal", "paragraphs": ["text", "czech", "germany", "hungary", "slovakia", "swiss", "austria", "italy", "uk"]},
-                { "l": 1, "section": "elevationprofiles", "paragraphs": ["general"]},
-                { "l": 0, "section": "technical", "paragraphs": ["general", "translation"]},
-                { "l": 0, "section": "legal", "paragraphs": ["copyright", "usage", "disclaimer"]},
-                { "l": 0, "section": "acknowledgements", "paragraphs": ["text"]},
-                { "l": 0, "section": "contact", "paragraphs": ["text"]}
-            ]
-        }
-    </script>
-    <script>
-        import('./build/main.js');
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(function () {});
-            });
-        }
-    </script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sentieri</title>
+<meta name="theme-color" content="#0d0f0c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sentieri">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="app.css?v=1">
 </head>
-
 <body>
+
+<!-- ============ IN CAMMINO ============ -->
+<main id="scr-walk" class="screen" hidden>
+  <div class="status">
+    <span id="offChip" class="chip"><span class="dot"></span><span id="offTxt">Online</span></span>
+    <span id="gpsTxt" class="dim"></span>
+  </div>
+
+  <div class="trailhead">
+    <span class="flag"><span></span><b id="wRef">–</b><span></span></span>
+    <div class="th-text">
+      <div id="wDest" class="th-title"></div>
+      <div id="wSub" class="dim small"></div>
+    </div>
+    <button id="btnFlip" class="iconbtn" aria-label="Inverti direzione">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 4v14M7 18l-3-3M7 18l3-3M17 20V6M17 6l-3 3M17 6l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <div class="minimap">
+    <svg id="miniSvg" aria-label="Il percorso e la tua posizione"></svg>
+    <button id="btnOpenMap" class="pillbtn">Mappa</button>
+  </div>
+
+  <button id="nextJunction" class="junction" hidden>
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 20v-6a4 4 0 0 1 4-4h8M15 7l3 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="njText"></span>
+  </button>
+  <div id="offRoute" class="warn" hidden></div>
+
+  <div class="stats">
+    <div class="stat"><div class="num"><span id="sKm">–</span> <small id="sKmU"></small></div><div class="lbl">all'arrivo</div></div>
+    <div class="stat"><div class="num"><span id="sUp">–</span> <small>m</small></div><div class="lbl">di salita</div></div>
+    <div class="stat"><div class="num"><span id="sTime">–</span> <small id="sTimeU"></small></div><div class="lbl">stimati</div></div>
+  </div>
+
+  <ul id="ahead" class="ahead"></ul>
+
+  <div class="bottom">
+    <button id="btnMore" class="btn primary grow">Altro</button>
+    <button id="btnSos" class="sos" aria-label="SOS: tieni premuto 2 secondi">
+      <svg viewBox="0 0 52 52" class="ring" aria-hidden="true"><circle cx="26" cy="26" r="24"/></svg>
+      <span>SOS</span>
+    </button>
+  </div>
+  <div id="sosHint" class="hint" hidden>Tieni premuto SOS per 2 secondi</div>
+</main>
+
+<!-- ============ BENVENUTO (nessun sentiero attivo) ============ -->
+<main id="scr-home" class="screen" hidden>
+  <div class="status"><span class="chip off-none"><span class="dot"></span><span>Sentieri</span></span></div>
+  <h1 class="big">Dove cammini oggi?</h1>
+  <p class="dim">Scegli un sentiero: l'app ti accompagna con distanza, salita, tempo, fonti e bivi. Funziona anche senza rete.</p>
+  <div class="stack">
+    <button class="btn primary" data-go="prepare">Sentieri vicino a me</button>
+    <button class="btn" data-go="menu">Cerca un sentiero</button>
+    <button class="btn ghost" id="homeMap">Apri la mappa</button>
+  </div>
+</main>
+
+<!-- ============ BIVIO ============ -->
+<main id="scr-junction" class="screen" hidden>
+  <div class="topnav">
+    <button class="iconbtn" data-go="walk" aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <span id="jHead" class="dim"></span>
+  </div>
+  <h1 id="jTitle" class="big"></h1>
+  <div id="jMine" class="sign mine"></div>
+  <div id="jOthers" class="stack"></div>
+  <p id="jNote" class="card text"></p>
+  <button class="btn primary bottomfix" data-go="walk">Ok, proseguo</button>
+</main>
+
+<!-- ============ ALTRO ============ -->
+<main id="scr-menu" class="screen" hidden>
+  <form id="searchForm" class="search" role="search">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <label for="q" class="sr">Cerca</label>
+    <input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Sentiero (es. 227), rifugio, paese…">
+  </form>
+  <div id="searchRes" class="list" hidden></div>
+
+  <nav class="card list" id="menuList">
+    <button class="row" data-go="prepare">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>
+      <span class="grow">Prepara un giro</span>
+    </button>
+    <button class="row" id="rowMap">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><path d="M3 17l5-6 4 4 3-3 6 7M3 20h18"/></svg>
+      <span class="grow">Mappa</span>
+    </button>
+    <button class="row" data-go="history">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><path d="M4 19c4-1 5-6 8-8s5-1 8-5"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="6" r="1.6"/></svg>
+      <span class="grow">I miei sentieri</span><span id="histCount" class="dim small"></span>
+    </button>
+    <button class="row" data-go="offline">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic green"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      <span class="grow">Zone offline</span><span id="offCount" class="dim small"></span>
+    </button>
+  </nav>
+
+  <div class="card">
+    <div class="rowtext"><span>Posizione GPS</span><span class="dim small">più rara = più batteria</span></div>
+    <div class="seg" id="gpsSeg">
+      <button data-gps="5">5 s</button><button data-gps="30">30 s</button><button data-gps="120">2 min</button>
+    </div>
+  </div>
+
+  <button id="menuBack" class="btn primary bottomfix">Torna al cammino</button>
+</main>
+
+<!-- ============ PREPARA / VICINO A ME ============ -->
+<main id="scr-prepare" class="screen" hidden>
+  <div class="topnav">
+    <button class="iconbtn" data-back aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div><h1 class="mid">Prepara un giro</h1><div id="prepWhere" class="dim small"></div></div>
+  </div>
+  <div id="prepList" class="stack"></div>
+</main>
+
+<!-- ============ SCHEDA SENTIERO ============ -->
+<main id="scr-route" class="screen" hidden>
+  <div class="topnav">
+    <button class="iconbtn" data-back aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <span class="dim small">Sentiero</span>
+  </div>
+  <div id="routeBody"></div>
+</main>
+
+<!-- ============ I MIEI SENTIERI / OFFLINE ============ -->
+<main id="scr-history" class="screen" hidden>
+  <div class="topnav">
+    <button class="iconbtn" data-back aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <h1 id="histTitle" class="mid">I miei sentieri</h1>
+  </div>
+  <div id="histList" class="stack"></div>
+</main>
+
+<!-- ============ SOS ============ -->
+<main id="scr-sos" class="screen sosscreen" hidden>
+  <div class="topnav">
+    <button class="iconbtn" data-back aria-label="Chiudi"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <span class="dim">Emergenza</span>
+  </div>
+  <h1 class="big">La tua posizione</h1>
+  <div id="sosCoords" class="coords">Cerco la posizione…</div>
+  <div id="sosPlace" class="dim"></div>
+  <div class="stack">
+    <a class="btn danger" href="tel:112">Chiama il 112</a>
+    <button id="sosShare" class="btn">Manda la posizione</button>
+    <button id="sosCopy" class="btn ghost">Copia le coordinate</button>
+  </div>
+  <p class="dim small">Leggi le coordinate all'operatore. Se non hai campo, prova a spostarti più in alto: gli SMS a volte passano anche quando le chiamate no.</p>
+</main>
+
+<!-- ============ MAPPA ============ -->
+<section id="mapLayer" class="maplayer" hidden>
+  <div id="map"></div>
+  <div class="mapbar">
+    <button id="mapClose" class="iconbtn solid" aria-label="Chiudi la mappa"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <span id="mapHint" class="chip">Tocca un sentiero</span>
+    <button id="mapLocate" class="iconbtn solid" aria-label="La mia posizione"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div id="mapSheet" class="mapsheet" hidden></div>
+</section>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="vendor/leaflet.js"></script>
+<script src="geo.js?v=1"></script>
+<script src="app.js?v=1"></script>
 </body>
 </html>
