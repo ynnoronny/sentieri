@@ -16,19 +16,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="vendor/leaflet.css">
-<link rel="stylesheet" href="app.css?v=1">
+<link rel="stylesheet" href="app.css?v=2">
 </head>
 <body>
 
 <!-- ============ IN CAMMINO ============ -->
 <main id="scr-walk" class="screen" hidden>
   <div class="status">
+    <button id="walkBack" class="iconbtn" aria-label="Indietro, alla scheda del sentiero"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <span id="offChip" class="chip"><span class="dot"></span><span id="offTxt">Online</span></span>
     <span id="gpsTxt" class="dim"></span>
   </div>
 
   <div class="trailhead">
-    <span class="flag"><span></span><b id="wRef">–</b><span></span></span>
+    <span id="wFlag"></span>
     <div class="th-text">
       <div id="wDest" class="th-title"></div>
       <div id="wSub" class="dim small"></div>
@@ -37,6 +38,8 @@
       <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 4v14M7 18l-3-3M7 18l3-3M17 20V6M17 6l-3 3M17 6l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
+
+  <div id="wEntry" class="entry"></div>
 
   <div class="minimap">
     <svg id="miniSvg" aria-label="Il percorso e la tua posizione"></svg>
@@ -47,7 +50,6 @@
     <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 20v-6a4 4 0 0 1 4-4h8M15 7l3 3-3 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <span id="njText"></span>
   </button>
-  <div id="offRoute" class="warn" hidden></div>
 
   <div class="stats">
     <div class="stat"><div class="num"><span id="sKm">–</span> <small id="sKmU"></small></div><div class="lbl">all'arrivo</div></div>
@@ -106,6 +108,14 @@
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>
       <span class="grow">Prepara un giro</span>
     </button>
+    <button class="row" data-go="giro">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M4 7h10a4 4 0 0 1 0 8H8M8 15l3-3M8 15l3 3"/></svg>
+      <span class="grow">Combina sentieri in un giro</span><span id="giroCount" class="dim small"></span>
+    </button>
+    <button class="row" data-go="favs">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
+      <span class="grow">Preferiti</span><span id="favCount" class="dim small"></span>
+    </button>
     <button class="row" id="rowMap">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><path d="M3 17l5-6 4 4 3-3 6 7M3 20h18"/></svg>
       <span class="grow">Mappa</span>
@@ -126,6 +136,11 @@
       <button data-gps="5">5 s</button><button data-gps="30">30 s</button><button data-gps="120">2 min</button>
     </div>
   </div>
+
+  <nav class="card list"><button class="row" id="rowStop" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+      <span class="grow">Termina il cammino</span>
+    </button></nav>
 
   <button id="menuBack" class="btn primary bottomfix">Torna al cammino</button>
 </main>
@@ -155,6 +170,21 @@
     <h1 id="histTitle" class="mid">I miei sentieri</h1>
   </div>
   <div id="histList" class="stack"></div>
+</main>
+
+<!-- ============ GIRO ============ -->
+<main id="scr-giro" class="screen" hidden>
+  <div class="topnav">
+    <button class="iconbtn" data-back aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div><h1 class="mid">Il tuo giro</h1><div class="dim small">Sentieri in ordine di percorrenza</div></div>
+  </div>
+  <div id="giroList" class="stack"></div>
+  <div id="giroSum" class="stack"></div>
+  <div class="stack bottomfix">
+    <button id="giroGo" class="btn primary">Vedi il giro e parti</button>
+    <button class="btn ghost" data-go="prepare">Aggiungi un sentiero</button>
+    <button id="giroClear" class="btn ghost">Svuota il giro</button>
+  </div>
 </main>
 
 <!-- ============ SOS ============ -->
@@ -188,7 +218,7 @@
 <div id="toast" class="toast" hidden></div>
 
 <script src="vendor/leaflet.js"></script>
-<script src="geo.js?v=1"></script>
-<script src="app.js?v=1"></script>
+<script src="geo.js?v=2"></script>
+<script src="app.js?v=2"></script>
 </body>
 </html>

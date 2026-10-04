@@ -1,9 +1,9 @@
 // Sentieri: offline support.
-var VERSION = 'c1';
+var VERSION = 'c2';
 var SHELL = 'compagno-' + VERSION;
 var TILES = 'tiles-v1';
 var DATA = 'data-v1';
-var FILES = ['./', 'index.html', 'app.css?v=1', 'geo.js?v=1', 'app.js?v=1', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
+var FILES = ['./', 'index.html', 'app.css?v=2', 'geo.js?v=2', 'app.js?v=2', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
   'vendor/leaflet.js', 'vendor/leaflet.css'];
 
 self.addEventListener('install', function (e) {
@@ -43,7 +43,7 @@ self.addEventListener('fetch', function (e) {
   var req = e.request;
   if (req.method !== 'GET') return;
   var u = new URL(req.url), h = u.hostname;
-  if (/tile\.opentopomap\.org$/.test(h) || h === 'tile.waymarkedtrails.org' || h === 'fonts.gstatic.com' || h === 'fonts.googleapis.com') {
+  if (/tile\.opentopomap\.org$/.test(h) || /basemaps\.cartocdn\.com$/.test(h) || (h === 's3.amazonaws.com' && u.pathname.indexOf('/elevation-tiles-prod/') === 0) || h === 'tile.waymarkedtrails.org' || h === 'fonts.gstatic.com' || h === 'fonts.googleapis.com') {
     e.respondWith(cacheFirst(req, TILES, 12000)); return;
   }
   if ((h === 'hiking.waymarkedtrails.org' && u.pathname.indexOf('/api/') === 0) || h === 'overpass-api.de') {
