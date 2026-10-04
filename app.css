@@ -131,18 +131,16 @@ h1.mid { margin: 0; font-family: var(--cond); font-weight: 600; font-size: 28px;
 .empty { color: var(--dim); font-size: 15px; line-height: 1.5; padding: 8px 0; }
 
 /* Map */
-.maplayer { position: fixed; inset: 0; z-index: 50; background: #000; }
-#map { position: absolute; inset: 0; background: #000; }
-.darkbase { filter: invert(1) hue-rotate(180deg) brightness(.72) contrast(1.15) saturate(.35); }
+.maplayer { position: fixed; inset: 0; z-index: 50; background: #dfe6d5; }
+#map { position: absolute; inset: 0; background: #dfe6d5; }
 .mapbar { position: absolute; left: 0; right: 0; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: calc(env(safe-area-inset-top, 0px) + 12px) 14px 0; pointer-events: none; }
 .mapbar > * { pointer-events: auto; }
 .mapsheet { position: absolute; left: 10px; right: 10px; bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 1000; max-height: 55%; overflow-y: auto; padding: 16px; border-radius: 20px; background: rgba(21,24,19,.97); display: flex; flex-direction: column; gap: 10px; }
-.leaflet-container { background: #000; font-family: var(--font); }
-.leaflet-control-attribution { background: rgba(0,0,0,.6) !important; color: #8a8f86 !important; font-size: 10px; }
-.leaflet-control-attribution a { color: #b8bcb2 !important; }
+.leaflet-container { background: #dfe6d5; font-family: var(--font); }
+.leaflet-control-attribution { font-size: 10px; }
 .leaflet-bar a { background: #151813 !important; color: #ecebe4 !important; border-color: #262b23 !important; }
 .leaflet-top { top: calc(env(safe-area-inset-top, 0px) + 64px); }
-.me { width: 16px; height: 16px; border-radius: 50%; background: var(--gps); border: 3px solid #0d0f0c; box-shadow: 0 0 0 6px rgba(76,143,232,.25); }
+.me { width: 16px; height: 16px; border-radius: 50%; background: #1a6fe8; border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(76,143,232,.25); }
 
 .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 96px); z-index: 2000; max-width: calc(100% - 32px); padding: 10px 16px; border-radius: 14px; background: #262b23; color: var(--fg); font-size: 14.5px; box-shadow: 0 4px 18px rgba(0,0,0,.5); }
 
@@ -168,3 +166,16 @@ h1.mid { margin: 0; font-family: var(--cond); font-weight: 600; font-size: 28px;
 .grow-row .iconbtn { width: 40px; height: 40px; background: var(--card2); }
 .grow-row .iconbtn:disabled { opacity: .3; }
 .warn { margin: 0; }
+
+/* v3: zone info */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips .chip { font-size: 14px; padding: 7px 12px; color: var(--fg); }
+.chips .chip.ok { color: var(--ok); }
+a.rcard.link { text-decoration: none; color: var(--fg); }
+a.rcard.link .sub { color: #c9cbc3; line-height: 1.45; font-size: 14.5px; }
+.species { list-style: none; margin: 0; padding: 0; }
+.species li { display: flex; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.species li:last-child { border-bottom: 0; }
+.species i { font-size: 13px; }
+.zonecard { background: var(--card2); }
+.mapbar .chip { background: rgba(21,24,19,.92); color: var(--fg); }

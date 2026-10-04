@@ -312,6 +312,11 @@
   $('btnOpenMap').onclick = function () { openMap(); };
   $('homeMap').onclick = function () { openMap(); };
   $('rowMap').onclick = function () { openMap(); };
+  $('rowZone').onclick = function () {
+    if (lastPos) { openZone(lastPos); return; }
+    toast('Cerco la tua posizione…');
+    fix(function (p) { openZone(p || DEFAULT_CENTER); });
+  };
   $('menuBack').onclick = function () { show(active ? 'walk' : 'home'); backStack = []; };
   window.addEventListener('online', renderStatus); window.addEventListener('offline', renderStatus);
 
@@ -458,12 +463,12 @@
       var farL = all[1].filter(function (it) { return !seen[it.id] && (seen[it.id] = 1); });
       if (nearL.length) { head('Sentieri vicini'); nearL.slice(0, 8).forEach(function (it) { box.appendChild(routeRow(it)); }); }
       if (all[2].length) {
-        head('Luoghi: sentieri intorno');
+        head('Luoghi');
         all[2].forEach(function (pl) {
           var b = document.createElement('button'); b.className = 'rcard';
           var parts = (pl.display_name || '').split(', ');
           b.innerHTML = '<div class="name">' + esc(pl.name || parts[0]) + '</div><div class="sub">' + esc(parts.slice(1, 4).join(', ')) + '</div>';
-          b.onclick = function () { openPrepare([+pl.lat, +pl.lon], pl.name || parts[0]); };
+          b.onclick = function () { openZone([+pl.lat, +pl.lon], pl.name || parts[0]); };
           box.appendChild(b);
         });
       }
@@ -717,11 +722,10 @@
   }
 
   // ---------------- offline zones ----------------
-  var BASE_URL = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png';
-  var LABEL_URL = 'https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png';
+  var BASE_URL = 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png';
   var DEM_URL = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png';
   var TRAIL_URL = 'https://tile.waymarkedtrails.org/hiking/{z}/{x}/{y}.png';
-  var TILE_LAYERS = [BASE_URL, DEM_URL, TRAIL_URL];
+  var TILE_LAYERS = [BASE_URL, TRAIL_URL];
   function tilesFor(line) {
     var b = bboxOf(line, 400), out = [];
     for (var z = 12; z <= 15; z++) {
@@ -747,7 +751,7 @@
     if (!navigator.onLine) { toast('Serve la rete per salvare la zona.'); return; }
     var tiles = tilesFor(r.line), urls = [];
     tiles.forEach(function (t) {
-      TILE_LAYERS.forEach(function (tpl) { urls.push(tpl.replace('{s}', 'abcd'[(t[1] + t[2]) % 4]).replace('{z}', t[0]).replace('{x}', t[1]).replace('{y}', t[2])); });
+      TILE_LAYERS.forEach(function (tpl) { urls.push(tpl.replace('{s}', 'abc'[(t[1] + t[2]) % 3]).replace('{z}', t[0]).replace('{x}', t[1]).replace('{y}', t[2])); });
     });
     var done = 0, failed = 0, i = 0;
     if (btn) { btn.disabled = true; btn.textContent = 'Salvo la zona… 0%'; }
@@ -792,66 +796,141 @@
     show('history');
   }
 
-  // Contour lines drawn on the phone from open elevation tiles (Terrarium format).
-  var Contours = L.GridLayer.extend({
-    createTile: function (coords, done) {
-      var tile = document.createElement('canvas');
-      tile.width = tile.height = 256;
-      var z = coords.z, x = coords.x, y = coords.y, k = 1, ox = 0, oy = 0;
-      if (z > 15) { k = 1 << (z - 15); ox = (x % k) * 256 / k; oy = (y % k) * 256 / k; x = x >> (z - 15); y = y >> (z - 15); z = 15; }
-      var img = new Image();
-      img.crossOrigin = 'anonymous';
+  // ---------------- zone info ----------------
+  // Elevation and relief around a point, read from an open elevation tile.
+  function demInfo(ll) {
+    return new Promise(function (res, rej) {
+      var z = 12, n = Math.pow(2, z), r = ll[0] * Math.PI / 180;
+      var xf = (ll[1] + 180) / 360 * n, yf = (1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2 * n;
+      var x = Math.floor(xf), y = Math.floor(yf);
+      var px = Math.min(255, Math.floor((xf - x) * 256)), py = Math.min(255, Math.floor((yf - y) * 256));
+      var img = new Image(); img.crossOrigin = 'anonymous';
       img.onload = function () {
-        try { drawContours(img, tile, coords.z, k, ox, oy); } catch (e) {}
-        done(null, tile);
+        try {
+          var c = document.createElement('canvas'); c.width = c.height = 256;
+          var ctx = c.getContext('2d'); ctx.drawImage(img, 0, 0);
+          var d = ctx.getImageData(0, 0, 256, 256).data;
+          var at = function (i, j) { var q = (j * 256 + i) * 4; return d[q] * 256 + d[q + 1] + d[q + 2] / 256 - 32768; };
+          var w = 80, min = Infinity, max = -Infinity; // about 2.5 km each side
+          for (var j = Math.max(0, py - w); j <= Math.min(255, py + w); j += 2)
+            for (var i = Math.max(0, px - w); i <= Math.min(255, px + w); i += 2) { var v = at(i, j); if (v < min) min = v; if (v > max) max = v; }
+          res({ ele: Math.round(at(px, py)), min: Math.round(min), max: Math.round(max) });
+        } catch (err) { rej(err); }
       };
-      img.onerror = function () { done(null, tile); };
+      img.onerror = function () { rej(new Error('dem')); };
       img.src = DEM_URL.replace('{z}', z).replace('{x}', x).replace('{y}', y);
-      return tile;
-    }
-  });
-  function drawContours(img, tile, zoom, k, ox, oy) {
-    var src = document.createElement('canvas'); src.width = src.height = 256;
-    var sctx = src.getContext('2d'); sctx.drawImage(img, 0, 0);
-    var d = sctx.getImageData(0, 0, 256, 256).data;
-    var step = zoom >= 15 ? 10 : zoom >= 14 ? 20 : zoom >= 12 ? 50 : 100;
-    var major = step * 5;
-    var n = 256 / k, x0 = Math.floor(ox), y0 = Math.floor(oy);
-    var out = document.createElement('canvas'); out.width = out.height = n;
-    var octx = out.getContext('2d'), od = octx.createImageData(n, n), o = od.data;
-    function ele(px, py) { var i = (py * 256 + px) * 4; return d[i] * 256 + d[i + 1] + d[i + 2] / 256 - 32768; }
-    for (var j = 0; j < n; j++) for (var i = 0; i < n; i++) {
-      var px = x0 + i, py = y0 + j;
-      var e0 = ele(px, py), e1 = ele(Math.min(255, px + 1), py), e2 = ele(px, Math.min(255, py + 1));
-      var b0 = Math.floor(e0 / step), b1 = Math.floor(e1 / step), b2 = Math.floor(e2 / step);
-      if (b0 !== b1 || b0 !== b2) {
-        var top = Math.max(b0, b1, b2) * step, isMajor = top % major === 0, q = (j * n + i) * 4;
-        o[q] = 170; o[q + 1] = 180; o[q + 2] = 160; o[q + 3] = isMajor ? 120 : 55;
-      }
-    }
-    octx.putImageData(od, 0, 0);
-    var tctx = tile.getContext('2d');
-    tctx.imageSmoothingEnabled = k > 1;
-    tctx.drawImage(out, 0, 0, n, n, 0, 0, 256, 256);
+    });
+  }
+  function landscape(d) {
+    if (d.ele >= 1500) return 'Alta montagna';
+    if (d.ele >= 600) return 'Montagna';
+    if (d.ele >= 200 || d.max - d.min >= 80) return 'Collina';
+    return 'Pianura';
+  }
+  function reverse(ll) {
+    return getJSON('https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&accept-language=it&lat=' + ll[0].toFixed(5) + '&lon=' + ll[1].toFixed(5)).then(function (r) {
+      var ad = r.address || {};
+      var place = ad.hamlet || ad.village || ad.suburb || ad.town || ad.city || ad.municipality || r.name || '';
+      var comune = ad.municipality || ad.town || ad.city || ad.village || '';
+      var sub = [];
+      [comune, ad.county, ad.state].forEach(function (v) { if (v && v !== place && sub.indexOf(v) < 0) sub.push(v); });
+      return { name: place, sub: sub.join(' · ') };
+    });
+  }
+  function cap(s) { s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  function openZone(ll, label) {
+    var body = $('zoneBody');
+    body.innerHTML =
+      '<div><h1 class="big" id="zName">' + esc(label || 'Questa zona') + '</h1><div id="zSub" class="dim"></div></div>' +
+      '<div id="zFacts" class="chips"><span class="chip">Cerco le informazioni…</span></div>' +
+      '<div class="stack"><button class="btn primary" id="zTrails">Sentieri qui intorno</button><button class="btn ghost" id="zMap">Vedi sulla mappa</button></div>' +
+      '<section id="zWiki" class="stack"></section><section id="zNature" class="stack"></section>' +
+      '<div class="dim small">Fonti: OpenStreetMap, Wikipedia, iNaturalist, Terrain Tiles.</div>';
+    show('zone');
+    var name = label || '';
+    $('zTrails').onclick = function () { openPrepare(ll, name || 'questo punto'); };
+    $('zMap').onclick = function () { openMap(null, ll); };
+    var alive = function () { return current === 'zone' && $('zFacts'); };
+    var facts = [];
+    function paintFacts() { if (alive()) $('zFacts').innerHTML = facts.length ? facts.map(function (f) { return '<span class="chip' + (f.ok ? ' ok' : '') + '">' + esc(f.t) + '</span>'; }).join('') : ''; }
+
+    reverse(ll).then(function (p) {
+      if (!alive()) return;
+      if (!label && p.name) { name = p.name; $('zName').textContent = p.name; }
+      $('zSub').textContent = p.sub;
+    }).catch(function () {});
+
+    demInfo(ll).then(function (d) {
+      facts.unshift({ t: landscape(d) }, { t: 'Quota ' + d.ele + ' m' }, { t: 'Dintorni da ' + d.min + ' a ' + d.max + ' m' });
+      paintFacts();
+    }).catch(function () { paintFacts(); });
+
+    getJSON(OVERPASS + '?data=' + encodeURIComponent('[out:json][timeout:15];is_in(' + ll[0].toFixed(5) + ',' + ll[1].toFixed(5) + ')->.a;area.a["boundary"~"^(national_park|protected_area)$"]["name"];out tags;'))
+      .then(function (res) {
+        var seen = {};
+        (res.elements || []).map(function (el) { return el.tags && el.tags.name; }).filter(function (n) { return n && !seen[n] && (seen[n] = 1); })
+          .sort(function (x, y) { return x.length - y.length; }).slice(0, 2).forEach(function (n) { facts.push({ t: n, ok: true }); });
+        paintFacts();
+      }).catch(function () {});
+
+    getJSON('https://it.wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=geosearch&ggscoord=' + ll[0].toFixed(5) + '%7C' + ll[1].toFixed(5) +
+      '&ggsradius=10000&ggslimit=8&prop=extracts%7Ccoordinates&exintro=1&explaintext=1&exsentences=2&exlimit=8&colimit=8')
+      .then(function (res) {
+        if (!alive()) return;
+        var pages = res.query && res.query.pages ? Object.keys(res.query.pages).map(function (k) { return res.query.pages[k]; }) : [];
+        pages.sort(function (x, y) { return (x.index || 0) - (y.index || 0); });
+        var box = $('zWiki');
+        if (!pages.length) return;
+        box.innerHTML = '<div class="reshead">Da sapere</div>';
+        pages.slice(0, 5).forEach(function (p) {
+          var co = p.coordinates && p.coordinates[0], dkm = co ? G.dist(ll, [co.lat, co.lon]) : null;
+          var el = document.createElement('a'); el.className = 'rcard link'; el.target = '_blank'; el.rel = 'noopener';
+          el.href = 'https://it.wikipedia.org/?curid=' + p.pageid;
+          el.innerHTML = '<div class="name">' + esc(p.title) + (dkm != null && dkm > 150 ? ' <span class="dim small">· a ' + esc(kmTxt(dkm)) + '</span>' : '') + '</div>' +
+            (p.extract ? '<div class="sub">' + esc(p.extract) + '</div>' : '') + '<div class="dim small">Leggi su Wikipedia</div>';
+          box.appendChild(el);
+        });
+      }).catch(function () {});
+
+    var INAT = 'https://api.inaturalist.org/v1/observations/species_counts?verifiable=true&locale=it&radius=5&per_page=6&lat=' + ll[0].toFixed(4) + '&lng=' + ll[1].toFixed(4);
+    var groups = [['Piante', '&iconic_taxa=Plantae'], ['Animali', '&iconic_taxa=Mammalia,Aves,Amphibia,Reptilia'], ['Funghi', '&iconic_taxa=Fungi']];
+    Promise.all(groups.map(function (g) { return getJSON(INAT + g[1]).then(function (r) { return r.results || []; }).catch(function () { return []; }); }))
+      .then(function (all) {
+        if (!alive() || !all.some(function (l) { return l.length; })) return;
+        var box = $('zNature');
+        box.innerHTML = '<div class="reshead">Natura osservata entro 5 km</div>';
+        all.forEach(function (list, i) {
+          if (!list.length) return;
+          var card = document.createElement('div'); card.className = 'card';
+          card.innerHTML = '<div class="rowtext"><b>' + groups[i][0] + '</b><span class="dim small">avvistamenti</span></div>' +
+            '<ul class="species">' + list.map(function (s) {
+              var t = s.taxon || {};
+              return '<li><span class="grow">' + esc(cap(t.preferred_common_name || t.name)) + (t.preferred_common_name ? ' <i class="dim">' + esc(t.name) + '</i>' : '') + '</span><span class="dim">' + s.count + '</span></li>';
+            }).join('') + '</ul>';
+          box.appendChild(card);
+        });
+        var note = document.createElement('div'); note.className = 'dim small';
+        note.textContent = 'Sono le specie segnalate più spesso da chi è passato di qui, non un elenco completo.';
+        box.appendChild(note);
+      });
   }
 
-  // ---------------- map (dark, contour lines + trails) ----------------
+  // ---------------- map (topographic + trails) ----------------
   var map = null, mapReady = false, meMarker = null, routeLayer = null;
-  function openMap(focusRoute) {
+  function openMap(focusRoute, center) {
     $('mapLayer').hidden = false;
     stopGps();
     if (!mapReady) {
       var c = lastPos || DEFAULT_CENTER;
       map = L.map('map', { zoomControl: false, attributionControl: true, center: c, zoom: 14, maxZoom: 17 });
       L.tileLayer(BASE_URL, {
-        subdomains: 'abcd', maxZoom: 17, maxNativeZoom: 17, opacity: .75,
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attributions">CARTO</a>'
+        subdomains: 'abc', maxZoom: 17, maxNativeZoom: 17,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)'
       }).addTo(map);
-      new Contours({ maxZoom: 17, attribution: 'Quote: <a href="https://registry.opendata.aws/terrain-tiles/">Terrain Tiles</a>' }).addTo(map);
       L.tileLayer(TRAIL_URL, {
-        maxZoom: 17, opacity: .85, attribution: '<a href="https://hiking.waymarkedtrails.org">Waymarked Trails</a>'
+        maxZoom: 17, opacity: .8, attribution: '<a href="https://hiking.waymarkedtrails.org">Waymarked Trails</a>'
       }).addTo(map);
-      L.tileLayer(LABEL_URL, { subdomains: 'abcd', maxZoom: 17, opacity: .7 }).addTo(map);
       map.on('click', onMapTap);
       mapReady = true;
     }
@@ -860,13 +939,19 @@
     var r = focusRoute || activeRoute();
     if (r && r.line.length) {
       routeLayer = L.layerGroup([
-        L.polyline(r.line, { color: '#000', weight: 9, opacity: .6, interactive: false }),
-        L.polyline(r.line, { color: '#f2c94c', weight: 4, opacity: 1, interactive: false })
+        L.polyline(r.line, { color: '#fff', weight: 10, opacity: .9, interactive: false }),
+        L.polyline(r.line, { color: '#6a1fc2', weight: 5, opacity: 1, interactive: false })
       ]).addTo(map);
       if (focusRoute || !lastPos) map.fitBounds(L.latLngBounds(r.line), { padding: [40, 40] });
     }
     updateMapMe();
-    if (lastPos && !focusRoute && !r) map.setView(lastPos, 15);
+    if (center) { map.setView(center, 14); markTap(center); }
+    else if (lastPos && !focusRoute && !r) map.setView(lastPos, 15);
+  }
+  var tapMarker = null;
+  function markTap(ll) {
+    if (!tapMarker) tapMarker = L.circleMarker(ll, { radius: 7, color: '#fff', weight: 3, fillColor: '#111', fillOpacity: 1, interactive: false }).addTo(map);
+    else tapMarker.setLatLng(ll);
   }
   function updateMapMe() {
     if (!mapReady || !lastPos) return;
@@ -880,15 +965,29 @@
   $('mapLocate').onclick = function () {
     fix(function (p) { if (p) map.setView(p, Math.max(map.getZoom(), 15)); else toast('Posizione non disponibile.'); });
   };
+  var tapSeq = 0;
   function onMapTap(e) {
-    if (map.getZoom() < 12) { toast('Avvicina la mappa per toccare un sentiero.'); return; }
-    var p = proj([e.latlng.lat, e.latlng.lng]), rr = 14 * 40075016.686 / (256 * Math.pow(2, map.getZoom()));
+    var ll = [e.latlng.lat, e.latlng.lng], sh = $('mapSheet'), seq = ++tapSeq, zname = '';
+    markTap(ll);
+    sh.innerHTML = '';
+    var zc = document.createElement('button'); zc.className = 'rcard zonecard';
+    zc.innerHTML = '<div class="top"><svg viewBox="0 0 24 24" width="22" height="22" class="ic yellow" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>' +
+      '<div class="grow"><div class="name" data-zn>Questo punto</div><div class="sub" data-zs>Cerco quota e paesaggio…</div></div>' +
+      '<span class="dim small">Scopri</span></div>';
+    zc.onclick = function () { $('mapLayer').hidden = true; sh.hidden = true; openZone(ll, zname); };
+    sh.appendChild(zc); sh.hidden = false;
+    demInfo(ll).then(function (d) { if (seq === tapSeq) zc.querySelector('[data-zs]').textContent = landscape(d) + ' · ' + d.ele + ' m'; })
+      .catch(function () { if (seq === tapSeq) zc.querySelector('[data-zs]').textContent = 'Tocca per scoprire la zona'; });
+    reverse(ll).then(function (p) {
+      if (seq !== tapSeq || !p.name) return;
+      zname = p.name; zc.querySelector('[data-zn]').textContent = p.name + (p.sub ? ' · ' + p.sub.split(' · ')[0] : '');
+    }).catch(function () {});
+    if (map.getZoom() < 12) return;
+    var p = proj(ll), rr = 14 * 40075016.686 / (256 * Math.pow(2, map.getZoom()));
     getJSON(API + '/list/by_area?limit=20&bbox=' + [p[0] - rr, p[1] - rr, p[0] + rr, p[1] + rr].map(function (v) { return v.toFixed(1); }).join(','))
       .then(function (res) {
+        if (seq !== tapSeq) return;
         var list = (res.results || []).sort(function (a, b) { return (ORDER[a.group] || 0) - (ORDER[b.group] || 0); });
-        var sh = $('mapSheet');
-        if (!list.length) { sh.hidden = true; return; }
-        sh.innerHTML = '';
         list.slice(0, 6).forEach(function (it) {
           var b = routeRow(it);
           b.onclick = function () { $('mapLayer').hidden = true; sh.hidden = true; openRoute(it.id); };
@@ -898,8 +997,7 @@
           b.querySelector('.top').appendChild(st);
           sh.appendChild(b);
         });
-        sh.hidden = false;
-      }).catch(function () { toast(navigator.onLine ? 'Info sentieri non disponibili ora.' : 'Senza rete non posso leggere i sentieri dalla mappa.'); });
+      }).catch(function () {});
   }
   var ORDER = { LWN: 0, RWN: 1, NWN: 2, IWN: 3 };
 

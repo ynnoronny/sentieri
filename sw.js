@@ -1,9 +1,9 @@
 // Sentieri: offline support.
-var VERSION = 'c2';
+var VERSION = 'c3';
 var SHELL = 'compagno-' + VERSION;
 var TILES = 'tiles-v1';
 var DATA = 'data-v1';
-var FILES = ['./', 'index.html', 'app.css?v=2', 'geo.js?v=2', 'app.js?v=2', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
+var FILES = ['./', 'index.html', 'app.css?v=3', 'geo.js?v=3', 'app.js?v=3', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
   'vendor/leaflet.js', 'vendor/leaflet.css'];
 
 self.addEventListener('install', function (e) {
@@ -46,7 +46,7 @@ self.addEventListener('fetch', function (e) {
   if (/tile\.opentopomap\.org$/.test(h) || /basemaps\.cartocdn\.com$/.test(h) || (h === 's3.amazonaws.com' && u.pathname.indexOf('/elevation-tiles-prod/') === 0) || h === 'tile.waymarkedtrails.org' || h === 'fonts.gstatic.com' || h === 'fonts.googleapis.com') {
     e.respondWith(cacheFirst(req, TILES, 12000)); return;
   }
-  if ((h === 'hiking.waymarkedtrails.org' && u.pathname.indexOf('/api/') === 0) || h === 'overpass-api.de') {
+  if ((h === 'hiking.waymarkedtrails.org' && u.pathname.indexOf('/api/') === 0) || h === 'overpass-api.de' || h === 'it.wikipedia.org' || h === 'api.inaturalist.org' || (h === 'nominatim.openstreetmap.org' && u.pathname === '/reverse')) {
     e.respondWith(networkFirst(req, DATA, 2000)); return;
   }
   if (u.origin === self.location.origin) {
