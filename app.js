@@ -13,6 +13,8 @@
   var active = load('active', null);      // {id, dir}
   var offline = load('offline', {});      // id -> {tiles, at}
   var gpsEvery = load('gps', 30);
+  var gpsOn = load('gpsOn', false);
+  var gpsDenied = false;
   var lastPos = load('pos', null);        // [lat, lng]
   var favs = load('fav', []);             // route ids
   var draft = load('draft', []);          // route ids for a combined walk
@@ -76,7 +78,7 @@
     current = name;
     window.scrollTo(0, 0);
     if (name === 'walk') { renderWalk(); startGps(); } else if (name !== 'junction' && name !== 'sos') { stopGps(); }
-    if (name === 'menu') renderMenu();
+    if (name === 'home') renderHome();
   }
   function back() {
     var prev = backStack.pop();
@@ -85,7 +87,7 @@
   }
   document.addEventListener('click', function (e) {
     var go = e.target.closest('[data-go]');
-    if (go) { e.preventDefault(); var n = go.getAttribute('data-go'); if (n === 'prepare') openPrepare(); else if (n === 'history') openHistory(false); else if (n === 'offline') openHistory(true); else if (n === 'favs') openFavs(); else if (n === 'giro') openGiro(); else show(n); return; }
+    if (go) { e.preventDefault(); var n = go.getAttribute('data-go'); if (n === 'prepare') openPrepare(); else if (n === 'giro') openGiro(); else show(n); return; }
     if (e.target.closest('[data-back]')) { e.preventDefault(); back(); }
   });
 
@@ -219,7 +221,8 @@
     var ent = $('wEntry'), startName = dir > 0 ? e.from : e.to;
     var done = Math.abs(walk.along - (dir > 0 ? 0 : walk.len));
     ent.classList.remove('away');
-    if (!lastPos) ent.textContent = 'Cerco la tua posizione…';
+    if (!gpsOn) { ent.classList.add('away'); ent.textContent = 'Il GPS è spento: tocca qui per attivarlo e vedere dove sei.'; }
+    else if (!lastPos) ent.textContent = 'Cerco la tua posizione…';
     else if (walk.off > 3000) { ent.classList.add('away'); ent.textContent = 'Sei a ' + kmTxt(walk.off) + ' dal sentiero. I numeri qui sotto valgono dalla partenza, ' + startName + '.'; }
     else if (walk.off > 60) {
       ent.classList.add('away');
@@ -259,7 +262,8 @@
     var isOff = r && offline[r.id];
     chip.className = 'chip' + (isOff || navigator.onLine ? ' ok' : '');
     $('offTxt').textContent = isOff ? 'Zona offline' : navigator.onLine ? 'Online' : 'Senza rete';
-    $('gpsTxt').textContent = 'GPS ogni ' + (gpsEvery < 60 ? gpsEvery + ' s' : gpsEvery / 60 + ' min');
+    $('gpsTxt').textContent = gpsOn ? 'GPS ogni ' + (gpsEvery < 60 ? gpsEvery + ' s' : gpsEvery / 60 + ' min') : 'GPS spento · attiva';
+    $('gpsTxt').classList.toggle('off', !gpsOn);
   }
 
   function renderMini() {
@@ -302,44 +306,82 @@
     active.dir = -(active.dir || 1); save('active', active);
     renderWalk(); toast('Direzione invertita.');
   };
-  $('btnMore').onclick = function () { show('menu'); };
+  $('btnMore').onclick = function () { show('home'); };
   $('walkBack').onclick = function () { var r = activeRoute(); if (r) { routeDir[r.id] = active.dir; openRoute(r.id); } else show('home'); };
+  $('gpsTxt').onclick = function () { if (!gpsOn) fix(null, true); else show('home'); };
+  $('wEntry').onclick = function () { if (!gpsOn) fix(null, true); else if (walk && walk.off > 60) openMap(); };
   $('rowStop').onclick = function () {
-    if (this.dataset.sure !== '1') { this.dataset.sure = '1'; this.querySelector('.grow').textContent = 'Sicuro? Tocca di nuovo'; return; }
-    this.dataset.sure = ''; this.querySelector('.grow').textContent = 'Termina il cammino';
-    active = null; save('active', null); backStack = []; show('home'); toast('Cammino terminato.');
+    if (this.dataset.sure !== '1') { this.dataset.sure = '1'; this.textContent = 'Sicuro? Tocca di nuovo per terminare'; return; }
+    this.dataset.sure = ''; this.textContent = 'Termina il cammino';
+    active = null; save('active', null); backStack = []; renderHome(); toast('Cammino terminato.');
   };
   $('btnOpenMap').onclick = function () { openMap(); };
   $('homeMap').onclick = function () { openMap(); };
-  $('rowMap').onclick = function () { openMap(); };
-  $('rowZone').onclick = function () {
-    if (lastPos) { openZone(lastPos); return; }
+  $('homeNear').onclick = function () {
+    if (lastPos && gpsOn) { openPrepare(); return; }
     toast('Cerco la tua posizione…');
-    fix(function (p) { openZone(p || DEFAULT_CENTER); });
+    fix(function (p) { openPrepare(p || undefined); }, true);
   };
-  $('menuBack').onclick = function () { show(active ? 'walk' : 'home'); backStack = []; };
+  $('homeMine').onclick = function () { openMine(); };
+  $('resume').onclick = function () { backStack = []; show('walk'); };
   window.addEventListener('online', renderStatus); window.addEventListener('offline', renderStatus);
 
   // ---------------- GPS (interval, battery-friendly) ----------------
   var gpsTimer = null, gpsBusy = false;
-  function fix(cb) {
-    if (!('geolocation' in navigator)) { if (cb) cb(null); return; }
-    if (gpsBusy) return; gpsBusy = true;
+  var gpsCbs = [];
+  // force = asked by a tap: turns the GPS on and makes the phone show its permission prompt.
+  function fix(cb, force) {
+    if (!('geolocation' in navigator)) { gpsDenied = true; renderGps('Questo browser non dà accesso alla posizione.'); if (cb) cb(null); return; }
+    if (!gpsOn && !force) { if (cb) cb(null); return; }
+    if (cb) gpsCbs.push(cb);
+    if (gpsBusy) return;
+    gpsBusy = true;
+    if (force && !gpsOn) renderGps(null, 'Chiedo il permesso al telefono…');
+    function done(p) { gpsBusy = false; var l = gpsCbs; gpsCbs = []; l.forEach(function (f) { f(p); }); }
     navigator.geolocation.getCurrentPosition(function (p) {
-      gpsBusy = false;
+      var first = !gpsOn;
+      gpsOn = true; gpsDenied = false; save('gpsOn', true);
       lastPos = [p.coords.latitude, p.coords.longitude]; lastPos.acc = p.coords.accuracy;
       save('pos', [lastPos[0], lastPos[1]]);
+      renderGps();
+      if (first) { toast('GPS attivo.'); if (current === 'walk') startGps(); }
       if (current === 'walk') renderWalk();
       if (mapReady) updateMapMe();
-      if (cb) cb(lastPos);
+      done(lastPos);
     }, function (err) {
-      gpsBusy = false;
-      if (err.code === 1) { toast('Posizione negata: attivala in Impostazioni › Privacy › Localizzazione › Safari.', 5000); stopGps(); }
-      if (cb) cb(null);
-    }, { enableHighAccuracy: true, timeout: 25000, maximumAge: Math.min(gpsEvery, 30) * 500 });
+      if (err.code === 1) {
+        gpsOn = false; gpsDenied = true; save('gpsOn', false); stopGps();
+        renderGps('Il telefono ha negato la posizione. Su iPhone: Impostazioni › Privacy e sicurezza › Localizzazione › Siti web di Safari › «Mentre usi l\'app». Poi riattiva qui.');
+        if (current !== 'home') toast('Posizione negata: attivala dal menu.', 4000);
+      } else {
+        if (force) { gpsOn = true; save('gpsOn', true); }
+        renderGps(null, 'Attiva · cerco il segnale, meglio all\'aperto');
+      }
+      if (current === 'walk') renderWalk();
+      done(null);
+    }, { enableHighAccuracy: true, timeout: 25000, maximumAge: force ? 0 : Math.min(gpsEvery, 30) * 500 });
   }
+  function renderGps(help, state) {
+    var sw = $('gpsSwitch');
+    sw.setAttribute('aria-checked', gpsOn ? 'true' : 'false');
+    sw.classList.toggle('on', gpsOn);
+    $('gpsState').textContent = state || (gpsOn ? (lastPos && lastPos.acc ? 'Attiva · precisione ±' + Math.round(lastPos.acc) + ' m' : 'Attiva') : 'Spenta · l\'app non vede dove sei');
+    $('gpsFreq').hidden = !gpsOn;
+    var hb = $('gpsHelp');
+    if (help) { hb.textContent = help; hb.hidden = false; } else if (gpsOn || help === '') hb.hidden = true;
+    document.querySelectorAll('#gpsSeg button').forEach(function (b) { b.classList.toggle('on', +b.dataset.gps === gpsEvery); });
+    if (current === 'walk') renderStatus();
+  }
+  $('gpsSwitch').onclick = function () {
+    if (gpsOn) {
+      gpsOn = false; save('gpsOn', false); stopGps();
+      lastPos = null; save('pos', null);
+      if (meMarker && mapReady) { map.removeLayer(meMarker); meMarker = null; }
+      renderGps('');
+    } else fix(null, true);
+  };
   function startGps() {
-    stopGps(); fix();
+    stopGps(); if (!gpsOn) return; fix();
     gpsTimer = setInterval(function () { if (!document.hidden) fix(); }, gpsEvery * 1000);
   }
   function stopGps() { if (gpsTimer) clearInterval(gpsTimer); gpsTimer = null; }
@@ -407,7 +449,7 @@
       place.textContent = bits.join(' · ');
     }
     paint(lastPos);
-    fix(paint);
+    fix(paint, true);
   }
   function sosText() {
     var p = lastPos; if (!p) return '';
@@ -427,20 +469,24 @@
   }
 
   // ---------------- menu / search ----------------
-  function renderMenu() {
-    document.querySelectorAll('#gpsSeg button').forEach(function (b) { b.classList.toggle('on', +b.dataset.gps === gpsEvery); });
-    var n = Object.keys(routes).length; $('histCount').textContent = n ? String(n) : '';
-    var o = Object.keys(offline).length; $('offCount').textContent = o ? String(o) : '';
-    $('menuBack').textContent = active ? 'Torna al cammino' : 'Indietro';
-    $('rowStop').hidden = !active;
-    $('favCount').textContent = favs.length ? String(favs.length) : '';
-    $('giroCount').textContent = draft.length ? String(draft.length) : '';
+  function renderHome() {
+    var r = activeRoute();
+    $('resume').hidden = !r;
+    $('homeTitle').hidden = !!r;
+    $('rowStop').hidden = !r;
+    if (r) {
+      var en = ends(r);
+      $('resFlag').innerHTML = flagOf(r);
+      $('resName').textContent = r.roundtrip ? 'Anello da ' + en.from : 'Verso ' + (active.dir > 0 ? en.to : en.from);
+    }
+    renderGps();
+    if (gpsOn && !gpsBusy) fix();
   }
   $('gpsSeg').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    gpsEvery = +b.dataset.gps; save('gps', gpsEvery); renderMenu();
-    toast('Posizione ogni ' + b.textContent + '.');
+    gpsEvery = +b.dataset.gps; save('gps', gpsEvery); renderGps();
   });
+  $('q').addEventListener('input', function () { if (!this.value) $('searchRes').hidden = true; });
 
   var searchSeq = 0;
   $('searchForm').addEventListener('submit', function (ev) {
@@ -493,13 +539,16 @@
     $('prepWhere').textContent = label ? 'Intorno a ' + label : (lastPos && (!center || center === lastPos)) ? 'Intorno a te' : 'Foreste Casentinesi';
     var list = $('prepList');
     list.innerHTML = '<div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>';
-    show('prepare');
-    if (!center && !lastPos) fix(function (p) { if (p && current === 'prepare') openPrepare(p); });
+    if (current !== 'prepare') show('prepare');
+    var zc = document.createElement('button'); zc.className = 'rcard zonecard';
+    zc.innerHTML = '<div class="top"><svg viewBox="0 0 24 24" width="22" height="22" class="ic yellow" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div class="grow"><div class="name">Scopri la zona</div><div class="sub">Paesaggio, luoghi, piante e animali</div></div></div>';
+    zc.onclick = function () { openZone(c, label); };
     getJSON(API + '/list/by_area?limit=40&bbox=' + bboxAround(c, 5000)).then(function (res) {
       var items = (res.results || []).filter(function (it) { return it.group === 'LWN' || it.group === 'RWN'; });
       if (!items.length) items = res.results || [];
       items = items.slice(0, 14);
-      list.innerHTML = items.length ? '' : '<div class="empty">Nessun sentiero segnato qui intorno.</div>';
+      list.innerHTML = items.length ? '' : '<div class="empty">Nessun sentiero segnato entro 5 km. Prova dalla mappa.</div>';
+      list.insertBefore(zc, list.firstChild);
       items.forEach(function (it) {
         var b = document.createElement('button'); b.className = 'rcard';
         b.innerHTML = '<div class="top">' + flagHTML(it.ref) + '<div class="grow"><div class="name">' + esc(it.name || 'Sentiero') + '</div><div class="sub" data-sub>…</div></div><span data-diff></span></div><div class="facts" data-facts></div>';
@@ -520,7 +569,7 @@
       });
     }).catch(function () {
       var saved = Object.keys(routes);
-      list.innerHTML = '<div class="empty">Senza rete non posso cercare sentieri nuovi.' + (saved.length ? ' Quelli che hai già aperto sono in «I miei sentieri».' : '') + '</div>';
+      list.innerHTML = '<div class="empty">' + (navigator.onLine ? 'Non riesco a caricare i sentieri ora. Riprova tra poco.' : 'Senza rete non posso cercare sentieri nuovi.') + (saved.length ? ' Quelli che hai già aperto sono in «I miei sentieri».' : '') + '</div>';
     });
   }
   var GROUP_TXT = { LWN: 'Sentiero locale', RWN: 'Itinerario regionale', NWN: 'Itinerario nazionale', IWN: 'Itinerario internazionale' };
@@ -625,6 +674,7 @@
     r.used = Date.now(); saveRoutes();
     backStack = [];
     show('walk');
+    if (!gpsOn) fix(null, true);
     if (!offline[r.id] && navigator.onLine) saveOffline(r, null);
   }
 
@@ -685,7 +735,7 @@
     });
     var sum = $('giroSum'), go = $('giroGo');
     if (draft.length < 2) {
-      sum.innerHTML = '<div class="empty">' + (draft.length ? 'Aggiungi almeno un altro sentiero. ' : '') + 'Apri un sentiero (dalla mappa, dalla ricerca o da «Prepara un giro») e tocca «Aggiungi a un giro». Mettili nell\'ordine in cui li percorri.</div>';
+      sum.innerHTML = '<div class="empty">' + (draft.length ? 'Aggiungi almeno un altro sentiero. ' : '') + 'Apri un sentiero (dalla mappa, dalla ricerca o da «Sentieri vicino a me») e tocca «Aggiungi a un giro». Mettili nell\'ordine in cui li percorri.</div>';
       go.disabled = true;
     } else {
       var g = buildGiro(draft);
@@ -705,20 +755,6 @@
     };
     if (current !== 'giro') show('giro');
     missing.forEach(function (id) { fetchRoute(id).then(function () { if (current === 'giro') openGiro(); }).catch(function () {}); });
-  }
-
-  // ---------------- favourites ----------------
-  function openFavs() {
-    $('histTitle').textContent = 'Preferiti';
-    var list = $('histList'); list.innerHTML = '';
-    if (!favs.length) list.innerHTML = '<div class="empty">Nessun preferito. Apri un sentiero e tocca la stella.</div>';
-    favs.forEach(function (id) {
-      var r = routes[id], b = document.createElement('button'); b.className = 'rcard';
-      b.innerHTML = '<div class="top">' + (r ? flagOf(r) : flagHTML('·')) + '<div class="grow"><div class="name">' + esc(r ? r.name : 'Sentiero') + '</div>' + (r ? '<div class="sub">' + esc(kmTxt(r.len || 0)) + '</div>' : '') + '</div></div>';
-      b.onclick = function () { openRoute(id.charAt(0) === 'g' ? id : +id); };
-      list.appendChild(b);
-    });
-    show('history');
   }
 
   // ---------------- offline zones ----------------
@@ -773,28 +809,46 @@
   }
 
   // ---------------- history / offline list ----------------
-  function openHistory(onlyOffline) {
-    $('histTitle').textContent = onlyOffline ? 'Zone offline' : 'I miei sentieri';
-    var ids = Object.keys(onlyOffline ? offline : routes).filter(function (id) { return routes[id]; })
-      .sort(function (a, b) { return (routes[b].used || 0) - (routes[a].used || 0); });
+  var mineTab = null;
+  function openMine(tab) {
+    mineTab = tab || mineTab || (favs.length ? 'fav' : 'rec');
+    document.querySelectorAll('#mineSeg button').forEach(function (b) { b.classList.toggle('on', b.dataset.tab === mineTab); });
+    var ids = mineTab === 'fav' ? favs.slice() : Object.keys(mineTab === 'off' ? offline : routes);
+    if (mineTab !== 'fav') ids = ids.filter(function (id) { return routes[id]; }).sort(function (x, y) { return (routes[y].used || 0) - (routes[x].used || 0); });
     var list = $('histList'); list.innerHTML = '';
-    if (!ids.length) list.innerHTML = '<div class="empty">' + (onlyOffline ? 'Nessuna zona salvata. Quando parti su un sentiero con la rete, la sua zona si salva da sola.' : 'Ancora nessun sentiero. Aprine uno da «Prepara un giro» o dalla ricerca.') + '</div>';
+    if (!ids.length) list.innerHTML = '<div class="empty">' + ({
+      fav: 'Nessun preferito. Apri un sentiero e tocca la stella.',
+      rec: 'Ancora nessun sentiero. Aprine uno dalla mappa, dalla ricerca o da «Sentieri vicino a me».',
+      off: 'Nessuna zona salvata. Quando parti su un sentiero con la rete, la sua zona si salva da sola.'
+    })[mineTab] + '</div>';
     ids.forEach(function (id) {
-      var r = routes[id], row = document.createElement('div'); row.className = 'rcard';
-      row.innerHTML = '<div class="top">' + flagOf(r) + '<div class="grow"><div class="name">' + esc(r.name) + '</div><div class="sub">' + esc(kmTxt(r.len || 0)) + (offline[id] ? ' · offline' : '') + '</div></div></div>' +
-        '<div style="display:flex;gap:8px"><button class="btn grow" data-open>Apri</button><button class="btn ghost" data-del>' + (onlyOffline ? 'Togli offline' : 'Elimina') + '</button></div>';
-      row.querySelector('[data-open]').onclick = function () { openRoute(id.charAt(0) === 'g' ? id : +id); };
+      id = String(id);
+      var r = routes[id], row = document.createElement('div'); row.className = 'rcard'; row.setAttribute('role', 'button'); row.tabIndex = 0;
+      row.innerHTML = '<div class="top">' + (r ? flagOf(r) : flagHTML('·')) + '<div class="grow"><div class="name">' + esc(r ? r.name : 'Sentiero') + '</div>' +
+        '<div class="sub">' + (r ? esc(kmTxt(r.len || 0)) : '') + (offline[id] ? ' · offline' : '') + '</div></div>' +
+        '<button class="iconbtn" data-del aria-label="' + (mineTab === 'fav' ? 'Togli dai preferiti' : mineTab === 'off' ? 'Togli dalle zone offline' : 'Elimina') + '"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button></div>';
+      row.onclick = function () { openRoute(id.charAt(0) === 'g' ? id : +id); };
+      row.addEventListener('keydown', function (ev) { if (ev.key === 'Enter') row.onclick(); });
       var del = row.querySelector('[data-del]');
-      del.onclick = function () {
-        if (del.dataset.sure !== '1') { del.dataset.sure = '1'; del.textContent = 'Sicuro?'; return; }
-        delete offline[id]; save('offline', offline);
-        if (!onlyOffline) { delete routes[id]; saveRoutes(); if (active && String(active.id) === id) { active = null; save('active', null); } }
-        openHistory(onlyOffline);
+      del.onclick = function (ev) {
+        ev.stopPropagation();
+        if (mineTab !== 'fav' && del.dataset.sure !== '1') { del.dataset.sure = '1'; del.classList.add('sure'); toast('Tocca di nuovo la × per confermare.'); return; }
+        if (mineTab === 'fav') toggleFav(id);
+        else if (mineTab === 'off') { delete offline[id]; save('offline', offline); }
+        else {
+          delete routes[id]; delete offline[id]; save('offline', offline); saveRoutes();
+          if (isFav(id)) toggleFav(id);
+          if (active && String(active.id) === id) { active = null; save('active', null); }
+        }
+        openMine();
       };
       list.appendChild(row);
     });
-    show('history');
+    $('mineGiro').textContent = draft.length ? 'Il tuo giro (' + draft.length + (draft.length === 1 ? ' sentiero)' : ' sentieri)') : 'Combina sentieri in un giro';
+    if (current !== 'history') show('history');
   }
+  $('mineSeg').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) openMine(b.dataset.tab); });
+  $('mineGiro').onclick = function () { openGiro(); };
 
   // ---------------- zone info ----------------
   // Elevation and relief around a point, read from an open elevation tile.
@@ -944,7 +998,9 @@
       ]).addTo(map);
       if (focusRoute || !lastPos) map.fitBounds(L.latLngBounds(r.line), { padding: [40, 40] });
     }
+    guideRoute = r && r.line.length ? r : null;
     updateMapMe();
+    if (guideLine && !focusRoute && !center) map.fitBounds(L.latLngBounds(guideLine.getLatLngs()).pad(0.4), { maxZoom: 16 });
     if (center) { map.setView(center, 14); markTap(center); }
     else if (lastPos && !focusRoute && !r) map.setView(lastPos, 15);
   }
@@ -954,16 +1010,28 @@
     else tapMarker.setLatLng(ll);
   }
   function updateMapMe() {
-    if (!mapReady || !lastPos) return;
+    if (!mapReady) return;
+    if (!lastPos) { if (guideLine) { map.removeLayer(guideLine); guideLine = null; } return; }
     if (!meMarker) meMarker = L.marker(lastPos, { icon: L.divIcon({ className: '', html: '<div class="me"></div>', iconSize: [16, 16] }), interactive: false }).addTo(map);
     else meMarker.setLatLng(lastPos);
+    // straight dashed line to the nearest point of the trail, when you are off it
+    if (guideLine) { map.removeLayer(guideLine); guideLine = null; }
+    if (guideRoute) {
+      var cum = guideRoute._cum || (guideRoute._cum = G.cumulative(guideRoute.line));
+      var s = G.snap(guideRoute.line, cum, lastPos);
+      if (s.off > 60 && s.off < 30000) {
+        guideLine = L.polyline([lastPos, G.pointAt(guideRoute.line, cum, s.along)], { color: '#1a6fe8', weight: 4, dashArray: '2 10', lineCap: 'round', interactive: false }).addTo(map);
+        $('mapHint').textContent = 'Il sentiero è a ' + kmTxt(s.off) + ' in linea d\'aria';
+      } else $('mapHint').textContent = 'Tocca la mappa';
+    }
   }
+  var guideLine = null, guideRoute = null;
   $('mapClose').onclick = function () {
     $('mapLayer').hidden = true; $('mapSheet').hidden = true;
     if (current === 'walk') startGps();
   };
   $('mapLocate').onclick = function () {
-    fix(function (p) { if (p) map.setView(p, Math.max(map.getZoom(), 15)); else toast('Posizione non disponibile.'); });
+    fix(function (p) { if (p) map.setView(p, Math.max(map.getZoom(), 15)); else toast(gpsDenied ? 'Posizione negata dal telefono: vedi il menu.' : 'Posizione non disponibile ora.'); }, true);
   };
   var tapSeq = 0;
   function onMapTap(e) {

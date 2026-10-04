@@ -179,3 +179,23 @@ a.rcard.link .sub { color: #c9cbc3; line-height: 1.45; font-size: 14.5px; }
 .species i { font-size: 13px; }
 .zonecard { background: var(--card2); }
 .mapbar .chip { background: rgba(21,24,19,.92); color: var(--fg); }
+
+/* v4: simpler home, GPS switch */
+.btn.tall { min-height: 60px; font-size: 17px; border-radius: 20px; }
+.resume { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; border-radius: 18px; border: 0; background: #1b1f18; box-shadow: inset 0 0 0 2px var(--yellow); text-align: left; cursor: pointer; }
+.resume .grow { display: flex; flex-direction: column; gap: 2px; }
+.resume b { font-size: 17px; font-weight: 600; }
+.resume .go { font-weight: 600; color: var(--yellow); }
+.gpsbox { display: flex; flex-direction: column; gap: 12px; padding: 14px 16px; border-radius: 18px; background: var(--card); }
+.gpsrow { display: flex; align-items: center; gap: 12px; }
+.gpsrow b { font-weight: 600; }
+.switch { position: relative; width: 60px; height: 36px; border-radius: 18px; border: 0; background: #3a4036; cursor: pointer; flex: none; transition: background .15s; }
+.switch span { position: absolute; top: 4px; left: 4px; width: 28px; height: 28px; border-radius: 50%; background: #b9bdb3; transition: transform .15s, background .15s; }
+.switch.on { background: #2f7d3f; }
+.switch.on span { transform: translateX(24px); background: #fff; }
+.gpschip { margin-left: auto; border: 0; background: none; color: var(--dim); font-size: 13px; padding: 8px 0; cursor: pointer; }
+.gpschip.off { color: var(--warn-fg); background: var(--warn-bg); padding: 6px 12px; border-radius: 999px; }
+.entry.away { cursor: pointer; }
+.iconbtn.sure { background: var(--cai); color: #fff; }
+#mineSeg { margin-top: -4px; }
+@media (prefers-reduced-motion: reduce) { .switch, .switch span { transition: none; } }

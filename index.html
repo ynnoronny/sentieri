@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="vendor/leaflet.css">
-<link rel="stylesheet" href="app.css?v=3">
+<link rel="stylesheet" href="app.css?v=4">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
   <div class="status">
     <button id="walkBack" class="iconbtn" aria-label="Indietro, alla scheda del sentiero"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <span id="offChip" class="chip"><span class="dot"></span><span id="offTxt">Online</span></span>
-    <span id="gpsTxt" class="dim"></span>
+    <button id="gpsTxt" class="gpschip"></button>
   </div>
 
   <div class="trailhead">
@@ -60,7 +60,7 @@
   <ul id="ahead" class="ahead"></ul>
 
   <div class="bottom">
-    <button id="btnMore" class="btn primary grow">Altro</button>
+    <button id="btnMore" class="btn primary grow">Menu</button>
     <button id="btnSos" class="sos" aria-label="SOS: tieni premuto 2 secondi">
       <svg viewBox="0 0 52 52" class="ring" aria-hidden="true"><circle cx="26" cy="26" r="24"/></svg>
       <span>SOS</span>
@@ -69,16 +69,46 @@
   <div id="sosHint" class="hint" hidden>Tieni premuto SOS per 2 secondi</div>
 </main>
 
-<!-- ============ BENVENUTO (nessun sentiero attivo) ============ -->
+<!-- ============ HOME ============ -->
 <main id="scr-home" class="screen" hidden>
-  <div class="status"><span class="chip off-none"><span class="dot"></span><span>Sentieri</span></span></div>
-  <h1 class="big">Dove cammini oggi?</h1>
-  <p class="dim">Scegli un sentiero: l'app ti accompagna con distanza, salita, tempo, fonti e bivi. Funziona anche senza rete.</p>
+  <button id="resume" class="resume" hidden>
+    <span id="resFlag"></span>
+    <span class="grow"><span class="dim small">In cammino</span><b id="resName"></b></span>
+    <span class="go">Riprendi</span>
+  </button>
+
+  <h1 class="big" id="homeTitle">Dove cammini oggi?</h1>
+
+  <form id="searchForm" class="search" role="search">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <label for="q" class="sr">Cerca</label>
+    <input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Cerca un sentiero o un posto">
+  </form>
+  <div id="searchRes" class="list" hidden></div>
+
   <div class="stack">
-    <button class="btn primary" data-go="prepare">Sentieri vicino a me</button>
-    <button class="btn" data-go="menu">Cerca un sentiero</button>
-    <button class="btn ghost" id="homeMap">Apri la mappa</button>
+    <button class="btn primary tall" id="homeMap">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Mappa
+    </button>
+    <button class="btn tall" id="homeNear">Sentieri vicino a me</button>
+    <button class="btn tall" id="homeMine">I miei sentieri</button>
   </div>
+
+  <div class="gpsbox bottomfix">
+    <div class="gpsrow">
+      <div class="grow"><b>Posizione GPS</b><div id="gpsState" class="dim small">Spenta</div></div>
+      <button id="gpsSwitch" class="switch" role="switch" aria-checked="false" aria-label="Posizione GPS"><span></span></button>
+    </div>
+    <div id="gpsHelp" class="where" hidden></div>
+    <div id="gpsFreq" hidden>
+      <div class="rowtext"><span class="dim small">Aggiorna ogni</span><span class="dim small">più raro = più batteria</span></div>
+      <div class="seg" id="gpsSeg">
+        <button data-gps="5">5 s</button><button data-gps="30">30 s</button><button data-gps="120">2 min</button>
+      </div>
+    </div>
+  </div>
+  <button id="rowStop" class="btn ghost" hidden>Termina il cammino</button>
 </main>
 
 <!-- ============ BIVIO ============ -->
@@ -94,66 +124,11 @@
   <button class="btn primary bottomfix" data-go="walk">Ok, proseguo</button>
 </main>
 
-<!-- ============ ALTRO ============ -->
-<main id="scr-menu" class="screen" hidden>
-  <form id="searchForm" class="search" role="search">
-    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    <label for="q" class="sr">Cerca</label>
-    <input id="q" type="search" enterkeyhint="search" autocomplete="off" placeholder="Sentiero (es. 227), rifugio, paese…">
-  </form>
-  <div id="searchRes" class="list" hidden></div>
-
-  <nav class="card list" id="menuList">
-    <button class="row" data-go="prepare">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/></svg>
-      <span class="grow">Prepara un giro</span>
-    </button>
-    <button class="row" data-go="giro">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M4 7h10a4 4 0 0 1 0 8H8M8 15l3-3M8 15l3 3"/></svg>
-      <span class="grow">Combina sentieri in un giro</span><span id="giroCount" class="dim small"></span>
-    </button>
-    <button class="row" data-go="favs">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic yellow"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>
-      <span class="grow">Preferiti</span><span id="favCount" class="dim small"></span>
-    </button>
-    <button class="row" id="rowZone">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic green"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-      <span class="grow">Scopri la zona qui intorno</span>
-    </button>
-    <button class="row" id="rowMap">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><path d="M3 17l5-6 4 4 3-3 6 7M3 20h18"/></svg>
-      <span class="grow">Mappa</span>
-    </button>
-    <button class="row" data-go="history">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><path d="M4 19c4-1 5-6 8-8s5-1 8-5"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="6" r="1.6"/></svg>
-      <span class="grow">I miei sentieri</span><span id="histCount" class="dim small"></span>
-    </button>
-    <button class="row" data-go="offline">
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic green"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
-      <span class="grow">Zone offline</span><span id="offCount" class="dim small"></span>
-    </button>
-  </nav>
-
-  <div class="card">
-    <div class="rowtext"><span>Posizione GPS</span><span class="dim small">più rara = più batteria</span></div>
-    <div class="seg" id="gpsSeg">
-      <button data-gps="5">5 s</button><button data-gps="30">30 s</button><button data-gps="120">2 min</button>
-    </div>
-  </div>
-
-  <nav class="card list"><button class="row" id="rowStop" hidden>
-      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" class="ic"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
-      <span class="grow">Termina il cammino</span>
-    </button></nav>
-
-  <button id="menuBack" class="btn primary bottomfix">Torna al cammino</button>
-</main>
-
 <!-- ============ PREPARA / VICINO A ME ============ -->
 <main id="scr-prepare" class="screen" hidden>
   <div class="topnav">
     <button class="iconbtn" data-back aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <div><h1 class="mid">Prepara un giro</h1><div id="prepWhere" class="dim small"></div></div>
+    <div><h1 class="mid">Sentieri qui intorno</h1><div id="prepWhere" class="dim small"></div></div>
   </div>
   <div id="prepList" class="stack"></div>
 </main>
@@ -173,7 +148,11 @@
     <button class="iconbtn" data-back aria-label="Indietro"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <h1 id="histTitle" class="mid">I miei sentieri</h1>
   </div>
+  <div class="seg" id="mineSeg">
+    <button data-tab="fav">Preferiti</button><button data-tab="rec">Recenti</button><button data-tab="off">Offline</button>
+  </div>
   <div id="histList" class="stack"></div>
+  <button id="mineGiro" class="btn ghost bottomfix">Combina sentieri in un giro</button>
 </main>
 
 <!-- ============ ZONA ============ -->
@@ -231,7 +210,7 @@
 <div id="toast" class="toast" hidden></div>
 
 <script src="vendor/leaflet.js"></script>
-<script src="geo.js?v=3"></script>
-<script src="app.js?v=3"></script>
+<script src="geo.js?v=4"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>

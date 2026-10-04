@@ -1,9 +1,9 @@
 // Sentieri: offline support.
-var VERSION = 'c3';
+var VERSION = 'c4';
 var SHELL = 'compagno-' + VERSION;
 var TILES = 'tiles-v1';
 var DATA = 'data-v1';
-var FILES = ['./', 'index.html', 'app.css?v=3', 'geo.js?v=3', 'app.js?v=3', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
+var FILES = ['./', 'index.html', 'app.css?v=4', 'geo.js?v=4', 'app.js?v=4', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png',
   'vendor/leaflet.js', 'vendor/leaflet.css'];
 
 self.addEventListener('install', function (e) {
