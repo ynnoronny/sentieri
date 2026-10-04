@@ -328,7 +328,7 @@
 
   // ---------------- GPS (interval, battery-friendly) ----------------
   var gpsTimer = null, gpsBusy = false;
-  var gpsCbs = [];
+  var gpsCbs = [], askedOnLoad = false;
   // force = asked by a tap: turns the GPS on and makes the phone show its permission prompt.
   function fix(cb, force) {
     if (!('geolocation' in navigator)) { gpsDenied = true; renderGps('Questo browser non dà accesso alla posizione.'); if (cb) cb(null); return; }
@@ -337,10 +337,12 @@
     if (gpsBusy) return;
     gpsBusy = true;
     if (force && !gpsOn) renderGps(null, 'Chiedo il permesso al telefono…');
+    var askedAt = Date.now();
     function done(p) { gpsBusy = false; var l = gpsCbs; gpsCbs = []; l.forEach(function (f) { f(p); }); }
     navigator.geolocation.getCurrentPosition(function (p) {
       var first = !gpsOn;
-      gpsOn = true; gpsDenied = false; save('gpsOn', true);
+      gpsOn = true; gpsDenied = false; askedOnLoad = false; save('gpsOn', true);
+      $('gpsRetry').hidden = true;
       lastPos = [p.coords.latitude, p.coords.longitude]; lastPos.acc = p.coords.accuracy;
       save('pos', [lastPos[0], lastPos[1]]);
       renderGps();
@@ -351,8 +353,16 @@
     }, function (err) {
       if (err.code === 1) {
         gpsOn = false; gpsDenied = true; save('gpsOn', false); stopGps();
-        renderGps('Il telefono ha negato la posizione. Su iPhone: Impostazioni › Privacy e sicurezza › Localizzazione › Siti web di Safari › «Mentre usi l\'app». Poi riattiva qui.');
-        if (current !== 'home') toast('Posizione negata: attivala dal menu.', 4000);
+        // Refused in an instant = the phone did not even show its question (it remembers an earlier "no").
+        // Reloading the page makes it ask again, so do that once per tap.
+        var silent = Date.now() - askedAt < 700;
+        if (force && silent && !askedOnLoad) { save('askGps', true); location.reload(); return; }
+        askedOnLoad = false;
+        renderGps(silent
+          ? 'Il telefono blocca la posizione senza chiedere. Su iPhone: Impostazioni › Privacy e sicurezza › Localizzazione › Siti web di Safari › «Mentre usi l\'app». Poi tocca «Chiedi di nuovo».'
+          : 'Hai scelto di non condividere la posizione. Senza, l\'app non può dirti dove sei sul sentiero.');
+        $('gpsRetry').hidden = false;
+        if (current !== 'home') toast('Posizione negata: riprova dal menu.', 4000);
       } else {
         if (force) { gpsOn = true; save('gpsOn', true); }
         renderGps(null, 'Attiva · cerco il segnale, meglio all\'aperto');
@@ -372,11 +382,13 @@
     document.querySelectorAll('#gpsSeg button').forEach(function (b) { b.classList.toggle('on', +b.dataset.gps === gpsEvery); });
     if (current === 'walk') renderStatus();
   }
+  $('gpsRetry').onclick = function () { save('askGps', true); location.reload(); };
   $('gpsSwitch').onclick = function () {
     if (gpsOn) {
       gpsOn = false; save('gpsOn', false); stopGps();
       lastPos = null; save('pos', null);
       if (meMarker && mapReady) { map.removeLayer(meMarker); meMarker = null; }
+      $('gpsRetry').hidden = true;
       renderGps('');
     } else fix(null, true);
   };
@@ -1071,6 +1083,7 @@
 
   // ---------------- start ----------------
   if (active && routes[active.id]) show('walk'); else show('home');
+  if (load('askGps', false)) { save('askGps', false); askedOnLoad = true; show('home'); fix(null, true); }
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).catch(function () {}); });
   }

@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="vendor/leaflet.css">
-<link rel="stylesheet" href="app.css?v=4">
+<link rel="stylesheet" href="app.css?v=5">
 </head>
 <body>
 
@@ -101,6 +101,7 @@
       <button id="gpsSwitch" class="switch" role="switch" aria-checked="false" aria-label="Posizione GPS"><span></span></button>
     </div>
     <div id="gpsHelp" class="where" hidden></div>
+    <button id="gpsRetry" class="btn" hidden>Chiedi di nuovo</button>
     <div id="gpsFreq" hidden>
       <div class="rowtext"><span class="dim small">Aggiorna ogni</span><span class="dim small">più raro = più batteria</span></div>
       <div class="seg" id="gpsSeg">
@@ -210,7 +211,7 @@
 <div id="toast" class="toast" hidden></div>
 
 <script src="vendor/leaflet.js"></script>
-<script src="geo.js?v=4"></script>
-<script src="app.js?v=4"></script>
+<script src="geo.js?v=5"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>
